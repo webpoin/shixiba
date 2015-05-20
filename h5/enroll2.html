@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--meta-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta content="admin@52track.net" name="author">
+<meta content="实习吧" name="Description">
+<meta content="实习吧" name="Keywords">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<title>实习吧-报名</title>
+<link rel="stylesheet" href="jqm/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="css/t.css" />
+<script src="js/jquery.js"></script>
+<script src="jqm/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/wuliu.js"></script>
+<script src="js/comm_page.js"></script>
+<style type="text/css">
+.top_set1{
+   top:0.25em !important;}	
+.back_arrow{
+	height:20px !important;
+	width:auto;} 
+.ba_color{
+	background-color:#f9f9f9;}     	
+.e_ul_li_set li{
+	text-align:center;
+	border-width:0 0 1px;
+	border-style:solid;
+	padding:0.5em 0 !important;
+	border-color:#dddddd;
+}
+.u_li_z li{
+	border-width:0 0 1px !important;
+	}	
+.font_s1{
+	font-size:1.2em !important;}
+.color_s1{
+	color:#999999;}  	
+.u_li_z{
+	border-radius:0;
+	box-shadow:none !important;}
+
+.label_set{
+	float:left;
+	margin:2px 0 0 0 !important;
+	width:auto !important;}
+.pho_set{
+	border:none;
+	float:left;
+	width:80%;
+   }
+.submit_set{
+	float:right;
+	border:none;
+	background-color:#3CC;
+	color:#ffffff;
+	font-size:0.75em !important;}	 			
+
+.content_set{
+	text-indent:2em !important;}
+.ui-checkbox{
+	width:10.5%;}
+#next_set a{
+    background-color:#21D0C6!important;
+    border: medium none !important;
+    color: #ffffff !important;
+	text-align:center;
+    text-shadow: none !important;
+	font-size:1.2em;
+}
+#next_set a:focus {
+    box-shadow: 0 0 0 #21D0C6 !important;
+}		
+.f_no_bo{
+	border:none;}	
+</style>
+
+</head>
+<body>
+<div data-role="page" id="pagehome">
+
+<div data-role="header" data-position="fixed" data-theme="f">
+<a  href="javascript:void()" class="b_c_set top_set1" data-rel="back" data-role="none"
+		 data-add-back-btn="true"><img class="back_arrow" src="images/arrow_green.png"/></a>
+<h1 id="ftitle">实习吧-报名</h1>
+</div>
+
+  <div data-role="content" class="content">
+  <div data-role="navbar" class="ba_color">
+	    <ul class="e_ul_li_set" >
+	      <li style="width:27%"><span style="color:#21D0C6;">填写资料</span></li>
+	      <li style="width:5%"><span style="color:#21D0C6;">&gt;</span></li>
+	      <li style="width:36%"><span style="color:#21D0C6;">确认联系方式</span></li>
+	       <li style="width:5%"><span style="color:#999999;">&gt;</span></li>
+	      <li style="width:27%"><span  style="color:#999999;">传递简历</span></li>
+		</ul>
+    </div>
+  
+    <ul data-role="listview" data-inset="true" class="u_li_z">
+      <li>
+    <div>
+        <span class="font_s1">报名：</span>
+        <span class="font_s1" id="fname"></span>
+    </div>
+    <div style="margin-top:0.5em; font-size:0.75em;">
+       <span class="font_s2 color_s1">丨请确认联系信息准确无误,以方便实习吧联系到你</span>
+    </div>
+      </li>
+           <li>
+	 <form method="post" action="#">
+       <div data-role="fieldcontain">
+        <label for="email" class="label_set">邮箱：</label>
+        <!-- 0440081057555   561276-->
+        <input type="email"  id="femail" placeholder="请输入您的邮箱" value="" data-role="none" class="pho_set" >
+        <!--input class="submit_set" type="submit" data-inline="true" value="修改" data-role="none"  -->
+        </div>
+        </form>
+        </li>
+<li>
+	<form method="post" action="#">
+    <div data-role="fieldcontain">
+        <label class="label_set" for="accoint">电话：</label>
+        <!-- 0440081057555   561276-->
+        <input type="text" data-role="none" id="ftel" placeholder="请输入您的手机号码" value="" class="pho_set">
+        <!--input class="submit_set" type="submit" data-inline="true" value="确认" data-role="none"  -->
+        </div>
+      </form> 
+      </li>
+          
+    </ul>
+  </div>
+  
+  <div id="popdiv" data-role="popup"></div><!--弹出层,默认不显示-->
+
+<div data-role="footer" data-position="fixed" class="f_no_bo" >
+<div data-role="navbar">
+ <ul>
+     <li id="next_set"><a href=""  data-transition="none" id="next" >下一步</a></li>
+ </ul>
+ </div>
+</div>
+</div>
+
+<script>
+var fapplyid=sessionStorage.fapplyid;
+
+function job_cb(data)
+{
+	$("#fid").text(data.FID);
+	$("#fname").text(data.FNAME);
+	$("#ftitle").text(data.FNAME);
+	return;
+}
+
+function job()
+{
+	  var param={};
+	  var fid=sessionStorage.m;
+	  param.fid=fid;
+	  var url="/sx/job/query";
+	  fn_ajax(url,param,"post","job_cb");
+}
+
+job();
+
+showUser();
+function ok_showuser(data)
+{
+	if(data.femail==null || data.femail=="undefined")
+	{
+		data.femail="";
+	}
+	if(data.ftel==null || data.ftel=="undefined")
+	{
+		data.ftel="";
+	}
+	$("#femail").val(data.femail);
+	$("#ftel").val(data.ftel);
+}
+function error_showuser()
+{
+	window.location.href="login.html?url="+"/sxb/enroll.html";
+}
+function showUser()
+{
+	  var param={};
+	  param.usertype="1";
+	  var url="/sx/islogin?url="+window.location.href;	  
+	  var errorCallback="error_showuser";
+	  fn_ajax_error_async(url,param,"post","ok_showuser",errorCallback,"1");
+	  return false;
+}
+
+function enroll_cb(data)
+{
+	 //alert("成功报名");
+	 //$("#next1").css("display", "none");
+	 //$("#next2").css("display", "block");
+	 sessionStorage.email=$("#femail").val();
+ 	 window.location.href="enroll_ok.html";
+}
+
+$("#next").click(function(e){
+	var url="/sx/apply/update",
+				fid = fapplyid,
+				femail = $("#femail").val();
+				ftel = $("#ftel").val();
+	input_data={
+				fid : fid,
+				femail : femail,
+				ftel:ftel
+	 };
+	 
+	if( fid == "")
+	{
+	  pop("申请ID不能为空"); 
+	  return false;
+	}
+	
+	if( femail == "")
+	{
+	  pop("邮箱不能为空"); 
+	  return false;
+	}
+	
+	fn_ajax(url,input_data,"post","enroll_cb");
+	});
+
+</script>
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?933dcad2a62081671207ea9fa0d6623b";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</body>
+</html>

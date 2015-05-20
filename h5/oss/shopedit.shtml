@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>国际小包打印系统-修改发件人信息</title>
+<link href="/track/shop/css/my.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/track/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="/track/js/wuliu.js"></script>
+<style type="text/css">
+.column_right {
+	float:left;
+	/*width:786px;-->
+	padding-left:40px;*/
+	margin-left: 20px;
+	}
+.content_title{
+	padding:0px 0 10px 0;
+	font-size:16px;
+	font-weight:bold;
+	border-bottom:1px solid #BEBEBE;}
+.form_content{
+	font-size:14px;}	
+.form_content table tr{
+	height:45px;
+	line-height:45px; }
+.w1{
+text-align: right;
+	width:120px;}
+.w2{
+	width:270px;
+	text-align:right;}
+.w3{
+	width:80px;
+	text-align:right;}
+.input_set{
+	padding:0 8px;
+	width:260px;
+	height:28px;
+	line-height:28px;
+	border:1px solid silver;}
+.input_set:focus{
+	border:1px solid #6CF;}							
+.button_right{
+	margin:15px 0;
+	float:left;
+	width:300px;}
+.button_right a{
+	display:block;
+	float:right;
+	font-size:14px;
+	width:90px;
+	height:37px;
+	line-height:37px;
+	text-align:center;
+	color:#FFFFFF;
+	background-color:#4CB7B7;}
+.button_right a:hover{
+	text-decoration:none;
+	background-color:#FC9;}		
+	.msg
+{
+	width: 260px;
+	padding-left: 6px;
+	padding-right: 10px;
+	height: 80px;
+}							
+</style>
+</head>
+<body>
+<script>islogin("66");</script>
+
+<!--#include virtual="/track/shop/head.html"-->
+
+<div class="container w1024 mt5" style="margin-bottom: 200px;">
+
+<!--#include virtual="/track/shop/left.html"-->	
+
+<div class="column_right mt10">
+<div class="content_title">修改发件人信息:</div>
+<div class="form_content mt5">
+  <form action="#" method="post">
+  <table>
+	  <tbody>
+		  <tr>
+			  <td class="w1"><label>协议客户名称：</label></td>
+			  <td class="w2"><input id="fname" tabindex="1" class="input_set" type="text"  placeholder=""/></td>
+			  <!--td class="w3">[?]</td-->
+		  </tr>
+			   <tr>
+				  <td class="w1"><label>发件人地址：</label></td>
+				  <td class="w2">
+				  <textarea  id="faddr"   class="msg" tabindex="2" ></textarea>
+				  <!--input id="faddr" class="input_set" type="text"  placeholder=""/></td-->
+				  <!--td class="w3">[?]</td-->
+			  </tr>
+			   <tr>
+				  <td class="w1"><label>发件人手机：</label></td>
+				  <td class="w2"><input id="fcontacttel" tabindex="3" class="input_set" type="text"  placeholder=""/></td>
+			  </tr>
+			   <tr style="border-bottom: 1px solid #E0E0E0;">
+				  <td class="w1"><label>发件人邮编：</label></td>
+				  <td class="w2"><input id="fpost" tabindex="4" class="input_set" type="text"  placeholder=""/></td>
+			  </tr>
+			  <tr>
+				  <td class="w1"><label>退件单位：</label></td>
+				  <td class="w2"><input id="freturnaddr" tabindex="5" class="input_set" type="text"  placeholder=""/></td>
+			  </tr>
+			  
+		  </tbody>
+  	</table>
+  	<div class="button_right"><a id="update"  tabindex="6"  href="javascript:;">更  新</a></div>
+  </form></div></div></div>
+  
+  <!--#include virtual="/track/shop/foot.html"-->
+  <script>
+  	function show_cb(data)
+  	{
+  		$("#fname").val(data.FNAME);
+		$("#faddr").val(data.FADDR);
+		$("#fcontacttel").val(data.FCONTACTTEL);
+		$("#fpost").val(data.FPOST);
+		$("#freturnaddr").val(data.FRETURNADDR);
+		
+  	}
+
+    function show()
+  	{
+  		var p={},
+  		url="/shop/user/query";
+  		fn_ajax(url, p, "post", "show_cb","show_error_cb");
+  	}
+    
+    show();
+  
+	function update_callback(data)
+	{
+	     alert("修改成功");
+	     return false;
+	}
+	
+	function update_error_callback(data)
+	{
+	     alert(data.msg);
+	     return false;
+	}
+	
+	$("#update").click(function(e)
+	{
+		var fname=$("#fname").val();
+		var faddr = $("#faddr").val();
+		var fcontacttel = $("#fcontacttel").val();
+		var fpost = $("#fpost").val();
+		var freturnaddr = $("#freturnaddr").val();
+		var p={},
+		url="/shop/user/updateShop";
+		p.fname=fname;
+		p.faddr = faddr;
+		p.fcontacttel = fcontacttel;
+		p.fpost = fpost;
+		p.freturnaddr = freturnaddr;
+		
+		fn_ajax(url, p, "post", "update_callback","update_error_callback");
+	});
+  </script>
+  
+</body>
+</html>

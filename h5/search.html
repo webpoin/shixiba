@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--meta-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="author" content="admin@52track.com"/>
+<meta name="robots" content="nofollow" />
+<meta name="Description" content="实习吧！"/>
+<meta name="Keywords" content="实习 实习吧 找工作 实习工作"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<title>实习吧-发现</title>
+<link rel="stylesheet" href="jqm/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="css/t.css" />
+<script src="js/jquery.js"></script>
+<script src="jqm/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/wuliu.js"></script>
+<script src="js/comm_page.js"></script>
+<script src="js/ccdate.js"></script>
+
+<style type="text/css">
+.b_c_set{
+	border:none;
+	background-color:#303236;
+	color:#ffffff;
+    font-size:1em !important;}
+.top_set1{
+   top:0.7em !important;}	
+.top_set2{
+   top:0.24em !important;}
+.u_li_a_c a{
+	background-color:#f6f6f6 !important;
+	color:#999999 !important;
+	text-shadow: 0 0 0 #ddd !important;
+	border-width:0 0 2px !important;
+	border-color:#ddd !important;
+	}	
+
+.u_li_a_c a:hover,.u_li_a_c a:focus{
+    background-color:#DEEFEE !important;
+    border-color:#21D0C6 !important;
+	border-width:0 0 2px !important;
+    color:#21D0C6 !important;
+    text-shadow: 0 0 0 #21D0C6 !important;
+	box-shadow: 0 0 0 #21D0C6 !important;
+}  
+.i_f_set{
+	width:11px;
+	height:11px;
+     } 
+.set-a{
+	background-color:#000000 !important;
+	color:#ffffff !important;
+	border:0;
+	font-weight:normal;
+    }
+.set-a:focus{
+	box-shadow: 0 0 12px #000000 !important;}			
+
+.content_set{
+	text-indent:2em !important;}
+.ui-checkbox{
+	width:10.5%;}
+.in_set{
+    border: 1px solid #21d0c6;
+    line-height: 2em;
+    min-height: 2em;
+	}		
+.in_1{
+	width:75%;
+	float:left;}	
+.in_2{
+	width:25%;
+	line-height:1.95em;
+	background-color:#21d0c6;
+	color:#ffffff;
+	border:none !important;	
+	}
+.f_s_1em{
+	font-size:1em !important;}		
+.color_1{
+	color:#999999;}
+.color_2{
+	color:#21d0c6;}
+.font_s1{
+	font-size:1.2em !important;}		
+.color_s2 span{
+	background:#dddddd;
+	padding:0.5em;}		
+.footer_set1 a{
+	background-color: #303236 !important;
+    border-color: #303236 !important;
+    color: #999999 !important;
+    text-shadow: 0 0 0 #999999 !important;
+	}
+.footer_set1 a:focus,.footer_set1 a:hover{
+	background-color:#222326 !important;
+    border-color:#222326 !important;
+    color:#21D0C6 !important;
+    text-shadow: 0 0 0 #21D0C6 !important;
+	box-shadow: 0 0 0 #21D0C6 !important;
+	}		
+.footer_set1{
+	background-color:#303236 !important;
+    border-color:#303236 !important;
+}
+.zwt_set {
+    border: medium none;
+    height: 160px;
+    width: 100%;
+}
+</style>
+
+</head>
+<body>
+<div data-role="page" id="pagehome">
+<div data-role="header" data-position="fixed" data-theme="f">
+<button class="b_c_set top_set1" data-rel="back" data-role="none"> &lt;返回</button>
+<h1>发现</h1>
+<button class="b_c_set top_set2" data-rel="back" data-role="none">...</button>
+	</div>
+
+  <div data-role="content">
+  <div data-role="navbar" class="content">
+	<ul class="u_li_a_c">
+		<li><a id="first" href="#" onclick="findjob('1');">旅行</a></li>
+		<li><a  href="#" onclick="findjob('2');">奇葩</a></li>
+		<li><a	href="#" onclick="findjob('3');">文艺</a></li>
+		<li><a  href="#" onclick="findjob('4');">公益</a></li>
+		<li><a  href="#" onclick="toSearch();"><img id="searchimg" class="i_f_set" src="images/icon_serch_selected.png"/></a></li>
+	</ul>
+</div>
+
+	<ul id="joblist" data-role="listview" >
+	</ul>
+
+<ul id="search2" data-role="listview" style="display: none;">
+ <li>
+    <form method="post" action="#">
+        <label for="search" class="ui-hidden-accessible">搜索：</label>
+        <input type="search" name="search" id="search" class="in_set in_1"  placeholder="输入职业,专业或领域"  data-role="none" >
+        <input type="submit" class="in_set in_2" data-inline="true" value="搜索"  data-role="none" >
+         <p class="f_s_1em"><span class="color_1">丨热搜：</span>
+         <span class="color_2">咖啡厅 情趣体验</span></p>
+    </form> 
+     </li>
+      <li><p class="color_1">工作起始时间：</p>
+          <p class="font_s1 color_s2">
+            <span id="m0" style="cursor: pointer;">1月份</span>
+		    <span id="m1" style="cursor: pointer;">2月份</span>
+		    <span id="m2" style="cursor: pointer;">3月份</span>
+            <span id="m3" style="cursor: pointer;">3月份</span>
+            <span id="m4" style="cursor: pointer;">5月份以后</span>
+            </p>  
+       </li>
+      <li><p class="color_1">工作地点：</p>
+          <p class="font_s1 color_s2">
+            <span>深圳</span>
+		    <span>上海</span>
+		    <span>北京</span>
+            <span>广州</span>
+            </p>  
+       </li>
+    </ul>
+ 
+     <ul id="resulttotal"  style="display: none;" class="u_li_set1" data-role="listview"><li><span class="color_2">丨一共为您搜索到<span id="totalsize">0</span>条职位信息：</span>
+    </li>
+    </ul>
+    <ul id="resultlist"  style="display: none;" class="u_li_set" data-role="listview" data-inset="true">
+    </ul>
+ 
+ 
+  </div>
+
+
+	<div data-role="footer" data-position="fixed" class="footer_set1" >
+		    <div data-role="navbar">
+				<ul>
+			        <!--li>享受温馨丶精致的阅读生活</li-->
+				    <li><a href="index.html#home" data-icon="home" data-iconpos="right"  data-transition="slide"  data-ajax="false">首页</a></li>
+					<li><a href="find.html#home"  data-icon="home" data-iconpos="right"  data-transition="slide" data-ajax="false">分类导航</a></li>
+					<li><a href="article.html#home"  data-icon="info" data-iconpos="right"  data-transition="slide" data-ajax="false">热门文章</a></li>
+					<li><a href="person.html#home"  data-icon="info" data-iconpos="right"  data-transition="slide" data-ajax="false">个人中心</a></li>
+			    </ul>
+			</div>
+	</div>
+</div>
+
+<script>
+	var pagesize=5;
+	var pageno=1;
+	var type="1";
+	jobs(pagesize,pageno,"",type);
+
+	$("#first").addClass("ui-btn-active");
+	$("#m0").text(getAMonth(getNowDay(),0));
+	$("#m1").text(getAMonth(getNowDay(),1));
+	$("#m2").text(getAMonth(getNowDay(),2));
+	$("#m3").text(getAMonth(getNowDay(),3));
+	$("#m4").text(getAMonth(getNowDay(),4)+"以后");
+	
+	$("#m0").click(function()
+	{
+		$("#search2").css("display","none");
+		$("#joblist").css("display","none");
+		$("#resulttotal").css("display","block");
+		$("#resultlist").css("display","block");
+		var time=getBMonth(getNowDay(),0);
+		result_list(pagesize2,pageno2,"",time,"");
+		//window.location.href="result.html?t="+getBMonth(getNowDay(),0);
+	});
+	$("#m1").click(function()
+	{
+		$("#search2").css("display","none");
+		$("#joblist").css("display","none");
+		$("#resulttotal").css("display","block");
+		$("#resultlist").css("display","block");
+		var time=getBMonth(getNowDay(),1);
+		result_list(pagesize2,pageno2,"",time,"");
+		//window.location.href="result.html?t="+getBMonth(getNowDay(),1);
+	});
+	$("#m2").click(function()
+	{
+		$("#search2").css("display","none");
+		$("#joblist").css("display","none");
+		$("#resulttotal").css("display","block");
+		$("#resultlist").css("display","block");
+		var time=getBMonth(getNowDay(),2);
+		result_list(pagesize2,pageno2,"",time,"");
+		//window.location.href="result.html?t="+getBMonth(getNowDay(),2);
+	});
+	$("#m3").click(function()
+	{
+		$("#search2").css("display","none");
+		$("#joblist").css("display","none");
+		$("#resulttotal").css("display","block");
+		$("#resultlist").css("display","block");
+		var time=getBMonth(getNowDay(),3);
+		result_list(pagesize2,pageno2,"",time,"");
+		//window.location.href="result.html?t="+getBMonth(getNowDay(),3);
+	});	
+	
+	$("#m4").click(function()
+	{
+		$("#search2").css("display","none");
+		$("#joblist").css("display","none");
+		$("#resulttotal").css("display","block");
+		$("#resultlist").css("display","block");
+		var time=getBMonth(getNowDay(),4);
+		result_list(pagesize2,pageno2,"",time,"");
+		//window.location.href="result.html?t="+getBMonth(getNowDay(),4);
+	});
+	
+	function findjob(ftype)
+	{
+		$("#search2").css("display","none");
+		$("#joblist").css("display","block");
+		$("#resulttotal").css("display","none");
+		$("#resultlist").css("display","none");
+		
+		$("#searchimg").attr("src","images/icon_search_normal.png");
+		
+		type=ftype;
+		pagesize=5;
+		pageno=1; 
+		$("#loadMore>em").css("display","none");
+		$("#loadMore>span").css("display","block");
+		jobs(pagesize,pageno,"",ftype);
+	}
+
+	function toSearch()
+	{
+		$("#search2").css("display","block");
+		$("#joblist").css("display","none");
+		$("#resulttotal").css("display","none");
+		$("#resultlist").css("display","none");
+		$("#searchimg").attr("src","images/icon_serch_selected.png");
+		
+		//window.location.href="search.html";
+		//$.mobile.changePage("search.html",{  
+		//   transition: "none"});
+	}
+
+	jobs(pagesize,pageno,"",type);
+
+	$("#loadMore").click(function()
+	{
+		pageno++;
+		jobs(pagesize,pageno,"1",type);
+	});
+
+	function jobs_cb1(data)
+	{
+		//result=data;
+
+		//$("#totalbook").text(data.pageTotalSize);
+		if(data.items.item.length==0)
+		{
+			$("#loadMore>em").css("display","block");
+			$("#loadMore>span").css("display","none");
+			return false;	
+		}	
+		
+		var html_str=$("#joblist").html();
+		for(var i=0;i<data.items.item.length;i++)
+		{
+			html_str+='<li class="ui-li-static ui-body-inherit ui-first-child" onclick="javascript:showDetail(\''+data.items.item[i].FID+'\');">'
+				   +'<div style="float:right;width:65%;" data-role="none" >'
+				   +'<h2 class="h_m_set">'+data.items.item[i].FNAME
+				   +'<span class="j_set">荐</span>'
+				   +'</h2>'
+				   +'<p  style="white-space: normal !important;">'+data.items.item[i].FMSG
+					+'</p>'
+					+'<p>'
+					+'<img src="images/clock-small.png" alt="" />'
+					+'<span>'+data.items.item[i].FTIME+'</span>'
+					+'</p></div>'
+					+'<div style="float:left;width:30%;margin-right:1em;"><img class="zwt_set" src="images/text1.jpg" alt="" /></div>'
+					+'</li>';
+		}
+		$("#joblist").html(html_str);
+	}
+	function jobs_cb(data)
+	{
+		result=data;
+		//$("#totalbook").text(data.pageTotalSize);
+		var html_str="";
+		for(var i=0;i<data.items.item.length;i++)
+		{
+			html_str+='<li style="cursor: pointer;" class="ui-li-static ui-body-inherit ui-first-child" onclick="javascript:showDetail(\''+data.items.item[i].FID+'\');">'
+				   +'<div style="float:right;width:65%;" data-role="none" >'
+				   +'<h2 class="h_m_set">'+data.items.item[i].FNAME
+				   +'<span class="j_set">荐</span>'
+				   +'</h2>'
+				   +'<p  style="white-space: normal !important;width:100%;">'+data.items.item[i].FMSG
+					+'</p>'
+					+'<p class="p_set">'
+					+'<img src="images/clock-small.png" alt="" />'
+					+'<span>'+data.items.item[i].FTIME.substring(0,10)+'</span>'
+					+'</p></div>'
+					+'<div style="float:left; width:30%;margin-right:1em;"><img class="zwt_set" src="images/text1.jpg" alt="" /></div>'
+					+'</li>';
+		}
+		$("#joblist").html(html_str);
+	}
+
+	function jobs(pagesize,pageno,more,type)
+	{
+		  var param={};
+		  param.pageno=pageno;
+		  param.pagesize=pagesize;
+		  param.ftype=type;
+		  var url="/sx/job/list";
+		  var cb="jobs_cb"+more;
+		  fn_ajax(url,param,"post",cb);
+	}
+
+	function showDetail(fid)
+	{
+		window.location.href="job.html?m="+fid;
+	}
+	
+	var pagesize2=5;
+	var pageno2=1;
+	//var time= getRequest().t;
+	//var addr=getRequest().a;
+
+	//jobs(pagesize2,pageno2,"",time,addr);
+
+	//$("#loadMore").click(function()
+	//{
+	//	pageno2++;
+	//	result(pagesize2,pageno2,"1",time,addr);
+	//});
+
+	function result_cb1(data)
+	{
+		//result=data;
+		//$("#totalbook").text(data.pageTotalSize);
+		if(data.items.item.length==0)
+		{
+			$("#loadMore>em").css("display","block");
+			$("#loadMore>span").css("display","none");
+			return false;	
+		}	
+		
+		var html_str=$("#resultlist").html();
+		for(var i=0;i<data.items.item.length;i++)
+		{
+			html_str+='<li class="ui-first-child">'
+	        	+'<a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="#" onclick="showDetail(\''+data.items.item[i].FID+'\')">'
+	        	+'<h2>'+data.items.item[i].FNAME+'</h2>'
+	        	+'</a>'
+	        	+'</li>';
+		}
+		$("#resultlist").html(html_str);
+	}
+	function result_cb(data)
+	{
+		result=data;
+		$("#totalsize").text(data.pageTotalSize);
+		var html_str='';
+		for(var i=0;i<data.items.item.length;i++)
+		{
+			html_str+='<li class="ui-first-child">'
+	        	+'<a class="ui-btn ui-btn-icon-right ui-icon-carat-r" href="#" onclick="showDetail(\''+data.items.item[i].FID+'\')">'
+	        	+'<h2>'+data.items.item[i].FNAME+'</h2>'
+	        	+'</a>'
+	        	+'</li>';
+		}
+		$("#resultlist").html(html_str);
+	}
+
+	function result_list(pagesize,pageno,more,time,addr)
+	{
+		  var param={};
+		  param.pageno=pageno2;
+		  param.pagesize=pagesize2;
+		  param.time=time;
+		  param.addr=addr;
+		  var url="/sx/job/list";
+		  var cb="result_cb"+more;
+		  fn_ajax(url,param,"post",cb);
+	}
+	
+</script>
+
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?933dcad2a62081671207ea9fa0d6623b";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+</body>
+</html>

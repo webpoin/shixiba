@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="wltrack.com 提供邮政小包,邮政国际小包,国际小包,邮政小包面单打印,国际小包面单打印,邮政国际小包面单打印;以及提供国际物流,国际邮政,国际快递,专线物流查询等服务" name="Description">
+<meta content="物流专线查询 国际邮政查询 国内邮政查询 国际快递查询 邮政小包面单打印 邮政国际小包面单打印" name="Keywords">
+<title>邮政国际小包打印系统-广告合作</title>
+<link href="/track/shop/css/my.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/track/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="/track/js/wuliu.js"></script>
+<script type="text/javascript" src="/track/js/comm_page.js"></script>
+<style type="text/css">
+
+</style>
+</head>
+
+<body>
+<!--#include virtual="/track/shop/head.html"-->
+<div class="container w1024 demo">
+<div class="setting_nav">
+<a id="a1" href="/track/shop/index.shtml" target="_self">首页</a>
+&gt;&gt;
+ <a id="a2" href="javascript:;"> 演示</a>
+</div>
+  <div class="column">
+    <h2>步骤一：</h2>
+   <div class="demo1">
+   <img src="/track/shop/images/1.jpg" title="第一步"/>
+   </div>
+    <h2>步骤二：</h2>
+   <div class="demo1">
+   <img src="/track/shop/images/2.jpg" title="第二步"/>
+   </div>
+    <h2>步骤三：</h2>
+   <div class="demo1">
+   <img src="/track/shop/images/3.jpg" title="第三步"/>
+   </div>
+    <h2>步骤四：</h2>
+   <div class="demo1">
+   <img src="/track/shop/images/4.jpg" title="第四步"/>
+   </div>
+    <h2>步骤五：</h2>
+   <div class="demo1">
+   <img src="/track/shop/images/5.jpg" title="第五步"/>
+   </div>
+  </div>
+  
+  <div class="clear"></div>
+</div>
+   
+<!--#include virtual="/track/shop/foot.html"-->
+</body>
+</html>

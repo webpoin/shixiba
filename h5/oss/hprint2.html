@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>国际小包打印系统-A4打印预览页面</title>
+<link href="/track/shop/css/my.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" media="screen" href="/track/shop/css/h-print.css" />
+<link rel="stylesheet" media="print" href="/track/shop/css/h-print_pr.css" />
+<script type="text/javascript" src="/track/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="/track/js/wuliu.js"></script>
+<script type="text/javascript" src="/track/js/comm_page.js"></script>
+<script type="text/javascript" src="/track/js/jquery.jqprint-0.3.js"></script>
+
+<!--style media="print">
+ 		.NOPRINT,.NOPRINT2
+        {
+            display: none;
+        }
+        .PageNext
+        {
+            page-break-after: always;
+        }
+</style>
+<style media="screen">
+  		.NOPRINT
+        {
+        	clear:both;
+        	border-bottom:dashed 1px gray;
+    		width: 100%;
+    		margin-bottom: 10pt;
+    		text-align: right;
+    		font-size: 9pt;
+        }
+</style-->
+</head>
+<body  class="fucp-page-background">
+<script>islogin("66");</script>
+<div id="fids" style="display: none;"></div>
+<div class="NOPRINT2" style="background-color: #F2F2F2;margin-bottom: 20px;">
+	<div id="pages"  style="margin: 0 auto;width: 485pt;display: block;font-size: 10pt;">
+	</div>
+	<div style="margin: 0 auto;width: 485pt;margin-top: -15pt;clear: both;display: block;">
+		<div style="float:right;"><a id="print">立即打印&gt;</a></div>
+		<div style="float:right;"><a href="/track/shop/track.shtml"  target="_self">关闭&gt;</a>&nbsp;&nbsp;&nbsp;</div>
+		<div style="float:right;">
+			<label>打印比例：</label>
+			<select id="sel" style="width: 35pt;">
+				<option selected="selected" value="0">小</option>
+				<option  value="1">正常</option>
+				<option  value="2">中</option>
+				<option  value="3">大</option>
+			</select>
+			&nbsp;&nbsp;&nbsp;
+		</div>
+		
+		<!--div style="float:right;">
+			<label>一次打印：</label>
+			<input id="" type="text" style="width: 20pt;height: 10pt;" value="1">
+			<label>页</label>
+			&nbsp;&nbsp;&nbsp;
+		</div-->
+		<div style="float:right;">
+				<label>邮寄方式：</label>
+				<select id="type" style="width: 35pt;">
+					<option selected="selected" value="0">挂号</option>
+					<option  value="1">平邮</option>
+				</select>
+				&nbsp;&nbsp;&nbsp;
+			</div>
+			<div style="float:right;padding-right:10px;" class="button_a">
+				<a id="printSingle" href="javascript:;" tabindex="1">单个打印</a>
+			</div>
+		<div>&nbsp;</div>
+		</div>
+</div>
+
+	<!--div id="con" class="wrapper">
+		 <div id="hprint" class="fucp-shadowed fucp-background fucp-shine">
+		  </div>
+	</div-->
+
+<div id="hprint" >
+</div>
+
+<script type="text/javascript">
+var pagesize=getRequest().t;
+var pageno=1;
+
+$('#sel').change(function()
+{
+	var val = $("#sel").val();
+	//if(val=='1')
+	//{
+	//	$("#con").removeClass("wrapper2").addClass("wrapper");
+	//}else if(val=='2')
+	//{
+	//	$("#con").removeClass("wrapper").addClass("wrapper2");
+	//}
+	list(pagesize,$(".this-page").text().trim());
+});
+
+$("#printSingle").click(function()
+{
+		window.location.href="/track/shop/hprint.html?m="+getRequest().m+"&s="+ getRequest().s
+					  		+"&e="+getRequest().e+"&p="+getRequest().p;
+		return false;
+});
+
+var DATA=null;
+$('#type').change(function()
+{
+	if(DATA==null)
+	{
+		list(1,1);
+	}	
+	var callback="list_callback_"+$("#type").val();
+	//alert(JSON.stringify(DATA));
+	eval(callback+"("+JSON.stringify(DATA)+")");
+			//if(val=='1')
+			//{
+			//	$("#con").removeClass("wrapper2").addClass("wrapper");
+			//}else if(val=='2')
+			//{
+			//	$("#con").removeClass("wrapper").addClass("wrapper2");
+			//}
+		//list(pagesize,$(".this-page").text().trim());
+});
+
+	function check_callback(data)
+	{
+		  //alert("正在连接打印机打印，请耐心等待");
+	}
+	$("#print").click(function(){
+		//$(".container").jqprint({debug: true,importCSS: true});
+		// 更改状态
+		$("#hprint").jqprint();
+		  var param={};
+		  param.fids=$("#fids").text();
+		  param.fisprint="1";
+		  var url="/shop/track/print";
+		  fn_ajax(url,param,"post","check_callback");
+	});
+	
+	  var height4=[50,65,90,100];
+	  var height5=[69,83,98,108];
+	
+	 function list_callback_0(data)
+     {
+		 DATA=data;
+			var fcode="",
+			fname="";
+     	
+   		if(data.FNAME==null || data.FNAME=="undefined")
+   		{
+   			data.FNAME="";
+   		}
+   		if(data.FADDR==null || data.FADDR=="undefined")
+   		{
+   			data.FADDR="";
+   		}
+   		if(data.FPOST==null || data.FPOST=="undefined")
+   		{
+   			data.FPOST="";
+   		}	
+   		if(data.FCONTACTTEL==null || data.FCONTACTTEL=="undefined")
+   		{
+   			data.FCONTACTTEL="";
+   		}
+   	
+	      	var html_str="";
+	      	var fids="";
+	      	for(var i=0;i<data.items.totalsize;i++)
+	      	{
+	      		fids+=data.items.item[i].FID+":";
+	      		
+	      		if(data.items.item[i].FNAME!=null && data.items.item[i].FNAME!="undefined")
+				{
+					fname=data.items.item[i].FNAME;
+				}
+	      		if(data.items.item[i].FCODE!=null && data.items.item[i].FCODE!="undefined")
+				{
+					fcode=data.items.item[i].FCODE;
+				}
+	      		if(data.items.item[i].FGUA==null || data.items.item[i].FGUA=="undefined")
+	      		{
+	      			data.items.item[i].FGUA="";
+	      		}
+	      		
+	      		var tel = data.items.item[i].FCONSIGNEETEL;
+	      		if(data.items.item[i].FCONSIGNEETEL==null || data.items.item[i].FCONSIGNEETEL=='undefined')
+	      		{
+	      			tel=data.items.item[i].FCONSIGNEEPHONE;
+	      		}
+	      		
+	      		html_str+='<div class="PageNext">';
+	      		html_str+='<div class="wrapper wrapper'+$("#sel").val()+'"><div id="archive">'
+	            +'<table width="100%">'
+	            +'<tr>'
+	            +'<td width="30%"><img src="logo.png" width=100px height=28px></td>'
+	            +'<td width="20%" align="center" class=archiveText>航空<br>(BY AIR)</td>'
+	            +'<td style="text-align:right;" width="50%"><span style="10pt;">挂&nbsp;&nbsp;<span style="font-weight:bold;font-size:14pt;">'+fcode+'</span>('+fname+')&nbsp;'+data.items.item[i].FGUA+'</span></td>'
+	            +'</tr>'
+	            +'</table></div>'
+	            +'<div id="line"></div>'
+	            +'<div id="archive2">'
+	           +'<div style="margin-bottom: -2pt;">'
+	            +'<img class="img_set" style="margin-left:0pt;" src="/code/'+data.items.item[i].FPOSTID+'.png" alt=""/>'
+	            +'</div>'
+	            +'<div style="margin-left:5pt;font-size:14pt;font-weight: normal;">'+data.items.item[i].FPOSTID+'</div>'
+	            +'</div>'
+	            +'<div id="line"></div>'
+	            +'<div id="archive21">'
+	            +'<table>'
+	            +'</tr>'
+	            +'<td width="100%"  class=archiveText><b>协议客户：</b>'+data.FNAME+'</td>'
+	            +'</tr>'
+	            +'</table></div>'
+	            +'<div id="line2"></div>'
+	            
+	            +'<div id="archive4" style="height:'+height4[$("#sel").val()]+'pt;">'
+	            +'<table style="height:100%">'
+	            +'<tr>'
+	            +'<td rowspan="2" width="48pt;"  class="archiveTitle">FROM:</td>'
+	            +'<td class="archiveText" style="vertical-align: top;">'
+	            +data.FADDR
+	            +'('+data.items.item[i].FORDERID+')'
+	            +data.items.item[i].FPRODUCTMSG
+				+'</td>'
+	            +'</tr>'
+	            
+	            +'<tr>'
+	            +'<td class="archiveText" style="vertical-align: bottom;">'
+	            +'ZIP:'+data.FPOST
+	            +' &nbsp;&nbsp;PHONE:'+data.FCONTACTTEL+'</td>'
+	            +'</tr>'
+	            
+	            +'</table>'
+	            +'</div>'
+	            +'<div id="line"></div>'
+	            +'<div id="archive5" style="height:'+height5[$("#sel").val()]+'pt;">'
+	            +' <table style="height:100%;line-height: 10pt;">'
+	            +'<tr>'
+		      	+'<td rowspan="3" width="48pt;"  class="archiveTitle2">TO:</td>'
+		        +'<td class="archiveText3" style="vertical-align: top;">'+data.items.item[i].FCONSIGNEENAME
+		        +'</td>'
+		        +'</tr>'
+	      	   +'<tr><td class="archiveText3" style="vertical-align: center;">'
+	           +data.items.item[i].FCONSIGNEEADDR
+	           +'</td>'
+	           +'</tr>'
+	      	   +'<tr>'
+	      	   +'<td  class="archiveText3" style="vertical-align: bottom;">'
+	           +'ZIP:'+data.items.item[i].FCONSIGNEEPOST
+	           +'&nbsp;&nbsp;PHONE:'+tel+'</td>'
+	           +'</tr>'
+	           +' </table>'
+	      	   +' </div>'
+	      	   
+	      	   +' <div id="line2"></div>'
+	      	   
+	      	   +'<div id="post">退件单位：'+data.FRETURNADDR+'</div></div>';
+	      	   html_str+='<div class="NOPRINT">第'+(i+1)+'页</div>'
+	      	   html_str+='</div>';
+	     	   
+	      	$("#hprint").html(html_str);
+	      	//$("#con").removeClass("wrapper2").removeClass("wrapper3").addClass("wrapper");
+	      	if(fids!="")
+	      	{
+	      		$("#fids").text(fids.substring(0, fids.length-1));	
+	      	}
+	      	$(".container").css("display","block");
+	      	
+	      	// 加上分页
+	      	showPages_left0("pages", "list", 1, data.pageNo, data.pageTotalSize,data.items.totalsize);
+       }
+     }
+	 
+	 function list_callback_1(data)
+     {DATA=data;
+			var fcode="",
+			fname="";
+     	
+   		if(data.FNAME==null || data.FNAME=="undefined")
+   		{
+   			data.FNAME="";
+   		}
+   		if(data.FADDR==null || data.FADDR=="undefined")
+   		{
+   			data.FADDR="";
+   		}
+   		if(data.FPOST==null || data.FPOST=="undefined")
+   		{
+   			data.FPOST="";
+   		}	
+   		if(data.FCONTACTTEL==null || data.FCONTACTTEL=="undefined")
+   		{
+   			data.FCONTACTTEL="";
+   		}
+   	
+	      	var html_str="";
+	      	var fids="";
+	      	for(var i=0;i<data.items.totalsize;i++)
+	      	{
+	      		fids+=data.items.item[i].FID+":";
+	      		
+	      		if(data.items.item[i].FNAME!=null && data.items.item[i].FNAME!="undefined")
+				{
+					fname=data.items.item[i].FNAME;
+				}
+	      		if(data.items.item[i].FCODE!=null && data.items.item[i].FCODE!="undefined")
+				{
+					fcode=data.items.item[i].FCODE;
+				}
+	      		if(data.items.item[i].FGUA==null || data.items.item[i].FGUA=="undefined")
+	      		{
+	      			data.items.item[i].FGUA="";
+	      		}
+	      		
+	      		var tel = data.items.item[i].FCONSIGNEETEL;
+	      		if(data.items.item[i].FCONSIGNEETEL==null || data.items.item[i].FCONSIGNEETEL=='undefined')
+	      		{
+	      			tel=data.items.item[i].FCONSIGNEEPHONE;
+	      		}
+	      		
+	      		html_str+='<div class="PageNext">';
+	      		html_str+='<div class="wrapper wrapper'+$("#sel").val()+'"><div id="archive">'
+	            +'<table width="100%">'
+	            +'<tr>'
+	            +'<td width="30%"><img src="logo.png" width=100px height=28px></td>'
+	            +'<td width="20%" align="center" class=archiveText>航空<br>(BY AIR)</td>'
+	            +'<td style="text-align:right;" width="50%"><span style="10pt;">平&nbsp;&nbsp;<span style="font-weight:bold;font-size:14pt;">'+fcode+'</span>('+fname+')&nbsp;'+data.items.item[i].FPING+'</span></td>'
+	            +'</tr>'
+	            +'</table></div>'
+	            +'<div id="line"></div>'
+	            +'<div id="archive2">'
+	           +'<div style="margin-bottom: -2pt;">'
+	            +'<img class="img_set" style="margin-left:0pt;" src="/code/orderid_'+data.items.item[i].FORDERID+'.png" alt=""/>'
+	            +'</div>'
+	            +'<div style="margin-left:5pt;font-size:12pt;font-weight: normal;">'
+	            +data.items.item[i].FORDERID+'(订单号)</div>'
+	            +'</div>'
+	            +'<div id="line"></div>'
+	            +'<div id="archive21">'
+	            +'<table>'
+	            +'</tr>'
+	            +'<td width="100%"  class=archiveText><b>协议客户：</b>'+data.FNAME+'</td>'
+	            +'</tr>'
+	            +'</table></div>'
+	            +'<div id="line2"></div>'
+	            +'<div id="archive4" style="height:'+height4[$("#sel").val()]+'pt;">'
+	            +'<table>'
+	            +'<tr>'
+	            +'<td width="55pt;"  class=archiveTitle>FROM:</td>'
+	            +'<td class=archiveText>'
+	            //+'('+data.items.item[i].FORDERID+')'
+	            //+'<br>'
+	            +data.FADDR
+	            //+data.items.item[i].FPRODUCTMSG
+	            +'<br>ZIP:'+data.FPOST
+	            +' &nbsp;&nbsp;PHONE:'+data.FCONTACTTEL+'</td>'
+	            +'</tr>'
+	            +'</table>'
+	            +'</div>'
+	            +'<div id="line"></div>'
+	            +'<div id="archive5" style="height:'+height5[$("#sel").val()]+'pt;">'
+	            +' <table >'
+	      	   +'<tr>'
+	      	   +'<td width="55pt;"  class="archiveTitle2">TO:</td>'
+	           +'<td class="archiveText">'+data.items.item[i].FCONSIGNEENAME
+	           +'<br>'+data.items.item[i].FCONSIGNEEADDR
+	           +'<br>ZIP:'+data.items.item[i].FCONSIGNEEPOST
+	           +'&nbsp;&nbsp;PHONE:'+tel+'</td>'
+	           +'</tr>'
+	           +' </table>'
+	      	   +' </div>'
+	      	   +' <div id="line2"></div>'
+	      	   +'<div id="post">退件单位：'+data.FRETURNADDR+'</div></div>';
+	      	   html_str+='<div class="NOPRINT">第'+(i+1)+'页</div>'
+	      	   html_str+='</div>';
+	     	   
+	      	$("#hprint").html(html_str);
+	      	//$("#con").removeClass("wrapper2").removeClass("wrapper3").addClass("wrapper");
+	      	if(fids!="")
+	      	{
+	      		$("#fids").text(fids.substring(0, fids.length-1));	
+	      	}
+	      	$(".container").css("display","block");
+	      	
+	      	// 加上分页
+	      	showPages_left0("pages", "list", 1, data.pageNo, data.pageTotalSize,data.items.totalsize);
+       }
+     }
+        
+        function list_callback_error(data)
+        {
+        	$("#wait").html("<span>没有查询到任何记录</span>");
+        }
+        
+        function list(pagesize,pageno)
+        {
+	      	  //var sel=$("#sel").val();
+	      	  var fisprint = getRequest().m;
+	      	  var param={};
+	      	  param.pageno=pageno;
+	      	  param.pagesize=pagesize;
+	      	  param.fisprint=fisprint;
+	      	  param.stime=getRequest().s;
+	  	      param.etime=getRequest().e;
+	  	      param.postids=getRequest().p;
+	      	  var url="/shop/track/list";
+	      	  fn_ajax_error(url,param,"post","list_callback_"+$("#type").val(),"list_callback_error");
+        }
+        
+        list(getRequest().t,1);
+</script>
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F808cc08bbc611b2848b4a6d3faabf424' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+</body>
+</html>

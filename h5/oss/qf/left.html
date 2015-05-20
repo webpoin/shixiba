@@ -1,0 +1,154 @@
+<style type="text/css">
+.column_left {
+	float:left;
+	font-size:16px;
+	width: 160px;
+}
+.msgHead{
+	margin:0;
+	padding:0 20px;
+	height:45px;
+	line-height:45px;
+	width:120px;
+	color:#FFFFFF;
+	cursor:pointer;
+	background-color:#009999;
+	border-bottom:1px solid #FFFFFF;
+}
+
+.msgHead span{
+	display:block;}
+.msgHead .txt{
+	float:left;}
+.msgHead .arrow{
+	float:right;
+	width:35px;
+	height:45px;
+	background:url(/wuliu/image/arrow-d.png) no-repeat center center;}		
+.msgHead_set .arrow {background-image:url(/wuliu/image/arrow-u.png);}
+			
+.selected_1{
+	display:block;
+	background-color:#009999;
+	padding:0 20px;
+	height:45px;
+	line-height:45px;
+	width:120px;
+	color:#FFFFFF;
+	border-bottom:1px solid #FFFFFF;}
+a.msgBody{
+	display:block;
+	height:45px;
+	line-height:45px;
+	padding: 0 20px;
+	background-color:
+	#E9EFF6;
+	color:#333333;
+	cursor:pointer;
+	border-bottom:1px solid #ffffff;
+	width:120px;
+}
+a.selected_2{
+		display:block;
+		background-color:#FF9E40;
+		padding:0 20px;
+		height:45px;
+		line-height:45px;
+		width:120px;
+		color:#FFFFFF;
+		border-bottom:1px solid #FFFFFF;
+}
+a.msgBody:hover{
+	background-color:#CCC;
+}
+a.selected_1:hover, a.msgBody:hover, a.selected_2:hover
+{
+	text-decoration:none;
+}
+.list-1{
+	display: none;
+}
+
+</style>
+
+<script type="text/javascript">
+		$(document).ready(function(){
+		//隐藏所有消息主体内容
+		//$('.list-1').hide();
+		
+	/*	$('.msgHead').click(function(){
+				if($(this).next('.list-1').is(":hidden"))
+				{
+					$('.list-1').slideUp(200);
+					$(this).next('.list-1').slideDown(400);//slow、normal、fast
+				}
+				else{
+					$(this).next('.list-1').slideUp(400);
+				}
+				//$('.list-1 v');
+				});*/
+		
+		$('.msgHead').click(function(){
+        	$(this).addClass('msgHead_set');
+		 	$(this).siblings('.list-1').slideUp(200);
+			if($(this).next('.list-1').is(":hidden"))
+			{
+				$(this).next('.list-1').slideDown(200);//slow、normal、fast
+				$(this).addClass('msgHead_set');
+                $(this).siblings('.msgHead').removeClass('msgHead_set');
+			}else
+			{
+				$(this).next('.list-1').slideUp(400);
+				$('.msgHead').removeClass('msgHead_set')};
+			//$('.list-1 v');
+			}
+	);
+		
+			// 设置导航
+		  	var url = window.location.href;
+		  	var aa = url.split("/");
+		  	var html_name = aa[aa.length-1];
+		  	var name=html_name.split(".")[0];
+		  	//$("#"+name).removeClass("ff nav-select").addClass("ff nav-select");
+		  	//if(name==null || name=="" || name=="undefined")
+			  //	{
+			  	//	$("#index").addClass("selected_2");
+			  //	}
+			  //	if(name=="sel")
+			  //	{
+			  //		name="ship";
+			 // 	}
+				//if(name=="assess" || name=="assessadd" || name=="assessinfo")
+			  //	{
+			  //		name="my";
+			  //	}
+			if(name=="adedit" || name=="adinfo")
+		  	{
+		  		name="ad";
+		 	}
+			if(name=="trackedit" || name=="trackinfo" || name == "trackinfomgr")
+		  	{
+		  		name="track";
+		 	}
+			if(name=="tpedit" || name=="tpinfo" || name == "tpinfomgr")
+		  	{
+		  		name="tp";
+		 	}
+			$("#"+name).parent().slideDown(-1);
+		  	$("#"+name).addClass("selected_2");
+		  	$("#"+name).parent().prev().addClass("msgHead_set");
+		  	$("#"+name).removeClass("msgBody");
+		});
+		
+</script>
+
+ 	<div id="msgList" class="column_left mt10">
+	 	 <p class="msgHead">面单打印
+	 	 	<span class="arrow"></span>
+	 	 </p>
+          <div class="list-1">
+         		<a id="trackadd"  class="msgBody" href="/track/shop/qf/trackadd.shtml" target="_self">导入运单</a>
+				<a id="track" class="msgBody" href="/track/shop/qf/track.shtml"  target="_self">运单列表</a>
+          </div>
+          
+	</div>

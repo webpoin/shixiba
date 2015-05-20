@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+	<head>
+		<meta charset="utf-8" />
+		<title>实习吧-会员登录</title>
+		<meta name="keywords" content="实习吧" />
+		<meta name="description" content="实习吧" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/flat.css" />
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body class="bg_none">
+			<div class="login_wrap form_box" id="login_wrap">
+				<!--main==start-->
+				<div class="login_main clearfix">
+					<h2 class="icons icons_me">会员登录</h2>
+					<div class="icons icons_logo">会员登录</div>
+					<div class="login_left">
+						<form id="MemberLogin?routeway=0Form" method="post" action="resume.html">
+							<div class="formbox">
+								<dl  data-placement="right" data-toggle="tooltip"  data-original-title="都说了你的邮箱不对，你怎么不信呢？">
+									<dt class="l_text">邮　箱&nbsp;：</dt>
+									<dd class="ipt_wrap">
+										<input type="text" name="data[Member][email]" class="ipt ipt_email" id="MemberEmail" value="" datatype="e" value="请输入邮箱" placeholder="请输入邮箱">
+									</dd>
+								</dl>
+
+								<dl  data-placement="right" data-toggle="tooltip"  data-original-title="都说了你的密码不对，你怎么不信呢？">
+									<dt class="l_text">密　码&nbsp;：</dt>
+									<dd class="ipt_wrap">
+										<input type="password" name="data[Member][password]" class="ipt ipt_pass" id="MemberPassword" datatype="*6-16" placeholder="请输入密码">
+									</dd>
+								</dl>
+
+							</div>
+							<div class="login_btn_wrap">
+								<div class="login_findpswd">
+									<label class="mar"><input type="checkbox" class="checkbox" name="data[Member][save]">
+									记住我</label>
+									<a href="/members/findpswd" class="txt_red fr">忘记密码？</a>
+									
+								</div>
+								<div class="btn_wrap">
+									<input type="submit" name="Submit" class="btn btn-block btn-lg btn-primary" value="登录" id="login_button">
+								</div>
+
+								<!-- 直接购买 -->
+
+							</div>
+						</form>
+					</div>
+
+					<div class="login_right">
+					
+						<h4>还没有实习吧账号？</h4>
+						<a href="register.html" class="txt_blue">立即注册<i class="icons icons_right"></i></a>
+						<!-- 第三方登录 -->
+						<div class="handy_login">
+							<div class="inhandy_login">
+							<h4>使用以下账号直接登录：</h4>
+								<a href="#" class="icons login_sina" title="用 新浪微博 快捷登录">
+									新浪
+								</a>
+
+								<a href="#" class="icons login_qq" title="用 腾讯QQ 快捷登录">
+									腾讯QQ
+								</a>
+
+								<a href="/wxlogin/" class="icons login_weixin" title="用 微信 快捷登录">
+									微信
+								</a>
+							</div>
+						</div>
+						<!-- 第三方登录结束 -->
+					</div>
+				</div>
+				<!--main==end-->
+			</div>
+		<!--大于50KB类包-->
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="js/superslide.2.1.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/flat/flat-ui.min.js"></script>		
+	</body>
+
+</html>

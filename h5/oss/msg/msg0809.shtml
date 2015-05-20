@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="wltrack.com 邮政小包 邮政国际小包 国际小包 邮政小包面单打印 国际小包面单打印 邮政国际小包面单打印 国际物流 国际邮政 国际快递" name="Description">
+<title>国际小包打印系统-首页</title>
+<link href="/track/shop/css/my.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/track/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="/track/js/wuliu.js"></script>
+<style type="text/css">
+.column_right {
+	float:left;
+	/*width:786px;-->
+	padding-left:40px;*/
+	margin-left: 20px;
+	}
+.form_content{
+	font-size:14px;}	
+.form_content table tr{
+	height:45px;
+	line-height:45px; }
+.w1{
+	width:120px;}
+.w2{
+	width:180px;
+	text-align:right;}
+.w3{
+	width:80px;
+	text-align:right;}
+.input_set{
+	padding:0 8px;
+	width:150px;
+	height:28px;
+	line-height:28px;
+	border:1px solid silver;}
+.input_set:focus{
+	border:1px solid #6CF;}							
+.button_right{
+	margin:15px 0;
+	float:left;
+	width:300px;}
+.button_right a{
+	display:block;
+	float:right;
+	font-size:14px;
+	width:90px;
+	height:37px;
+	line-height:37px;
+	text-align:center;
+	color:#FFFFFF;
+	background-color:#003D79;}
+.button_right a:hover{
+	text-decoration:none;
+	background-color:#FC9;}
+	#reception {
+    clear: left;
+    margin-bottom: 8px;
+    margin-top: 0px;
+    position: relative;
+    vertical-align: middle;
+}
+.msg1
+{
+float: left;
+}
+.msg2
+{
+float:left;
+padding-left: 10px;
+}
+
+</style>
+</head>
+<body>
+<!--#include virtual="/track/shop/head.html"-->
+
+<div class="container w1024 mt5" style="margin-bottom: 205px;">
+	<div>
+	<h1 style="font-size: 20px;">系统现在开始支持打印全世界所有语种：</h1>
+	<a style="float:right;font-size:20px;padding-right: 360px;margin-top: -20px;" href="/track/shop/index.shtml"  target="_self">返回&gt;</a>
+	<p>
+	<img alt="" src="/track/image/msg/msg0809.png">
+	</p>
+	</div>
+
+<div style="height:200px;">
+	&nbsp;
+</div>
+
+</div>
+  <!--#include virtual="/track/shop/foot.html"-->
+</body>
+</html>

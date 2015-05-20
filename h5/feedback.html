@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--meta-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="author" content="admin@17track.net"/>
+<meta name="robots" content="nofollow" />
+<meta name="Description" content="实习吧！"/>
+<meta name="Keywords" content="实习 实习吧 找工作 实习工作"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<title>实习吧-意见反馈</title>
+<link rel="stylesheet" href="jqm/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="css/t.css" />
+<script src="js/jquery.js"></script>
+<script src="jqm/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/wuliu.js"></script>
+<script src="js/comm_page.js"></script>
+<style type="text/css">
+.bg
+  {
+    background-image: url("images/logo_bg.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 23em auto;
+    height: 100%;
+    opacity: 0.15;
+    position: absolute;
+    top: 0;
+    width:100%;
+	}
+#logo-set{
+	height:128px !important;
+	width:auto !important;
+	margin:1em;
+}
+.back_arrow{
+	height:20px !important;
+	width:auto;}
+.top_g_set{
+	top:1em !important;
+	z-index:999 !important;}				
+.submit_set{
+	border:none;
+	background-color:#3CC;
+	color:#ffffff;}	
+.center_1{
+	text-align:center !important;}	
+.center_1 h2{
+	font-size:3em !important;}	
+.mg_set{
+	margin:1em 0 !important;}
+.ta_set{
+	width:100% !important;
+	height:auto;}
+.d_l_t_set textarea{
+	float:left;
+	width:98%;
+	height:160px;
+	border:1px solid #21D0C6;}	
+.d_wo_set{
+    bottom: 1em;
+    position: absolute;
+    right: 2em;
+	font-size:0.75em;
+	color:#21D0C6;
+	}
+.color_s1{
+	color:#999999;}	
+#info{
+	resize:none;}
+#next_set ul,#next_set ul li{
+	list-style-type:none !important;}	
+#next_set a{
+    background-color:#21D0C6!important;
+    border: medium none !important;
+    color: #ffffff !important;
+	margin: 0 1em;
+	text-align:center;
+    text-shadow: none !important;
+}
+#next_set a:focus {
+    box-shadow: 0 0 0 #21D0C6 !important;
+}								
+</style>
+
+</head>
+<body>
+<script>sxbIsLogin();</script>
+<div data-role="page" id="pagehome">
+
+<div data-role="header"  id="header_color">
+       <a  href="javascript:void()" class="set_green top_g_set" data-rel="back" data-role="none" data-add-back-btn="true"><img class="back_arrow" src="images/arrow_green.png"/></a>
+	   <h1><span id="font-set">意见反馈</span></h1>
+       <img  id="logo-set" src="images/m-logo_slogan.png"/>
+        <div class="bg"></div>	
+ </div>
+
+  <div data-role="content" class="content">
+    <ul data-role="listview">
+            <li>
+      <form method="post" action="#" class="d_l_t_set">
+	    <label for="info" class="color_s1">意见反馈：</label>
+	    <textarea name="addinfo" id="info" data-role="none"></textarea>
+      </form>
+      <div class="d_wo_set"><span id="word">0</span>/<span>140</span></div>
+       </li>       
+    <li id="next_set">
+           <a data-role="button" data-corners="false" class="button_a" id="advice" href="#" data-transition="slide">发送</a>
+         </li>
+ </ul>
+ </div>
+ 
+ <div id="popdiv" data-role="popup"></div><!--弹出层,默认不显示-->
+     
+  </div>
+
+<script type="text/javascript">
+ $(function(){
+  $("#info").keyup(function(){
+   var len = $(this).val().length;
+   if(len > 139){
+    $(this).val($(this).val().substring(0,140));
+   }
+   var num =0 + len;
+   if(num < 141){
+   $("#word").text(num);}
+  });
+ });
+ 
+ 
+ function advice_error_cb(data)
+ {
+ 	//$("#popdiv").html(data.msg);
+ 	//$("#popdiv").popup();//id为弹出层的id
+ 	//$("#popdiv").popup("open");
+ 	pop(data.msg);
+   	//window.location=redirect_url;
+ }
+ function advice_cb(data)
+ {
+ 	//$("#popdiv").html("提交成功，我们会尽快处理您的反馈！");
+ 	//$("#popdiv").popup();//id为弹出层的id
+ 	//$("#popdiv").popup("open");
+ 	//$("#info").val("");
+ 	
+   	window.location="feedback_ok.html";
+ }
+
+ $("#advice").click(function(e){
+ 	var url="/sx/advice/add",
+ 			fmsg = $("#info").val();
+ 	input_data={
+ 			fmsg : fmsg
+  };
+  
+ if( fmsg == "")
+ {
+   pop("不可以提交空内容"); 
+   return false;
+ }
+
+ fn_ajax(url,input_data,"post","advice_cb","advice_error_cb");
+ });
+</script>
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?933dcad2a62081671207ea9fa0d6623b";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</body>
+</html>

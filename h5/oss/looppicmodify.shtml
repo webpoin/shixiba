@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>实习吧-轮播图片编辑</title>
+<link href="/sxb/oss/css/my.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/sxb/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/sxb/js/wuliu.js"></script>
+<script type="text/javascript" src="/sxb/js/comm_page.js"></script>
+<style type="text/css">
+.register-page{
+	border-top:1px solid #90BFFF;
+	margin-bottom:80px;}	
+.register-page:after{
+	  clear: both;
+    content: " ";
+    display: block;
+    height: 0;}				
+.register_content{
+    /*border: 1px solid #90BFFF;*/
+	/*text-align:center;*/
+	width:770px;
+	float:left;
+	width:760px;
+	padding-left:20px;
+}
+.register_head{
+	height: 38px;
+	background-color:#90BFFF;
+	color:#FFFFFF;
+    line-height: 38px;
+    border-bottom: solid 1px #EAEAEA;
+    padding-right: 10px;
+    text-align:left;
+	font-size: 18px;
+	font-weight: normal;
+	padding-left: 18px;
+	font-weight: bold;
+  }	
+.register_body{
+  	border-top: 1px solid #90BFFF;
+	padding: 15px 0 20px 0;
+	margin-top: 20px;
+    /*position: relative;*/
+	 }
+.tr_set td{
+	padding:10px 0;}
+.td_1{
+	font-size: 16px;
+	width: 150px;
+	padding-right: 10px;
+	text-align: right;
+	vertical-align:middle;
+	color: #404040;
+	padding-top: 15px;
+    }
+.login_text{
+	 border: 1px solid #A0A0A0;
+	height: 18px;
+	float: left;
+	width: 216px;
+	margin-right: 10px;
+	padding: 7px 10px;
+	line-height: 18px;
+	outline: 0 none;
+	}
+.login_text:focus{
+	border:1px solid #6482B9;}
+.td_3{
+	font-size:12px;
+	color:#A9A9A9;;
+	text-align:left;}	
+.login_commit{
+	float:left;
+	display: inline-block;
+    border: 0;
+    width: 240px;
+    height: 36px;
+    font-size:18px;
+    cursor: pointer;
+    background-color: #317EE7;
+	color:#FFFFFF;
+}
+</style>
+</head>
+<body>
+
+<!--script>islogin("3");</script-->
+<!--#include virtual="/sxb/oss/head.html"-->
+
+<div class="container w960 mt5">
+
+<!--#include virtual="/sxb/oss/left.html"-->	
+	  <div class="register_content mt10">
+		<div style="font-size: 16px;">
+			<span>轮播图片详情：</span>
+			<span id="fid" style="display: none;"></span>
+			<span id="wuliuname"></span>
+			<a style="float:right;" href="/wuliu/oss/looppic.shtml" target="_self">返回到轮播图片列表</a>
+		</div>
+		<div class="register_body">
+			<div class="register_form1">
+			<table>
+				<tbody>
+					<tr class="tr_set">
+						<td class="td_1">
+						<label for="ftitle">图片名称：</label>
+						</td>
+						<td class="td_2">
+						<input id="ftitle" class="login_text" type="text" 
+								tabindex="1" placeholder="图片的名称" />
+						<td class="td_3">
+						</td>
+					</tr>
+				<tr class="tr_set">
+					<td class="td_1"><label for="fseq">显示顺序：</label></td>
+					<td class="td_2">
+					<input id="fseq" class="login_text"  type="text" tabindex="2" /></td>
+				<td class="td_3"><span style="color:red;">*</span>数值越大，显示越靠前</td>
+				</tr>
+				
+				<tr class="tr_set">
+					<td class="td_1"><label for="furl">链接地址：</label></td>
+					<td class="td_2">
+					<input id="furl" class="login_text"  type="text" tabindex="2" /></td>
+				<td class="td_3"></td>
+				</tr>
+			        
+			    <tr class="tr_set">
+			        		<td class="td_1"><label for="phone_num">公司LOGO：</label></td>
+			        		<td class="td_2" >
+			        		<div id="blog-write-2" style="height:30px;padding-top: 10px;">
+								<form id="fileupload"  enctype="multipart/form-data" method="POST"  action="/fileupload">
+								  <!--div class="row fileupload-buttonbar"-->
+									<!--div style="float:left;height: 30px;text-align: center;"-->
+									  <span style="float:left;margin-right:4px;overflow:hidden;position:relative;">
+									    <i class="icon-plus icon-white"></i>
+									    <span style="background-color: #448EF3;padding: 5px;color:white;">修改图片</span>
+									    <input type="file" multiple name="files[]" style="-moz-border-bottom-colors: none;
+									     	-moz-border-image: none;
+										    -moz-border-left-colors: none;
+										    -moz-border-right-colors: none;
+										    -moz-border-top-colors: none;
+										    -moz-transform: translate(-300px, 0pt) scale(4);
+										    border-color: transparent;
+										    border-style: solid;
+										    border-width: 0 0 100px 200px;
+										    cursor: pointer;
+										    direction: ltr;
+										    margin: 0;
+										    opacity: 0;
+										    position: absolute;
+										    right: 0;
+										    top: 0;
+										    float:left;" onchange="onChange();">
+								 	  </span>
+							        <!-- /div-->
+							      <!--/div-->
+							    
+				    			  <div style="float:right;">				    
+								    <a style="display: inline-block; height: 30px;  width: 87px;" href="#" onclick="return delLogo();">
+								      删除
+								    </a>
+								  </div>
+								  <iframe name="check_frame" style="display:none;"></iframe>
+							    </form>
+							    </div>
+					        </td>
+					        <td class="td_3"><span style="color:red;">*</span>建议：LOGO大小为400*240像素</td>
+			        </tr>
+			        		    
+			        		    <tr class="tr_set">
+			        	<td class="td_1"><label for="phone_num"></label></td>
+			        		<td class="td_2">
+					        	<div id="blog-write-3" style="width:100px;">
+					        		<img  id="logo"  src="" style="display:none;width: 238px;height: 119px;"></img>
+						              <ul id="blog-write-3-ul" style="background-color: #FCFCFC;
+						    			padding: 3px 8px;    			
+						    			border-radius: 5px 5px 5px 5px;
+							    		margin: 0;
+						   		 		padding: 0;display:none;">
+								      </ul>
+								 </div>
+							</td>
+			        </tr>
+			        
+					<tr class="tr_set" >
+						<td class="td_1">
+						</td>
+						<td class="td_2">
+						<button id="commit" class="login_commit" 
+						name="更新"  type="submit" tabindex="5" >更   新</button>
+						</td>
+					</tr>
+				 </tbody>
+			 </table>
+		</div>
+	<!--  </form>-->
+	
+</div>
+</div>
+</div>
+
+  <!--#include virtual="/sxb/oss/foot.html"-->
+  
+<script>
+
+$("#toUpdate").click(function(e)
+{
+		var providerid = $("#providerid").text();
+		window.location="/sxb/oss/looppicmodify.shtml?m="+providerid;
+});
+
+function onChange()
+{
+	var pic  = $("input");
+	$("#blog-write-3").css('display','block');
+	$("#blog-write-3-ul").css('display','block');
+	submitform();
+}
+
+function submitform()
+{  
+    var form=document.getElementById('fileupload');
+	form.action="/sx/upload?cb=callback";
+    form.target="check_frame";
+    form.submit();
+} 
+
+function callback(result)
+{
+	var resJson = eval("("+result+")");
+	//var liID=randomUUID();
+	//var pic  = $("input");
+	$("#blog-write-3").css('display','block');
+	$("#blog-write-3-ul").css('display','block');
+	$("#logo").css('display','block');
+	$("#logo").attr("name",resJson.data.items[0].fid);
+	$("#logo").attr("src",resJson.data.items[0].urlroot+"/"+resJson.data.items[0].fname);
+	//$("#blog-write-3-ul").html("<img name='"+resJson.data.items[0].fid+"' style='float:left;' src='/wuliu/image/"
+	//					+resJson.data.items[0].fname+"'></img>");
+}
+
+function delLogo()
+{
+	$("#logo").css("display","none");
+	$("#logo").attr("src","");
+	$("#logo").attr("name","");
+	return false;
+}
+</script>
+<script>
+  	 function show_callback(data)
+	 {
+  		 	if(data.FDES==null||data.FDES=="undefined")
+  		 	{
+  		 		data.FDES="";
+  		 	}	
+  			$("#fid").text(data.FID);
+  			$("#ftitle").val(data.FTITLE);
+  		  	$("#fseq").val(data.FSEQ);
+  		  	$("#furl").val(data.FDES);
+  			$("#account").val(data.FUSER);
+			$("#logo").css("display","block");
+			$("#logo").attr("src",data.PICURL);
+			
+	 }
+  		
+	 function	show()
+	 {
+			var url="/sx/looppic/query",
+				fid=getRequest().m,
+				input_data={
+						fid : fid
+				};
+			if(fid=="") 
+			{
+			  alert("ID不能为空！"); 
+			  return false;
+			}
+			fn_ajax(url,input_data,"post","show_callback");
+	 }
+	 
+	 show();
+	</script>
+	
+	<script>
+	var redirect_url="/sxb/oss/looppic.shtml";
+	function update_callback(data)
+	{
+		 	alert("成功更新");
+	  		window.location=redirect_url;
+	}
+		
+	$("#commit").click(function(e){
+		e.preventDefault();
+		var url="/sx/looppic/update",
+			fid = $("#fid").text(),
+			ftitle = $("#ftitle").val(),
+			fseq=$.trim($("#fseq").val()),
+			logo = $.trim($("#logo").attr("name")),
+			fdes = $("#furl").val(),
+			input_data={
+						fid:fid,
+						ftitle : ftitle,
+						fseq : fseq,
+						fdes:fdes,
+						ffileid:logo
+			 };
+		
+		if(fid=="") 
+		{
+		  alert("ID不能为空！"); 
+		  return false;
+		}
+		fn_ajax(url,input_data,"post","update_callback");
+	});
+	</script>
+
+</body>
+</html>

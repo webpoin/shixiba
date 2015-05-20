@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>邮政国际小包打印系统-新增发货单</title>
+<link href="/track/shop/css/my.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/track/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="/track/js/wuliu.js"></script>
+<script type="text/javascript" src="/track/js/comm_page.js"></script>
+<style type="text/css">
+.register_content{
+    /*border: 1px solid #90BFFF;*/
+	/*text-align:center;*/
+	float:left;
+	width:840px;
+	padding-left:20px;
+}
+.register_head{
+	height: 38px;
+	background-color:#90BFFF;
+	color:#FFFFFF;
+    line-height: 38px;
+    border-bottom: solid 1px #EAEAEA;
+    padding-right: 10px;
+    text-align:left;
+	font-size: 18px;
+	font-weight: normal;
+	padding-left: 18px;
+	font-weight: bold;
+  }	
+.tr_set td{
+	padding:10px 0;}
+.td_1{
+	font-size: 16px;
+	width: 150px;
+	padding-right: 10px;
+	text-align: right;
+	vertical-align:middle;
+	color: #404040;
+	padding-top: 15px;
+    }
+.td_2
+{
+font-size: 16px;
+}
+.login_text{
+	 border: 1px solid #A0A0A0;
+	height: 18px;
+	float: left;
+	width: 216px;
+	margin-right: 10px;
+	padding: 7px 10px;
+	line-height: 18px;
+	outline: 0 none;
+	}
+.login_text:focus{
+	border:1px solid #6482B9;}
+.td_3{
+	font-size:12px;
+	color:#A9A9A9;;
+	text-align:left;}	
+.login_commit{
+	float:left;
+	display: inline-block;
+    border: 0;
+    width: 240px;
+    height: 36px;
+    font-size:18px;
+    cursor: pointer;
+    background-color:#4CB7B7;
+	color:#FFFFFF;
+}
+
+.d_but{
+	display: inline-block; 
+	height: 30px; 
+    width: 87px; 
+	color:#666666;}
+.d_but:hover{
+	color:#F5A120;}	
+</style>
+</head>
+<body>
+
+<script>islogin("66");</script>
+<!--#include virtual="/track/shop/head.html"-->
+
+<div class="container w1024 mt5">
+<!--#include virtual="/track/shop/left.html"-->	
+	 <div class="register_content mt10">
+		<div style="font-size: 16px;">
+			<span>导入运单：</span>
+			<span id="fid" style="display: none;"></span>
+			<span id="wuliuname"></span>
+			<a style="float:right;" href="/track/shop/track.shtml" target="_self">返回到运单列表</a>
+		</div>
+		<div class="register_body">
+			<div class="register_form1">
+			<table>
+				<tbody>
+					<tr class="tr_set">
+			        	<td class="td_1"><label for="phone_num">选择导入类型：</label></td>
+			        	<td class="td_2" >
+							<select id="template" style="height:28px; line-height:28px; font-size:16px;display: inline;width: 180px;" >
+								<option selected="selected"  value="1" >速卖通模板</option>
+								<option  value="99">通用模板</option>
+								<option value="2" >速卖通模板(报关签条)</option>
+					  		</select>
+					        </td>
+					        <td class="td_3"></td>
+			        </tr>
+			        
+			       <tr class="tr_set">
+			        	<td class="td_1"><label for="phone_num">下载模板：</label></td>
+			        	<td class="td_2" >
+							<a id="downfile" href="/track/pt/smt.xls">速卖通模板</a>
+					       </td>
+					     <td id="tip" class="td_3"><span style="color:red;">*</span>导出速卖通订单时，请勾选全部选项</td>
+			        </tr>
+					
+				<tr class="tr_set">
+	        		<td class="td_1"><label for="phone_num">导入Excel文档：</label></td>
+	        		<td class="td_2">
+	        		<div style="height:30px;padding-top: 10px;" id="blog-write-2">
+						<form action="/track/shop/upload" method="POST" enctype="multipart/form-data" id="fileupload">
+						  <!--div class="row fileupload-buttonbar"-->
+							<!--div style="float:left;height: 30px;text-align: center;"-->
+							  <span style="float:left;margin-right:4px;overflow:hidden;position:relative;">
+							    <i class="icon-plus icon-white"></i>
+							    <span style="background-color: #CC9933;padding: 5px;color:white;display:block;font-size: 12px;">导入Excel文档</span>
+							    <input type="file" onchange="onChange();" style="-moz-border-bottom-colors: none;
+							     	-moz-border-image: none;
+								    -moz-border-left-colors: none;
+								    -moz-border-right-colors: none;
+								    -moz-border-top-colors: none;
+								    -moz-transform: translate(-300px, 0pt) scale(4);
+								    border-color: transparent;
+								    border-style: solid;
+								    border-width: 0 0 100px 200px;
+								    cursor: pointer;
+								    direction: ltr;
+								    margin: 0;
+								    opacity: 0;
+								    position: absolute;
+								    right: 0;
+								    top: 0;
+								    float:left;" name="files[]" multiple>
+						 	  </span>
+					        <!-- /div-->
+					      <!--/div-->
+					    
+		    			  <div style="float:right;">				    
+						    <a class="d_but" onclick="return delLogo();" href="" >
+						      删除
+						    </a>
+						  </div>
+						  <iframe style="display:none;" name="check_frame"></iframe>
+					    </form>
+					    </div>
+			        </td>
+			        <td class="td_3"><span style="color:red;">*</span>文档格式暂只支持：Excel 07-2003工作簿(*.xls)</td>
+	        </tr>
+			     
+			        
+			        <tr class="tr_set">
+			        	<td class="td_1"><label for="phone_num"></label></td>
+			        		<td class="td_2">
+					        	<div id="blog-write-3">
+					        		  <img  id="logo"  src="" style="display:none;width: 40px;height: 30px;"></img>
+						              <ul id="blog-write-3-ul" style="background-color: #FCFCFC;
+						    			padding: 3px 8px;    			
+						    			border-radius: 5px 5px 5px 5px;
+							    		margin: 0;
+						   		 		padding: 0;display:none;">
+								      </ul>
+								 </div>
+							</td>
+			        </tr>
+			        
+					<tr class="tr_set" >
+						<td class="td_1">
+						</td>
+						<td class="td_2">
+						<button id="commit" class="login_commit" 
+						name="确定导入"  type="submit" tabindex="5" >确定导入</button>
+						</td>
+					</tr>
+					
+					<tr class="tr_set" >
+						<td class="td_1">
+						</td>
+						<td id="wait" class="td_2" style="text-align: center;display: none;">
+			   				<img src="/track/image/waiting.jpg" width="35" height="35"/>
+			   				<span class="wait_set" >正在努力导入</span>
+						</td>
+					</tr>
+								
+				 </tbody>
+			 </table>
+		</div>
+	<!--  </form>-->
+	
+</div>
+</div>
+</div>
+
+  <!--#include virtual="/track/shop/foot.html"-->
+  
+<script>
+function showTpCycle()
+{
+	var fisauto =  $('input[name="ftype"]:checked').val();
+	if(fisauto=="2")
+	{
+		$("#tr_tp").show();
+		$("#tr_cycle").show();
+	}else
+	{
+		$("#tr_tp").hide();
+		$("#tr_cycle").hide();		
+	}	
+}
+
+//showTpCycle();
+
+$('#template').change(function()
+{
+	var val = $("#template").val();
+	if(val=='1')
+	{
+		$("#downfile").attr("href","/track/pt/smt.xls");
+		$("#downfile").text("速卖通模板");
+		$("#tip").html('<span style="color:red;">*</span>导出速卖通订单时，请勾选全部选项');
+	}else if(val=='2')
+	{
+		$("#downfile").attr("href","/track/pt/smt_bg.xls");
+		$("#downfile").text("速卖通模板(报关签条)");
+		$("#tip").html('<span style="color:red;">*</span>支持报关签条，只比普通的速卖通模板多了五列');
+	}else
+	{
+		$("#downfile").attr("href","/track/pt/public.xls");
+		$("#downfile").text("通用模板");
+		$("#tip").html('<span style="color:red;">*</span>通用的数据导入格式，需要用户下载模板并粘贴数据');
+	}
+});
+
+function onChange()
+{
+	var pic  = $("input");
+	$("#blog-write-3").css('display','block');
+	$("#blog-write-3-ul").css('display','block');
+	submitform();
+}
+
+function delLogo()
+{
+	$("#blog-write-3").css("display","none");
+	$("#blog-write-3-ul").attr("name","");
+	$('#blog-write-3-ul > li').remove();
+	return false;
+}
+
+function submitform()
+{  
+    var form=document.getElementById('fileupload');
+	form.action="/track/shop/upload?cb=callback";
+    form.target="check_frame";
+    form.submit();
+}
+
+function callback(result)
+{
+	var resJson = eval("("+result+")");
+	//var liID=randomUUID();
+	//var pic  = $("input");
+	$("#blog-write-3").css('display','block');
+	$("#blog-write-3-ul").css('display','block');
+	//$("#logo").css('display','block');
+	$("#blog-write-3-ul").attr('name',resJson.data.items[0].name);
+	$("#blog-write-3-ul").html('<li>'+resJson.data.items[0].filename+'</li>');
+	//$("#logo").attr("name",resJson.data.items[0].fid);
+	//$("#logo").attr("src",resJson.data.items[0].urlroot+"/"+resJson.data.items[0].fname);
+	//$("#blog-write-3-ul").html("<img name='"+resJson.data.items[0].fid+"' style='float:left;' src='/wuliu/image/"
+	//					+resJson.data.items[0].fname+"'></img>");
+}
+
+</script>
+<script>
+  		var redirect_url="/track/shop/track.shtml";
+  		function add_callback(data)
+		{
+  			$("#wait").css("display","none");
+  		  	alert("成功"+data.ok+",失败"+data.fail+"。失败详情：\n\r"+data.error);
+		  	window.location=redirect_url;
+		}
+  		function add_callback_error(data)
+		{
+  			$("#wait").css("display","none");
+  		  	alert("导入失败，失败原因："+data.msg);
+		}
+  		
+		$("#commit").click(function(e){
+			$("#wait").css("display","inline");
+			var url="/shop/track/export",
+			template = $("#template").val(),
+			name =  $("#blog-write-3-ul").attr('name'),
+			input_data={
+				template : template,
+				name : name
+			 };
+		
+			if(template==null || template=="")
+			{
+				  alert("必须选定一个模板"); 
+				  return false;
+			}
+				
+			if(name==null || name =="")
+			{
+				  alert("请上传一个文件"); 
+				  return false;
+			}
+				
+			fn_ajax_error(url,input_data,"post","add_callback","add_callback_error");
+		});
+	</script>
+	
+	<script>
+	  function fn_tp_callback(data)
+	  {
+		    var html_str ='';
+		    for(var i=0;i<data.items.totalsize;i++)
+		    {
+		    		html_str+='<option value="'+data.items.item[i].FID+'">'+data.items.item[i].FNAME+'</option>';
+		    }
+		    $("#selstatus").html(html_str);
+	  }
+	  function showTp()
+	  {
+		  var param={};
+		  param.pageno=1;
+		  param.pagesize=1000;
+		  var url="/track/shop/template/list";
+		  fn_ajax(url,param,"get","fn_tp_callback");
+	  }
+	  //showTp();
+	</script>
+
+</body>
+</html>

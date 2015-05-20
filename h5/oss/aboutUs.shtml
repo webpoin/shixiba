@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="wltrack.com 提供邮政小包,邮政国际小包,国际小包,邮政小包面单打印,国际小包面单打印,邮政国际小包面单打印;以及提供国际物流,国际邮政,国际快递,专线物流查询等服务" name="Description">
+<meta content="物流专线查询 国际邮政查询 国内邮政查询 国际快递查询 邮政小包面单打印 邮政国际小包面单打印" name="Keywords">
+<title>邮政国际小包打印系统-关于我们</title>
+<link href="/track/shop/css/my.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/track/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="/track/js/wuliu.js"></script>
+<script type="text/javascript" src="/track/js/comm_page.js"></script>
+
+</head>
+
+<body>
+<!--#include virtual="/track/shop/head.html"-->
+<div class="container w1024">
+<div class="setting_nav">
+<a id="a1" href="/track/shop/index.shtml" target="_self">首页</a>
+&gt;
+ <a id="a2" href="javascript:;">关于我们</a>
+</div>
+  <div class="column">
+    
+      <h2>关于我们</h2>
+      <p>我们的目标是：为外贸卖家提供优质的互联网IT服务，帮助这些卖家提高工作效率，降低运营成本。</p>
+      <p>我们的使命是：快速响应客户需求、技术创新和国际化作为不断前进的动力，为顾客成长不断创造价值</p>
+      <p>公司发展愿景：依托强大的云计算能力，成为全球最大的外贸卖家服务平台和社区平台</p>
+      <p>我们的用户来自全球知名的购物平台（eBay、阿里巴巴、全球速卖通、PAYPAL、亚马逊、敦煌网等），邮政国际小包面单打印系统是我们提供的第一业务，其他服务将陆续发布。</p>
+    	<!--strong>关于深圳汇友云科技有限公司</strong>
+      <p>深圳汇友云科技有限公司成立于2014年初，是以云计算技术为核心的互联网创新型科技公司，公司主要从事移动互联网、互联网产品的研发和运营，公司主要以物流业务基础，逐步推出相关的云计算产品。</p>
+      <p>目前为止，我乐跟踪就是公司推出的第一个以云计算为核心技术的物流平台，第一版本，对于普通用户，我乐跟踪主要提供国际物流查询功能；对于物流商，我乐跟踪主要提供专线物流跟踪录入功能以及邮政国际小包打印系统等功能，帮助中小物流商接入到平台，向客户提供优质的物流查询服务。</p-->
+  </div>
+  <div class="clear"></div>
+</div>
+   
+<!--#include virtual="/track/shop/foot.html"-->
+</body>
+</html>

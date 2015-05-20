@@ -1,0 +1,240 @@
+<style type="text/css">
+.column_left {
+	float:left;
+	font-size:16px;
+	width: 160px;
+}
+.msgHead{
+	margin:0;
+	padding:0 20px;
+	height:45px;
+	line-height:45px;
+	width:120px;
+	color:#FFFFFF;
+	cursor:pointer;
+	background-color:#009999;
+	border-bottom:1px solid #FFFFFF;
+}
+
+.msgHead span{
+	display:block;}
+.msgHead .txt{
+	float:left;}
+.msgHead .arrow{
+	float:right;
+	width:35px;
+	height:45px;
+	background:url(/wuliu/image/arrow-d.png) no-repeat center center;}		
+.msgHead_set .arrow {background-image:url(/wuliu/image/arrow-u.png);}
+			
+.selected_1{
+	display:block;
+	background-color:#009999;
+	padding:0 20px;
+	height:45px;
+	line-height:45px;
+	width:120px;
+	color:#FFFFFF;
+	border-bottom:1px solid #FFFFFF;}
+a.msgBody{
+	display:block;
+	height:45px;
+	line-height:45px;
+	padding: 0 20px;
+	background-color:
+	#E9EFF6;
+	color:#333333;
+	cursor:pointer;
+	border-bottom:1px solid #ffffff;
+	width:120px;
+}
+a.selected_2{
+		display:block;
+		background-color:#FF9E40;
+		padding:0 20px;
+		height:45px;
+		line-height:45px;
+		width:120px;
+		color:#FFFFFF;
+		border-bottom:1px solid #FFFFFF;
+}
+a.msgBody:hover{
+	background-color:#CCC;
+}
+a.selected_1:hover, a.msgBody:hover, a.selected_2:hover
+{
+	text-decoration:none;
+}
+.list-1{
+	display: none;
+}
+
+</style>
+
+<script type="text/javascript">
+		$(document).ready(function(){
+		//隐藏所有消息主体内容
+		//$('.list-1').hide();
+		
+	/*	$('.msgHead').click(function(){
+				if($(this).next('.list-1').is(":hidden"))
+				{
+					$('.list-1').slideUp(200);
+					$(this).next('.list-1').slideDown(400);//slow、normal、fast
+				}
+				else{
+					$(this).next('.list-1').slideUp(400);
+				}
+				//$('.list-1 v');
+				});*/
+		
+		$('.msgHead').click(function(){
+        	$(this).addClass('msgHead_set');
+		 	$(this).siblings('.list-1').slideUp(200);
+			if($(this).next('.list-1').is(":hidden"))
+			{
+				$(this).next('.list-1').slideDown(200);//slow、normal、fast
+				$(this).addClass('msgHead_set');
+                $(this).siblings('.msgHead').removeClass('msgHead_set');
+			}else
+			{
+				$(this).next('.list-1').slideUp(400);
+				$('.msgHead').removeClass('msgHead_set')};
+			//$('.list-1 v');
+			}
+			);
+		
+			// 设置导航
+		  	var url = window.location.href;
+		  	var aa = url.split("/");
+		  	var html_name = aa[aa.length-1];
+		  	var name=html_name.split(".")[0];
+		  	//$("#"+name).removeClass("ff nav-select").addClass("ff nav-select");
+		  	//if(name==null || name=="" || name=="undefined")
+			  //	{
+			  	//	$("#index").addClass("selected_2");
+			  //	}
+			  //	if(name=="sel")
+			  //	{
+			  //		name="ship";
+			 // 	}
+				//if(name=="assess" || name=="assessadd" || name=="assessinfo")
+			  //	{
+			  //		name="my";
+			  //	}
+			if(name=="labeledit" || name=="labelinfo")
+		  	{
+		  		name="label";
+		 	}
+			if(name=="companyedit" || name == "companyinfo")
+		  	{
+		  		name="company";
+		 	}
+			if(name=="jobedit" || name=="jobinfo"||name=="joblabel" )
+		  	{
+		  		name="job";
+		 	}
+			if(name=="applyinfo" )
+		  	{
+		  		name="apply";
+		 	}
+			if(name=="looppicdit" || name=="looppicinfo" || name=="looppicmodify")
+		  	{
+		  		name="looppic";
+		 	}
+			
+			if(name=="articleedit" || name=="articleinfo")
+		  	{
+		  		name="article";
+		 	}
+			
+			$("#"+name).parent().slideDown(-1);
+		  	$("#"+name).addClass("selected_2");
+		  	$("#"+name).parent().prev().addClass("msgHead_set");
+		  	$("#"+name).removeClass("msgBody");
+		});
+		
+</script>
+ 	<div id="msgList" class="column_left mt10">
+		 <a href="/sxb/oss/index.shtml" class="msgHead selected_1">首页</a>
+	 	 <p class="msgHead">企业管理<span class="arrow"></span>
+	 	 </p>
+          <div class="list-1">
+         		<a id="companyadd"  class="msgBody" href="companyadd.shtml" target="_self">新增企业</a>
+         		<a id="company"  class="msgBody" href="company.shtml" target="_self" >企业列表</a>
+          </div>
+          <p class="msgHead">职位管理	<span class="arrow"></span>
+	 	 </p>
+          <div class="list-1">
+         		<a id="jobadd"  class="msgBody" href="jobadd.shtml" target="_self">发布职位</a>
+         		<a id="job"  class="msgBody" href="job.shtml" target="_self" >职位列表</a>
+          </div>
+          
+          <p class="msgHead">标签管理<span class="arrow"></span>
+	 	 </p>
+          <div class="list-1">
+         		<a id="labeladd"  class="msgBody" href="labeladd.shtml" target="_self">新增标签</a>
+         		<a id="label"  class="msgBody" href="label.shtml" target="_self" >标签列表</a>
+          </div>
+          
+          <p class="msgHead">报名管理<span class="arrow"></span>
+	 	 </p>
+          <div class="list-1">
+         		<a id="apply"  class="msgBody" href="apply.shtml" target="_self">报名列表</a>
+          </div>
+          <!-- p class="msgHead">模板管理
+	 	 	<span class="arrow"></span>
+	 	 </p>
+         <div class="list-1">
+				<a id="tpadd"  class="msgBody" href="/track/shop/tpadd.shtml" target="_self">新增模板</a>
+				<a id="tp" class="msgBody" href="/track/shop/tp.shtml" target="_self">模板列表</a>
+          </div-->
+          <p class="msgHead">
+          <span class="txt">轮播图片</span>
+          <span class="arrow"></span></p>
+          <div class="list-1">
+          	<a id="looppicadd" class="msgBody" href="looppicadd.shtml"  target="_self">新增图片</a>
+			<a id="looppic" class="msgBody" href="looppic.shtml"  target="_self">图片列表</a>
+          </div>
+          
+              <p class="msgHead">用户管理<span class="arrow"></span>
+	 	 </p>
+         <div class="list-1">
+         		<a id="ossuser"  class="msgBody" href="ossuser.shtml" target="_self">用户列表</a>
+         		<a id="advice"  class="msgBody" href="advice.shtml" target="_self">用户反馈</a>
+          </div>
+          
+          <p class="msgHead">系统设置<span class="arrow"></span>
+	 	 </p>
+         <div class="list-1">
+         		<a id="pwd"  class="msgBody" href="pwd.shtml" target="_self">修改密码</a>
+         		<!--a id="shopedit"  class="msgBody" href="#" target="_self">账号修改</a-->
+          </div>
+            <p class="msgHead">
+          <span class="txt">邀请管理</span>
+          <span class="arrow"></span></p>
+          <div class="list-1">
+          	<a id="inviteadd" class="msgBody" href="inviteadd.shtml"  target="_self">新增邀请码</a>
+			<a id="invite" class="msgBody" href="invite.shtml"  target="_self">邀请码列表</a>
+          </div>
+           <p class="msgHead">
+          <span class="txt">评论管理</span>
+          <span class="arrow"></span></p>
+          <div class="list-1">
+          	<a id="assessinfo" class="msgBody" href="assessinfo.shtml"  target="_self">评论详情</a>
+			<a id="assess" class="msgBody" href="assess.shtml"  target="_self">评论列表</a>
+          </div>
+           <p class="msgHead">
+          <span class="txt">邮件回复</span>
+          <span class="arrow"></span></p>
+          <div class="list-1">
+			<a id="param" class="msgBody" href="param.shtml"  target="_self">回复列表</a>
+          </div>
+           <p class="msgHead">
+          <span class="txt">文章管理</span>
+          <span class="arrow"></span></p>
+          <div class="list-1">
+          	<a id="articleadd" class="msgBody" href="articleadd.shtml"  target="_self">新增文章</a>
+			<a id="article" class="msgBody" href="article.shtml"  target="_self">文章列表</a>
+          </div>
+	</div>

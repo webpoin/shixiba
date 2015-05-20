@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>专线物流后台管理平台-模板管理</title>
+<link href="/track/my/css/my.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/wuliu/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="/wuliu/js/wuliu.js"></script>
+<script type="text/javascript" src="/wuliu/js/comm_page.js"></script>
+<style type="text/css">
+.nav-box a{
+	display:block;
+	text-decoration:none;
+	float:left;
+	border-left: 2px solid #448EF3;
+    border-right: 2px solid #448EF3;
+	color:white;
+	font-size:16px;
+	height:36px;
+	padding:0 35px;
+	}
+a.nav-select{
+	background-color:#FF9E40;
+	border-left:2px solid #FFFFFF;
+	border-right:2px solid #FFFFFF;}
+	.nav a:hover, .nav a:link, .nav a:visited, .nav a:active{
+		text-decoration:none;}
+		.ff{
+			float:left;}
+.nav-box a:hover {
+    background-color: #6CA8FA;
+    border-left: 2px solid #6CA8FA;
+    border-right: 2px solid #6CA8FA;
+    color: #FFFFFF;
+}
+.nav-box a.nav-select {
+    background-color: #FF9E40;
+    border-left: 2px solid #FFFFFF;
+    border-right: 2px solid #FFFFFF;
+}
+a.fr{
+	float:right;}
+
+.column_1 {
+	float:left;
+	width:134px;
+	font-size:16px;
+    }
+.column_1 a{
+	font-size:16px;
+	display:block;
+	height:37px;
+	line-height:37px;
+	background-color:#F5F5F5;
+	color:#333333;
+    border-bottom: 1px solid #FFFFFF;
+	padding-left:16px;
+	}
+.column_1 a.a_selected{
+	background-color:#448EF3;
+	border-bottom: 1px solid #FFFFFF;
+	color:#FFFFFF;}	
+.column_1 a:hover{
+	text-decoration:none;
+	color:#FFFFFF;
+	background-color:#448EF3;
+	border-bottom:1px solid #FFFFFF;}
+.column_2 {
+	float:right;
+	width:770px;
+	padding-left:20px;
+}
+.head_search{
+	float:right;
+	width:728px;
+	padding:20px 20px;
+	text-align:center;
+	border:1px dashed #C4E1FF;
+	/*	border:1px solid #448EF3;*/
+	text-align: left;
+	}
+.input_1{
+	width:250px;
+	border:1px solid #E9EFF6;
+	cursor:text;
+	height:22px;
+	line-height:22px;
+	font-size:14px;
+	padding:3px 5px;
+	margin-right: 15px;
+	}
+.submit_1{
+	width:150px;
+	border:0;
+	cursor:pointer;
+	height:30px;
+	line-height:30px;
+	font-size:14px;
+	color:#ffffff;
+	background-color:#FF9E40;
+	}		
+.top_title {
+	float:left;
+	width:100%;
+	font-size:16px;
+	}
+.table_title{
+	background-color: #F4F9FF;
+    border-top: 1px solid #B9D5FD;
+	font-size:14px;
+    float: left;
+    width: 100%;}
+.table_title span{
+	float:left;
+	  color: #999999;
+    display:block;
+    line-height: 37px;
+    text-align: left;
+    vertical-align: middle;
+}
+.table_body{
+	float:left;}
+.table_body table{
+	width:100%;}
+.tr_pad{
+	border-bottom:1px dashed #B9D5FD;
+	height:37px;
+	line-height:37px;}		
+.w1{
+	width:180px;
+	padding-left:10px;
+   }
+.w2{
+	width:150px;
+	padding-right:5px;
+	}
+.w3{
+	width:280px;
+	padding-right:5px;
+	}
+.w4{
+	width:60px;
+	padding-left:10px;}
+.w5{
+	width:80px;
+	padding-left:5px;}
+.w6{
+	width:70px;
+	padding-left:5px;}
+.w7{
+	width:120px;
+	padding-left:5px;}
+.pages{
+	float:right;
+	width:100%;
+	}
+
+.sming {
+	position:relative;
+	border-top:1px solid silver;
+	height:90px;
+	text-align:center;
+	overflow:hidden;
+	z-index:4;
+}
+.sming a:hover{
+	color:red;}
+.sm1{
+	position: absolute;
+	left:80px;
+	width:160px;}
+.sm2{
+	position:relative;
+	float:right;
+	width:860px;
+		}
+.sm2 a{
+	display:inline;
+	margin-right:14px;}
+.sm2_b span{
+	display:inline;
+	margin-right:14px;}
+</style>
+</head>
+<body>
+<script>islogin("55");</script>
+<!--#include virtual="/track/my/head.html"-->
+
+<div class="container w960 mt5">
+
+<!--#include virtual="/track/my/left.html"-->	
+
+	 <div class="column_2 mt10">
+		 <div class="head_search "  >
+			 <form action="#" method="post">
+				 <input class="input_1" type="text" name="搜索" value=""  />
+				 <input class="submit_1" type="submit" name="search" value="搜索" />
+			 </form>
+		 </div>
+		 <div class="top_title mt10">
+			 <span>模板列表：</span>
+			 <span>&nbsp;&nbsp;&nbsp;</span>
+			 <a style="float:right;" href="/track/my/tpadd.shtml" target="_blank">新增模板</a>
+		 </div>
+		 <div class="table_title mt10">
+			 	<span class="w1">模板名称</span>
+			  	<span class="w2">创建时间</span>
+			  	<span class="w3">模板描述</span>
+			   	<!--span class="w4">最后更新时间</span>
+			   	<span class="w5">更新方式</span>
+			   	<span class="w6">运输方式</span-->
+			   	<span class="w7">操作</span>
+		   </div>
+		   <div class="table_body">
+		   <table id="list" >
+			   <tbody>
+			   <tr class="tr_pad">
+			     <td class="w1"></td>
+			     <td class="w2"></td>
+			     <td class="w3">
+				     <!--select>
+				     		<option onclick="javascript:alert('dddd');">aaaa</option>
+				     		<option selected="selected">bbbb</option>
+				     </select-->
+			     </td>
+			     <!--td class="w4"></td>
+			     <td class="w5"></td>
+			     <td class="w6"></td-->
+			     <td class="w7">
+			     <a href="#" target="_blank" class="ck">查看</a>
+			     <a href="#" target="_blank" class="ck">编辑</a>
+			     <a href="#" target="_blank" class="ck">签收</a>
+			     </td>
+			   </tr>
+			</tbody>
+		 </table>
+		 </div>
+		<div id="pages" class="pages mt10" align="right">
+		</div>
+	 </div>
+ </div>
+ 
+  <!--#include virtual="/track/my/foot.html"-->
+  
+  <script>
+  function list_callback(data)
+  {
+	//alert(data.items.totalsize);
+	var html_str="";
+	for(var i=0;i<data.items.totalsize;i++)
+	{
+		var fisauto = data.items.item[i].FISAUTO;
+		if(fisauto=="2")
+		{
+			fisauto="自动更新";
+		}else
+		{
+			fisauto="手动更新";
+		}
+		var ftype = data.items.item[i].FTRANSPORTTYPE;
+		if(ftype=="1")
+		{
+			ftype="陆运";
+		}else
+		{
+			ftype="海运";
+		}
+		
+		var fstatus = data.items.item[i].FSTATUS;
+		if(fstatus=="1")
+		{
+			fstatus="已签收";
+		}else
+		{
+			fstatus="未签收";
+		}
+		
+		html_str+='<tr id="'+data.items.item[i].FID+'" class="tr_pad">'
+		     +'<td class="w1">'
+		     +'<a href="/track/my/tpinfo.shtml?m='+data.items.item[i].FID
+		     +'" target="_self" class="ck">'
+		     +data.items.item[i].FNAME+'</a></td>'
+		     +'<td class="w2">'+data.items.item[i].FTIME+'</td>'
+		     +'<td class="w3">'+data.items.item[i].FCONTEXT+'</td>'
+		     +'<td class="w7">'
+		     +'<a href="/track/my/tpinfomgr.shtml?m='+data.items.item[i].FID
+		     +'" target="_self" class="ck">跟踪信息</a>'
+		     /*+'&nbsp;&nbsp;<a href="/track/my/trackedit.shtml?m='+data.items.item[i].FID
+		     +'" target="_self" class="ck">编辑</a>'*/
+		   	 +'&nbsp;&nbsp;<a href="javascript:delLooppic(\''+data.items.item[i].FID
+		     +'\');" target="_self" class="ck">删除</a>'
+		     +'</td>'
+		   +'</tr>';
+	}
+	$("#list>tbody").html(html_str);
+	
+	// 加上分页
+	showPages("pages", "list", data.pageSize, data.pageNo, data.pageTotalSize,data.items.totalsize);
+  }
+  
+  function list(pagesize,pageno)
+  {
+	  var providerid=$("#selprovider").val();
+	  var status = $("#selstatus").val();
+	  var param={};
+	  param.pageno=pageno;
+	  param.pagesize=pagesize;
+	  param.providerid=providerid;
+	  param.status=status;
+	  var url="/track/my/template/list";
+	  fn_ajax(url,param,"get","list_callback");
+  }
+  
+  list(20,1);
+  </script>
+  <script>
+  function del_callback(data)
+  {
+	  alert("成功删除");
+	  $("#"+data.FID).remove();
+  }
+  
+  function delLooppic(fid)
+  {
+	  if(fid==null || fid == "")
+	  {
+		  alert("ID不能为空");
+		  return false;
+	  } 
+	  
+	  var param={};
+	  param.fid=fid;
+	  var url="/track/my/template/del";
+	  fn_ajax(url,param,"post","del_callback");
+  }
+  </script>
+</body>
+</html>

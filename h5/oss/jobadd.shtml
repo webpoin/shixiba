@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>实习吧-新增职位</title>
+<link href="/sxb/oss/css/my.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/sxb/js/jquery-1.9.1.min.js"></script>
+<script src="/sxb/js/jquery.ui.core.js"></script>
+<script src="/sxb/js/jquery.ui.datepicker.js"></script>
+<script src="/sxb/js/jquery.ui.datepicker-zh-CN.js"></script>
+<script type="text/javascript" src="/sxb/js/wuliu.js"></script>
+<script type="text/javascript" src="/sxb/js/comm_page.js"></script>
+<link rel="stylesheet" type="text/css" href="/sxb/oss/css/jquery.ui.all.css" />
+<link rel="stylesheet" type="text/css" href="/sxb/oss/css/jquery-ui-1.10.4.custom.css" />
+<link rel="stylesheet" type="text/css" href="/sxb/oss/css/jquery.ui.datepicker.css" />
+<script type="text/javascript" src="/sxb/js/ccdate.js"></script>
+<style type="text/css">
+.register_content{
+	width:770px;
+	float:left;
+	width:760px;
+	padding-left:20px;
+	}
+.register_head{
+	height: 38px;
+	background-color:#90BFFF;
+	color:#FFFFFF;
+    line-height: 38px;
+    border-bottom: solid 1px #EAEAEA;
+    padding-right: 10px;
+    text-align:left;
+	font-size: 18px;
+	font-weight: normal;
+	padding-left: 18px;
+	font-weight: bold;
+  }	
+.tr_set td{
+	padding:5px 0;}
+.td_1{
+	font-size: 16px;
+	width: 150px;
+	padding-right: 10px;
+	text-align: right;
+	vertical-align:middle;
+	color: #404040;
+	padding-top: 15px;
+    }
+.td_2
+{
+font-size: 16px;
+}
+.login_text{
+	 border: 1px solid #A0A0A0;
+	height: 18px;
+	float: left;
+	width: 300px;
+	margin-right: 10px;
+	padding: 7px 10px;
+	line-height: 18px;
+	outline: 0 none;
+	}
+.login_text:focus{
+	border:1px solid #6482B9;}
+.td_3{
+	font-size:12px;
+	color:#A9A9A9;;
+	text-align:left;}	
+.login_commit{
+	float:left;
+	display: inline-block;
+    border: 0;
+    width: 320px;
+    height: 36px;
+    font-size:18px;
+    cursor: pointer;
+    background-color:#4CB7B7;
+	color:#FFFFFF;
+}
+.msg
+{
+	width: 300px;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 200px;
+}
+</style>
+</head>
+<body>
+
+<script></script>
+<!--#include virtual="/sxb/oss/head.html"-->
+
+<div class="container w1024 mt5">
+
+<!--#include virtual="/sxb/oss/left.html"-->
+	 <div class="register_content mt10">
+		<div style="font-size: 16px;">
+			<span>新增职位：</span>
+			<span id="fid" style="display: none;"></span>
+			<span id="wuliuname"></span>
+			<a style="float:right;" href="/sxb/oss/job.shtml" target="_self">返回到职位列表</a>
+		</div>
+		<div class="register_body">
+			<div class="register_form1">
+			<table>
+				<tbody>
+				<!--
+					<tr class="tr_set">
+								<td class="td_1"><label>标签类型：</label></td>
+								<td class="td_2" >
+									<select id="ftype" style="height:28px; line-height:28px; font-size:16px;display: inline;width: 180px;" tabindex="2">
+										<option selected="selected"  value="1" >个人标签</option>
+										<option  value="2">企业标签</option>
+							  		</select>
+					        	</td>
+							</tr>
+						<tr class="tr_set">
+								<td class="td_1"><label>实习企业简介：</label></td>
+								<td class="td_2">	
+								<textarea id="fcontext"  class="msg" tabindex="6" ></textarea>
+								</td>
+								<td class="td_3">实习企业简介</td>
+						</tr>							
+					-->
+							<tr class="tr_set">
+								<td class="td_1"><label>职位发布企业：</label></td>
+								<td class="td_2">	
+									<select id="fcompanyid" style="height:36px; line-height:32px; font-size:16px;display: inline;width: 322px;" tabindex="1">
+										<!--option selected="selected"  value="1" >IBM</option>
+										<option  value="2">腾讯科技</option-->
+							  		</select>
+								<td class="td_3"><span style="color:red;">*</span>职位发布企业</td>
+
+							</tr>
+							<tr class="tr_set">
+								<td class="td_1"><label>职位名称：</label></td>
+								<td class="td_2">	<input id="fname" class="login_text" type="text"  tabindex="2" placeholder="" /></td>
+								<td class="td_3"><span style="color:red;">*</span>职位名称</td>
+							</tr>
+							<tr class="tr_set">
+								<td class="td_1"><label>职位热度：</label></td>
+								<td class="td_2">	<input id="fhot" class="login_text" type="text"  tabindex="3" placeholder="" /></td>
+								<td class="td_3"><span style="color:red;">*</span>取值0~10000，默认是0，值越大热度越高，排名越靠前，100以上展现时才有推荐的标志</td>
+							</tr>
+							<!--tr class="tr_set">
+								<td class="td_1"><label>实习职位发布的时间：</label></td>
+								<td class="td_2">	<input id="ftime" class="login_text" type="text"  tabindex="3" placeholder="" /></td>
+								<td class="td_3">实习职位发布的时间</td>
+							</tr-->
+							<tr class="tr_set">
+								<td class="td_1"><label>实习职位开始时间：</label></td>
+								<td class="td_2">	<input id="fstarttime" class="login_text"   tabindex="4" placeholder="" /></td>
+								<td class="td_3"><span style="color:red;">*</span>实习职位开始时间</td>
+							</tr>
+							<tr class="tr_set">
+								<td class="td_1"><label>实习职位结束时间：</label></td>
+								<td class="td_2">	<input id="fendtime" class="login_text"  tabindex="5" placeholder="" /></td>
+								<td class="td_3"><span style="color:red;">*</span>实习职位结束时间</td>
+							</tr>
+							<tr class="tr_set">
+								<td class="td_1"><label>招募名额：</label></td>
+								<td class="td_2">	<input id="fnumber" class="login_text" type="text"  tabindex="6" placeholder="" /></td>
+								<td class="td_3"><span style="color:red;">*</span>招募名额</td>
+							</tr>
+							<tr class="tr_set">
+								<td class="td_1"><label>职位薪资：</label></td>
+								<td class="td_2">	<input id="fsalary" class="login_text" type="text"  tabindex="7" placeholder="" /></td>
+								<td class="td_3">职位薪资</td>
+							</tr>
+							<tr class="tr_set">
+								<td class="td_1"><label>职位简介：</label></td>
+								<td class="td_2">	
+								<textarea id="fdes"  class="msg" tabindex="8"  style="height:100px;"></textarea>
+								</td>
+								<td class="td_3"><span style="color:red;">*</span>职位简单介绍 ，最多32个中文字符</td>
+							</tr>
+							<tr class="tr_set">
+								<td class="td_1"><label>职位详细介绍：</label></td>
+								<td class="td_2">	
+								<textarea id="fmsg"  class="msg" tabindex="9" ></textarea>
+								</td>
+								<td class="td_3"><span style="color:red;">*</span>职位详细介绍，最多512个中文字符</td>
+							</tr>							
+							<tr class="tr_set">
+								<td class="td_1"><label>职位特殊要求：</label></td>
+								<td class="td_2">	<input id="fnotice" class="login_text" type="text"  tabindex="11" placeholder="" /></td>
+								<td class="td_3">职位需要特别注意的地方</td>
+							</tr>
+							<!--tr class="tr_set">
+								<td class="td_1"><label>备注：</label></td>
+								<td class="td_2">	<input id="fdes" class="login_text" type="text"  tabindex="11" placeholder="" /></td>
+								<td class="td_3">备注</td>
+							</tr-->
+							<tr class="tr_set">
+								<td class="td_1"><label>职位类型：</label></td>
+								<td class="td_2">	
+								<select id="ftype" style="height:36px; line-height:32px; font-size:16px;display: inline;width: 322px;" tabindex="13">
+										<!--option selected="selected"  value="0" >请选择一个标签</option-->
+										<option  value="1" >互联网</option>
+										<option  value="2" >行业大咖</option>
+										<option  value="3" >钱力股</option>
+										<option  value="100" >第三方职位</option>
+							  	</select>
+								<td class="td_3">职位类型</td>
+							</tr>
+							<tr class="tr_set">
+								<td class="td_1"><label>职位地址：</label></td>
+								<td class="td_2">	<input id="faddr" class="login_text" type="text"  tabindex="14" placeholder="" /></td>
+								<td class="td_3">职位地址</td>
+							</tr>
+							
+							
+							
+							<tr class="tr_set">
+			        		<td class="td_1"><label>职位缩略图：</label></td>
+			        		<td class="td_2" >
+			        			<div id="blog-write-2Small" style="height:30px;padding-top: 10px;">
+								<form id="fileuploadSmall"  enctype="multipart/form-data" method="POST"  action="/fileupload">
+								  <!--div class="row fileupload-buttonbar"-->
+									<!--div style="float:left;height: 30px;text-align: center;"-->
+									  <span style="float:left;margin-right:4px;overflow:hidden;position:relative;">
+									    <i class="icon-plus icon-white"></i>
+									    <span style="background-color: #448EF3;padding: 5px;color:white;">上传缩略图</span>
+									    <input id="picSmall" type="file" multiple name="files[]" style="-moz-border-bottom-colors: none;
+									     	-moz-border-image: none;
+										    -moz-border-left-colors: none;
+										    -moz-border-right-colors: none;
+										    -moz-border-top-colors: none;
+										    -moz-transform: translate(-300px, 0pt) scale(4);
+										    border-color: transparent;
+										    border-style: solid;
+										    border-width: 0 0 100px 200px;
+										    cursor: pointer;
+										    direction: ltr;
+										    margin: 0;
+										    opacity: 0;
+										    position: absolute;
+										    right: 0;
+										    top: 0;
+										    float:left;" onchange="onChangeSmall();">
+								 	  </span>
+							        <!-- /div-->
+							      <!--/div-->
+							    
+				    			  <div style="float:right;">				    
+								    <a style="display: inline-block; height: 30px;  width: 87px;" href="#" onclick="return delLogoSmall();">
+								      删除
+								    </a>
+								  </div>
+								  <iframe name="check_frameSmall" style="display:none;"></iframe>
+							    </form>
+							    </div>
+					        </td>
+					        <td class="td_3"><span style="color:red;">*</span>建议：图片大小为100*100像素</td>
+			        </tr>
+			        		    
+			        <tr class="tr_set">
+			        	<td class="td_1"><label></label></td>
+			        		<td class="td_2">
+					        	<div id="blog-write-3Small" style="width:100px;">
+					        		<img  id="logoSmall"  src="" style="display:none;width: 238px;height: 119px;"></img>
+						              <ul id="blog-write-3-ulSmall" style="background-color: #FCFCFC;
+						    			padding: 3px 8px;    			
+						    			border-radius: 5px 5px 5px 5px;
+							    		margin: 0;
+						   		 		padding: 0;display:none;">
+								      </ul>
+								 </div>
+							</td>
+			        </tr>
+							
+							
+							
+							<tr class="tr_set">
+			        		<td class="td_1"><label>宣传海报：</label></td>
+			        		<td class="td_2" >
+			        			<div id="blog-write-2" style="height:30px;padding-top: 10px;">
+								<form id="fileupload"  enctype="multipart/form-data" method="POST"  action="/fileupload">
+								  <!--div class="row fileupload-buttonbar"-->
+									<!--div style="float:left;height: 30px;text-align: center;"-->
+									  <span style="float:left;margin-right:4px;overflow:hidden;position:relative;">
+									    <i class="icon-plus icon-white"></i>
+									    <span style="background-color: #448EF3;padding: 5px;color:white;">上传图片</span>
+									    <input id="pic" type="file" multiple name="files[]" style="-moz-border-bottom-colors: none;
+									     	-moz-border-image: none;
+										    -moz-border-left-colors: none;
+										    -moz-border-right-colors: none;
+										    -moz-border-top-colors: none;
+										    -moz-transform: translate(-300px, 0pt) scale(4);
+										    border-color: transparent;
+										    border-style: solid;
+										    border-width: 0 0 100px 200px;
+										    cursor: pointer;
+										    direction: ltr;
+										    margin: 0;
+										    opacity: 0;
+										    position: absolute;
+										    right: 0;
+										    top: 0;
+										    float:left;" onchange="onChange();">
+								 	  </span>
+							        <!-- /div-->
+							      <!--/div-->
+							    
+				    			  <div style="float:right;">				    
+								    <a style="display: inline-block; height: 30px;  width: 87px;" href="#" onclick="return delLogo();">
+								      删除
+								    </a>
+								  </div>
+								  <iframe name="check_frame" style="display:none;"></iframe>
+							    </form>
+							    </div>
+					        </td>
+					        <td class="td_3"><span style="color:red;">*</span>建议：图片大小为400*220像素</td>
+			        </tr>
+			        		    
+			        <tr class="tr_set">
+			        	<td class="td_1"><label></label></td>
+			        		<td class="td_2">
+					        	<div id="blog-write-3" style="width:100px;">
+					        		<img  id="logo"  src="" style="display:none;width: 238px;height: 119px;"></img>
+						              <ul id="blog-write-3-ul" style="background-color: #FCFCFC;
+						    			padding: 3px 8px;    			
+						    			border-radius: 5px 5px 5px 5px;
+							    		margin: 0;
+						   		 		padding: 0;display:none;">
+								      </ul>
+								 </div>
+							</td>
+			        </tr>
+			        
+			        <tr class="tr_set">
+								<td class="td_1"><label>Description：</label></td>
+								<td class="td_2">	
+								<textarea id="fdescription"  class="msg" tabindex="16" ></textarea>
+								</td>
+								<td class="td_3">Description</td>
+					 </tr>
+					 
+					 <tr class="tr_set">
+								<td class="td_1"><label>Keywords：</label></td>
+								<td class="td_2">	
+								<textarea id="fkeywords"  class="msg" tabindex="17" ></textarea>
+								</td>
+								<td class="td_3">Keywords</td>
+					 </tr>			
+					
+					<!--<span style="color:red;">*</span>-->
+	        
+					<tr class="tr_set" >
+						<td class="td_1">
+						</td>
+						<td class="td_2">
+						<button id="commit" class="login_commit" 
+						name="新增"  type="submit" tabindex="100" >新   增</button>
+						</td>
+					</tr>
+				 </tbody>
+			 </table>
+		</div>
+	<!--  </form>-->
+	
+</div>
+</div>
+</div>
+
+ <!--#include virtual="/sxb/oss/foot.html"-->
+  
+<script>
+	 $("#fstarttime").datepicker(//绑定开始日期
+		{
+			  changeMonth:true,//显示下拉列表月份
+		      changeYear:true,//显示下拉列表年份
+			  showWeek:true,//显示日期对应的星期
+			  firstDay:"1",
+			  onSelect: function(dateText, inst){
+				//设置结束日期的最小日期
+			 	$('#fstarttime').datepicker('option','minDate',new Date(dateText.replace('-',',')))	
+			  },
+			  defaultDate:new Date()
+	});
+	 $("#fendtime").datepicker(//绑定开始日期
+				{
+					  changeMonth:true,//显示下拉列表月份
+				      changeYear:true,//显示下拉列表年份
+					  showWeek:true,//显示日期对应的星期
+					  firstDay:"1",
+					  onSelect: function(dateText, inst){
+						//设置结束日期的最小日期
+					 	$('#fendtime').datepicker('option','minDate',new Date(dateText.replace('-',',')))	
+					  },
+					  defaultDate:new Date()
+			});
+	 
+	 $("#fstarttime").val(getNowFormatDate());
+	 $("#fendtime").val(getNextMonth(""));
+
+	function onChange()
+	{
+		var pic  = $("#pic");
+		$("#blog-write-3").css('display','block');
+		$("#blog-write-3-ul").css('display','block');
+		submitform();
+	}
+
+	function submitform()
+	{  
+	    var form=document.getElementById('fileupload');
+		form.action="/sx/upload?cb=callback";
+	    form.target="check_frame";
+	    form.submit();
+	} 
+
+	function callback(result)
+	{
+		var resJson = eval("("+result+")");
+		//var liID=randomUUID();
+		//var pic  = $("input");
+		$("#blog-write-3").css('display','block');
+		$("#blog-write-3-ul").css('display','block');
+		$("#logo").css('display','block');
+		$("#logo").attr("name",resJson.data.items[0].fid);
+		$("#logo").attr("src",resJson.data.items[0].urlroot+"/"+resJson.data.items[0].fname);
+		//$("#blog-write-3-ul").html("<img name='"+resJson.data.items[0].fid+"' style='float:left;' src='/wuliu/image/"
+		//					+resJson.data.items[0].fname+"'></img>");
+		}
+
+		function delLogo()
+		{
+			$("#logo").css("display","none");
+			$("#logo").attr("src","");
+			$("#logo").attr("name","");
+			return false;
+		}
+		
+		
+		function onChangeSmall()
+		{
+			var pic  = $("#picSmall");
+			$("#blog-write-3Small").css('display','block');
+			$("#blog-write-3-ulSmall").css('display','block');
+			submitformSmall();
+		}
+
+		function submitformSmall()
+		{  
+		    var form=document.getElementById('fileuploadSmall');
+			form.action="/sx/upload?cb=callbackSmall";
+		    form.target="check_frameSmall";
+		    form.submit();
+		} 
+
+		function callbackSmall(result)
+		{
+			var resJson = eval("("+result+")");
+			//var liID=randomUUID();
+			//var pic  = $("input");
+			$("#blog-write-3Small").css('display','block');
+			$("#blog-write-3-ulSmall").css('display','block');
+			$("#logoSmall").css('display','block');
+			$("#logoSmall").attr("name",resJson.data.items[0].fid);
+			$("#logoSmall").attr("src",resJson.data.items[0].urlroot+"/"+resJson.data.items[0].fname);
+			//$("#blog-write-3-ul").html("<img name='"+resJson.data.items[0].fid+"' style='float:left;' src='/wuliu/image/"
+			//					+resJson.data.items[0].fname+"'></img>");
+			}
+
+			function delLogoSmall()
+			{
+				$("#logoSmall").css("display","none");
+				$("#logoSmall").attr("src","");
+				$("#logoSmall").attr("name","");
+				return false;
+			}
+		
+	</script>
+	<script>
+  		var redirect_url="/sxb/oss/job.shtml";
+  		function add_cb(data)
+		{
+  		  alert("成功新增");
+		  window.location=redirect_url;
+		}
+  		
+		$("#commit").click(function(e){
+			var url="/sx/job/add",
+						fcompanyid = $("#fcompanyid").val(),
+						fname = $("#fname").val(),
+						ftime = $("#ftime").val(),
+						fstarttime = $("#fstarttime").val(),
+						fendtime = $("#fendtime").val(),
+						fnumber = $("#fnumber").val(),
+						fmsg = $("#fmsg").val(),
+						fpicfile = $("#logo").attr("name"),
+						fnotice = $("#fnotice").val(),
+						fuserid = $("#fuserid").val(),
+						fdes = $("#fdes").val(),
+						fstatus = $("#fstatus").val(),
+						ftype = $("#ftype").val(),
+						faddr = $("#faddr").val(),
+						fhot = $("#fhot").val(),
+						fdescription = $("#fdescription").val(),
+						fkeywords = $("#fkeywords").val(),
+						fpicfilesmall = $("#logoSmall").attr("name"),
+						fsalary = $("#fsalary").val(),
+			input_data={
+						fcompanyid : fcompanyid,
+						fname : fname,
+						ftime : ftime,
+						fstarttime : fstarttime,
+						fendtime : fendtime,
+						fnumber : fnumber,
+						fmsg : fmsg,
+						fpicfile : fpicfile,
+						fnotice : fnotice,
+						fuserid : fuserid,
+						fdes : fdes,
+						fstatus : fstatus,
+						ftype : ftype,
+						faddr : faddr,
+						fhot : fhot,
+						fdescription : fdescription,
+						fkeywords : fkeywords,
+						fpicfilesmall,fpicfilesmall,
+						fsalary:fsalary
+			 };
+			 
+			if( fcompanyid == "")
+			{
+			  alert("职位发布企业ID不能为空"); 
+			  return false;
+			}
+			if( fname == "")
+			{
+			  alert("职位名称不能为空"); 
+			  return false;
+			}
+			if(fdes!=null && len(fdes)>64)
+			{
+				alert("职位简介不能超过32个中字符，或者不能超过64个英文字符");
+				return false;
+			}	
+				
+			/*if( ftime == "")
+			{
+			  alert("实习职位发布的时间不能为空"); 
+			  return false;
+			}
+			if( fstarttime == "")
+			{
+			  alert("实习职位开始时间不能为空"); 
+			  return false;
+			}
+			if( fendtime == "")
+			{
+			  alert("实习职位结束时间不能为空"); 
+			  return false;
+			}
+			if( fnumber == "")
+			{
+			  alert("招募名额不能为空"); 
+			  return false;
+			}
+			if( fmsg == "")
+			{
+			  alert("职位详细介绍不能为空"); 
+			  return false;
+			}
+			if( fpicfile == "")
+			{
+			  alert("实习职位宣传海报地址不能为空"); 
+			  return false;
+			}
+			if( fnotice == "")
+			{
+			  alert("职位需要特别注意的地方不能为空"); 
+			  return false;
+			}
+			if( fuserid == "")
+			{
+			  alert("职位发布者ID不能为空"); 
+			  return false;
+			}
+			if( fdes == "")
+			{
+			  alert("备注不能为空"); 
+			  return false;
+			}
+			if( fstatus == "")
+			{
+			  alert("职位状态不能为空"); 
+			  return false;
+			}
+			if( ftype == "")
+			{
+			  alert("职位状态不能为空"); 
+			  return false;
+			}
+			if( faddr == "")
+			{
+			  alert("职位地址不能为空"); 
+			  return false;
+			}*/
+		
+		fn_ajax(url,input_data,"post","add_cb");
+		});
+	</script>
+	
+	<script>
+	 function list_cb(data)
+	  {
+		var html_str="";
+		for(var i=0;i<data.items.totalsize;i++)
+		{
+			html_str+='<option  value="'+data.items.item[i].FID+'" >'+data.items.item[i].FNAME+'</option>';
+		}
+		$("#fcompanyid").html(html_str);
+	  }
+	  function list_error_cb(data )
+	  {
+		  alert(data.msg);
+		  $("#wait").css("display","none");
+		  $(".table_body").css("display","block");
+	  }
+	  function list(pagesize,pageno)
+	  {
+		  var param={};
+		  param.pageno=pageno;
+		  param.pagesize=pagesize;
+		  // param.fisprint=fisprint;
+		  // param.stime=$("#txtStart").val();
+		  // param.etime=$("#txtEnd").val();
+		  // SetCookie("fisprint", fisprint);
+		  // SetCookie("stime", param.stime);
+		  // SetCookie("etime", param.etime);
+		  var url="/sx/company/list";
+		  fn_ajax_error(url,param,"post","list_cb","list_error_cb");
+	  }
+	  list(1000,1);
+	  
+	  /*function listLabel_cb(data)
+	  {
+		var html_str=$("#ftype").html();
+		for(var i=0;i<data.items.totalsize;i++)
+		{
+			html_str+='<option value="'+data.items.item[i].FID+'" >'+data.items.item[i].FNAME+'</option>';
+		}
+		$("#ftype").html(html_str);
+		
+		// 加上分页
+		showPages3("pages", "list", data.pageSize, data.pageNo, data.pageTotalSize,data.items.totalsize);
+	  }
+	  
+	  function listLabel_error_cb(data )
+	  {
+		  alert(data.msg);
+	  }
+	  
+	  function listLabel(pagesize,pageno)
+	  {
+		  $("#wait").css("display","block");
+		  $(".table_body").css("display","none");
+		  //var fisprint=$("#fisprint").val();
+		  var param={};
+		  param.pageno=pageno;
+		  param.pagesize=pagesize;
+		  param.ftype='3';
+		  // param.stime=$("#txtStart").val();
+		  // param.etime=$("#txtEnd").val();
+		  // SetCookie("fisprint", fisprint);
+		  // SetCookie("stime", param.stime);
+		  // SetCookie("etime", param.etime);
+		  var url="/sx/label/list";
+		  fn_ajax_error(url,param,"post","listLabel_cb","listLabel_error_cb");
+	  }
+	  
+	  listLabel(1000,1);*/
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>实习吧-修改密码</title>
+<link href="/sxb/oss/css/my.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/sxb/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/sxb/js/wuliu.js"></script>
+<style type="text/css">
+.column_right {
+	float:left;
+	/*width:786px;-->
+	padding-left:40px;*/
+	margin-left: 20px;
+	}
+.content_title{
+	padding:0px 0 10px 0;
+	font-size:16px;
+	font-weight:bold;
+	border-bottom:1px solid #F5F5F5;}
+.form_content{
+	font-size:14px;}	
+.form_content table tr{
+	height:45px;
+	line-height:45px; }
+.w1{
+	width:120px;}
+.w2{
+	width:180px;
+	text-align:right;}
+.w3{
+	width:80px;
+	text-align:right;}
+.input_set{
+	padding:0 8px;
+	width:150px;
+	height:28px;
+	line-height:28px;
+	border:1px solid silver;}
+.input_set:focus{
+	border:1px solid #6CF;}							
+.button_right{
+	margin:15px 0;
+	float:left;
+	width:300px;}
+.button_right a{
+	display:block;
+	float:right;
+	font-size:14px;
+	width:90px;
+	height:37px;
+	line-height:37px;
+	text-align:center;
+	color:#FFFFFF;
+	background-color:#4CB7B7;}
+.button_right a:hover{
+	text-decoration:none;
+	background-color:#FC9;}									
+</style>
+</head>
+<body>
+<!-- script>islogin("66");</script-->
+
+<!--#include virtual="/sxb/oss/head.html"-->
+
+<div class="container w1024 mt5" style="margin-bottom: 200px;">
+
+<!--#include virtual="/sxb/oss/left.html"-->	
+
+<div class="column_right mt10">
+<div class="content_title">修改当前用户的密码:</div>
+<div class="form_content mt10">
+  <form action="#" method="post">
+  <table>
+	  <tbody>
+		  <tr>
+			  <td class="w1"><label for="oldpwd">旧密码：</label></td>
+			  <td class="w2"><input id="oldpwd" class="input_set" type="password"  placeholder=""/></td>
+			  <!--td class="w3">[?]</td-->
+		  </tr>
+			   <tr>
+				  <td class="w1"><label for="pwd1">新密码：</label></td>
+				  <td class="w2"><input id="pwd1" class="input_set" type="password"  placeholder=""/></td>
+				  <!--td class="w3">[?]</td-->
+			  </tr>
+			   <tr>
+				  <td class="w1"><label for="pwd2">确认新密码：</label></td>
+				  <td class="w2"><input id="pwd2" class="input_set" type="password"  placeholder=""/></td>
+				  <!--td class="w3">[?]</td-->
+			  </tr>
+		  </tbody>
+  	</table>
+  	<div class="button_right"><a id="save" href="javascript:;">保  存</a></div>
+  </form></div></div></div>
+  
+  <!--#include virtual="/sxb/oss/foot.html"-->
+  <script>
+	function pwd_callback(data)
+	{
+	     alert("密码修改成功");
+	     return false;
+	}
+	
+	function pwd_error_callback(data)
+	{
+	     alert(data.msg);
+	     return false;
+	}
+	
+	$("#save").click(function(e)
+	{
+		var oldpwd=$("#oldpwd").val();
+		var pwd1 = $("#pwd1").val();
+		var pwd2 = $("#pwd2").val();
+		if(oldpwd==null || oldpwd=="")
+		{
+			alert("旧密码不能为空");
+			return false;
+		}
+		
+		if(pwd1==null || pwd1=="" || pwd2==null || pwd2=="")
+		{
+			alert("新密码不能为空");
+			return false;
+		}
+		
+		if(pwd1!=pwd2)
+		{
+			alert("两次输入的新密码不一致");
+			return false;
+		}
+		
+		//var wvalue=$("#wuliushang").val();
+		//if(wvalue!=null && wvalue!="")
+		//{
+		//	update("wuliushang");
+		//}
+		
+		var p={},
+		url="/sx/pwdchange";
+		p.oldpwd=oldpwd;
+		p.pwd1 = pwd1;
+		p.pwd2 = pwd2;
+		
+		fn_ajax(url, p, "post", "pwd_callback","pwd_error_callback");
+	});
+  </script>
+  
+</body>
+</html>

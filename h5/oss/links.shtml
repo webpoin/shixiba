@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="wltrack.com 提供邮政小包,邮政国际小包,国际小包,邮政小包面单打印,国际小包面单打印,邮政国际小包面单打印;以及提供国际物流,国际邮政,国际快递,专线物流查询等服务" name="Description">
+<meta content="物流专线查询 国际邮政查询 国内邮政查询 国际快递查询 邮政小包面单打印 邮政国际小包面单打印" name="Keywords">
+<title>邮政国际小包打印系统-友情链接</title>
+<link href="/track/shop/css/my.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/track/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="/track/js/wuliu.js"></script>
+<script type="text/javascript" src="/track/js/comm_page.js"></script>
+
+</head>
+
+<body>
+<!--#include virtual="/track/shop/head.html"-->
+<div class="container w1024">
+<div class="setting_nav">
+<a id="a1" href="/track/shop/index.shtml" target="_self">首页</a>
+&gt;
+ <a id="a2" href="javascript:;"> 友情链接</a>
+</div>
+  <div class="column">
+    <h2>友情链接</h2>
+   <ul class="text-links clearfix">
+   <li><a target="http://www.8rus.com" href="javascript:;">中俄物流网</a></li>
+   <li><a target="http://www.taobao.com" href="javascript:;">淘宝网</a></li>
+   <li><a target="_blank" href="javascript:;">亚马逊卖家论坛</a></li>
+   <li><a target="_blank" href="javascript:;">Smart Watch Phone Supplier</a></li>
+   </ul>
+  </div>
+  
+  <div class="clear"></div>
+</div>
+   
+<!--#include virtual="/track/shop/foot.html"-->
+</body>
+</html>

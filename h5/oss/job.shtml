@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>实习吧-职位列表</title>
+<link href="/sxb/oss/css/my.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/sxb/js/jquery-1.9.1.min.js"></script>
+<script src="/sxb/js/jquery.ui.core.js"></script>
+<script src="/sxb/js/jquery.ui.datepicker.js"></script>
+<script src="/sxb/js/jquery.ui.datepicker-zh-CN.js"></script>
+<script type="text/javascript" src="/sxb/js/wuliu.js"></script>
+<script type="text/javascript" src="/sxb/js/comm_page.js"></script>
+<link rel="stylesheet" type="text/css" href="/sxb/oss/css/jquery.ui.all.css" />
+<link rel="stylesheet" type="text/css" href="/sxb/oss/css/jquery-ui-1.10.4.custom.css" />
+<link rel="stylesheet" type="text/css" href="/sxb/oss/css/jquery.ui.datepicker.css" />
+<script type="text/javascript" src="/track/js/ccdate.js"></script>
+<style type="text/css">
+.nav-box a{
+	display:block;
+	text-decoration:none;
+	float:left;
+	border-left: 2px solid #448EF3;
+    border-right: 2px solid #448EF3;
+	color:white;
+	font-size:16px;
+	height:36px;
+	padding:0 35px;
+	}
+a.nav-select{
+	background-color:#FF9E40;
+	border-left:2px solid #FFFFFF;
+	border-right:2px solid #FFFFFF;}
+	.nav a:hover, .nav a:link, .nav a:visited, .nav a:active{
+		text-decoration:none;}
+		.ff{
+			float:left;}
+.nav-box a:hover {
+    background-color: #6CA8FA;
+    border-left: 2px solid #6CA8FA;
+    border-right: 2px solid #6CA8FA;
+    color: #FFFFFF;
+}
+.nav-box a.nav-select {
+    background-color: #FF9E40;
+    border-left: 2px solid #FFFFFF;
+    border-right: 2px solid #FFFFFF;
+}
+a.fr{
+	float:right;}
+
+.column_1 {
+	float:left;
+	width:134px;
+	font-size:16px;
+    }
+.column_1 a{
+	font-size:16px;
+	display:block;
+	height:37px;
+	line-height:37px;
+	background-color:#F5F5F5;
+	color:#333333;
+    border-bottom: 1px solid #FFFFFF;
+	padding-left:16px;
+	}
+.column_1 a.a_selected{
+	background-color:#448EF3;
+	border-bottom: 1px solid #FFFFFF;
+	color:#FFFFFF;}	
+.column_1 a:hover{
+	text-decoration:none;
+	color:#FFFFFF;
+	background-color:#448EF3;
+	border-bottom:1px solid #FFFFFF;}
+.column_2 {
+	float:right;
+	width:840px;
+	padding-left:20px;
+}
+.head_search{
+	float:right;
+	/*width:728px;*/
+	width:100%;
+	
+	padding:20px 0px;
+	text-align:center;
+	border:1px dashed #C4E1FF;
+	/*	border:1px solid #448EF3;*/
+	text-align: left;
+	}
+.input_1{
+	width:250px;
+	border:1px solid #E9EFF6;
+	cursor:text;
+	height:22px;
+	line-height:22px;
+	font-size:14px;
+	padding:3px 5px;
+	margin-right: 15px;
+	}
+.submit_1{
+	width:150px;
+	border:0;
+	cursor:pointer;
+	height:30px;
+	line-height:30px;
+	font-size:16px;
+	color:#ffffff;
+	background-color:#FF9E40;
+	display: block;
+	float:right;
+	text-align:center;
+	
+	}		
+.top_title {
+	float:left;
+	width:100%;
+	font-size:16px;
+	}
+.top_title a {
+	font-size:12px;
+	}
+.table_title{
+	color:#999999;
+	background-color: #F4F9FF;
+    border-top: 1px solid #B9D5FD;
+	font-size:13px;
+    width: 100%;}
+
+.table_body{
+width:100%;
+   padding-top:5px;
+	float:left;}
+.table_body table{
+	width:100%;}
+.tr_pad{
+	border-bottom:1px dashed #B9D5FD;
+}
+.tr_pad td{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	word-break:break-all;
+}
+tbody tr:hover {
+    background-color: #fef6c1 !important;
+	}
+.w0{
+	width:20px;
+   }
+.w1{
+	width:100px;
+	padding-left:5px;
+   }
+.w2{
+	width:110px;
+	padding-right:0px;
+	}
+.w3{
+	width:100px;
+	padding-right:0px;
+	}
+.w4{
+	width:80px;
+	padding-left:0px;}
+.w5{
+	width:110px;
+	padding-left:5px;}
+.w6{
+	width:170px;
+	padding-left:5px;}
+.w8{
+	width:50px;
+	padding-left:5px;}
+.w99{
+	width:15%;
+	padding-left:0px;}
+.pages{
+	float:right;
+	width:100%;
+	}
+.sming {
+	position:relative;
+	border-top:1px solid silver;
+	height:90px;
+	text-align:center;
+	overflow:hidden;
+	z-index:4;
+}
+.sming a:hover{
+	color:red;}
+.sm1{
+	position: absolute;
+	left:80px;
+	width:160px;}
+.sm2{
+	position:relative;
+	float:right;
+	width:860px;
+		}
+.sm2 a{
+	display:inline;
+	margin-right:14px;}
+.sm2_b span{
+	display:inline;
+	margin-right:14px;}
+	
+td,th,th input,td input{
+	vertical-align:middle;
+}
+table{
+font-size:11px;
+}
+</style>
+</head>
+<body>
+<!--script>islogin("66");</script-->
+<!--#include virtual="/sxb/oss/head.html"-->
+
+<div class="container w1024 mt5">
+
+<!--#include virtual="/sxb/oss/left.html"-->	
+
+	 <div class="column_2 mt10">
+		 <div class="head_search "  >
+		 	<div style="padding-left: 10px;padding-right: 10px;">
+
+		 		<label style="font-size: 16px;">搜关键字：</label>
+		 	
+				 <input class="input_1" type="text" name="搜索" value=""  id="fkey" placeholder="职位名称、企业名称"/>
+				 <a class="submit_1" type="submit"  >搜&nbsp;&nbsp;索</a>
+			
+			 </div>
+		 </div>
+		 <div class="top_title mt10">
+			<div style="float: left;">
+				<span id="totaltag"></span>
+			 </div>
+			 <div style="float: left;display:none;">
+				 <span id="totalsel">
+				 </span>
+				 &nbsp;&nbsp;<a href="#" onclick="dels()">批量删除</a>
+			 </div>
+			  <span  style="float:left;">
+			 	 &nbsp;&nbsp;&nbsp;
+			 	<a href="/sxb/oss/jobadd.shtml" target="_self">新增职位&gt;</a>
+			 </span>
+			
+		 </div>
+		   <div id="wait" style="display:none;text-align:center;	width:840px;	padding-left:20px;">
+		   		<img src="/track/image/waiting.jpg" width="35" height="35"/><p class="wait_set">努力查询中</p>
+		   </div>
+		   <div class="table_body">
+		   <table id="list" >
+		   	<thead class="table_title">
+		   		<tr class="tr_pad" style="text-align: left;height: 32px;">
+		   		<th class="w0">
+		   			<input  type="checkbox" >
+		   		</th>
+							<th class="w1">职位名称</th>
+							<th class="w1">企业名称</th>
+							<th class="w1">职位热度</th>
+							<th class="w1">发布时间</th>
+							<th class="w1">实习开始时间</th>
+							<th class="w1">实习结束时间</th>
+							<th class="w1">招募名额</th>
+							<th class="w1">职位状态</th>
+							<th class="w1">职位类型</th>
+							<th class="w1">操作</th>
+		   		</tr>
+		   	</thead>
+			   <tbody>
+			   
+			</tbody>
+		 </table>
+		 </div>
+		<div id="pages" class="pages mt10" align="right">
+		</div>
+	 </div>
+ </div>
+ 
+  <!--#include virtual="/sxb/oss/foot.html"-->
+  
+  <script>
+  var totalsize=0;
+  
+if(GetCookie("stime")!=null)
+{
+	  $("#txtStart").val(GetCookie("stime"));
+} else
+{
+	  $("#txtStart").val(getNowFormatDate());
+}
+
+if(GetCookie("etime")!=null)
+{
+	  $("#txtEnd").val(GetCookie("etime"));
+} else
+{
+	  $("#txtEnd").val(getNowFormatDate());
+}
+ 
+  if(GetCookie("fisprint")=="0")
+  {
+	  $("#fisprint option[value='0']").attr("selected", "selected");
+  } 
+  if(GetCookie("fisprint")=="1")
+  {
+	  $("#fisprint option[value='1']").attr("selected", "selected");
+  } 
+  
+  function list_cb(data)
+  {
+	  $("#wait").css("display","none");
+	  $(".table_body").css("display","block");
+	//alert(data.items.totalsize);
+	var html_str="";
+	for(var i=0;i<data.items.totalsize;i++)
+	{
+		/*var tel = data.items.item[i].FCONSIGNEETEL;
+  		if(data.items.item[i].FCONSIGNEETEL==null || data.items.item[i].FCONSIGNEETEL=='undefined')
+  		{
+  			tel=data.items.item[i].FCONSIGNEEPHONE;
+  		}*/
+  		if(data.items.item[i].FSTATUS=='1')
+  		{
+  			fstatus="未发布状态";
+  		}else if(data.items.item[i].FSTATUS=='2')
+  		{
+  			fstatus="发布状态";
+  		}else if(data.items.item[i].FSTATUS=='23')
+  		{
+  			fstatus="下线状态";
+  		}else if(data.items.item[i].FSTATUS=='4')
+  		{
+  			fstatus="过期状态";
+  		}else
+  		{
+  			fstatus="";
+  		}
+  		
+  		if(data.items.item[i].FTYPE=='1')
+  		{
+  			data.items.item[i].FTYPE="互联网";
+  		}else if(data.items.item[i].FTYPE=='2')
+  		{
+  			data.items.item[i].FTYPE="行业大咖";
+  		}else if(data.items.item[i].FTYPE=='3')
+  		{
+  			data.items.item[i].FTYPE="钱力股";
+  		}else if(data.items.item[i].FTYPE=='4')
+  		{
+  			data.items.item[i].FTYPE="公益";
+  		}else if(data.items.item[i].FTYPE=='100')
+  		{
+  			data.items.item[i].FTYPE="第三方职位";
+  		}
+		
+		html_str+='<tr id="'+data.items.item[i].FID+'" class="tr_pad">'
+		 	+'<td class="w0"><input type="checkbox" onchange="inputChange()"></td>'
+		 	
+					+'<td class="w1">' 
+					+'<a href="#" onclick="info(\''+data.items.item[i].FID+'\');">' 
+					+data.items.item[i].FNAME+'</a>'
+					+'</td>'
+					+'<td class="w1">' +data.items.item[i].FCOMNAME+'</td>'
+					+'<td class="w1">' +data.items.item[i].FHOT+'</td>'
+					+'<td class="w1">' +data.items.item[i].FTIME+'</td>'
+					+'<td class="w1">' +data.items.item[i].FSTARTTIME+'</td>'
+					+'<td class="w1">' +data.items.item[i].FENDTIME+'</td>'
+					+'<td class="w1">' +data.items.item[i].FNUMBER+'</td>'
+					+'<td class="w1" name="'+data.items.item[i].FSTATUS+'">'
+					+'<a href="javascript:void();" onclick="javascript:update(\''+data.items.item[i].FID+'\');">'+fstatus+'</a>'
+					+'</td>'
+					+'<td class="w1">' +data.items.item[i].FTYPE+'</td>'
+				+'<td class="w99">'
+				+'<a href="/sxb/oss/joblabel.shtml?m='+data.items.item[i].FID+'">标签管理</a>'
+				+'&nbsp;&nbsp;&nbsp;&nbsp;<a href="/sxb/oss/jobedit.shtml?m='+data.items.item[i].FID+'">编辑</a>'
+			   	 +'&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:del(\''+data.items.item[i].FID
+			     +'\');" target="_self" class="ck">删除</a>'
+			   	 +'&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:close(\''+data.items.item[i].FID
+			     +'\');" target="_self" class="ck">下线</a>'
+			     +'</td>'
+			   +'</tr>';
+	}
+	totalsize=data.pageTotalSize;
+	if(totalsize==null || totalsize=="undefined" || totalsize == "" )
+	{
+		totalsize="0";
+	}
+	$("#totaltag").html("<span style='color:666666#;font-size:12px;'>共搜索到 "+totalsize+" 条符合条件的记录</span>")
+	$("#list>tbody").html(html_str);
+	
+	// 加上分页
+	showPages3("pages", "list", data.pageSize, data.pageNo, data.pageTotalSize,data.items.totalsize);
+  }
+  
+  function list_error_cb(data )
+  {
+	  alert(data.msg);
+	  $("#wait").css("display","none");
+	  $(".table_body").css("display","block");
+  }
+  
+  function list(pagesize,pageno)
+  {
+	  $("#wait").css("display","block");
+	  $(".table_body").css("display","none");
+	  //var fisprint=$("#fisprint").val();
+	  var param={};
+	  param.pageno=pageno;
+	  param.pagesize=pagesize;
+	 param.fkey=$("#fkey").val();
+	  // param.stime=$("#txtStart").val();
+	  // param.etime=$("#txtEnd").val();
+	  // SetCookie("fisprint", fisprint);
+	  // SetCookie("stime", param.stime);
+	  // SetCookie("etime", param.etime);
+	  var url="/sx/job/list";
+	  fn_ajax_error(url,param,"post","list_cb","list_error_cb");
+  }
+  
+  var pageSize=GetCookie("pageSize");
+  if(pageSize==null || pageSize=="" || pageSize=='undefined')
+  {
+	  pageSize=20;
+  }  
+  
+  list(pageSize,1);
+  
+ $(".submit_1").click(function()
+{
+	 		list(pageSize,1);
+	 		return false;
+ });
+  </script>
+  <script>
+  function del_callback(data)
+  {
+	  alert("成功删除");
+	  $("#"+data.FID).remove();
+  }
+  
+  function del(fid)
+  {
+	  if(fid==null || fid == "")
+	  {
+		  alert("ID不能为空");
+		  return false;
+	  } 
+	  
+	  var param={};
+	  param.fid=fid;
+	  var url="/sx/job/del";
+	  fn_ajax(url,param,"post","del_callback");
+  }
+  
+  function close(fid)
+  {
+	//alert("dddd");
+		//return false;
+		var fstatus="";
+		var curStatus = $("#"+fid +" >td[name]").attr("name");
+		if(curStatus=='23' )
+		{
+			fstatus="1";
+		}else{
+			fstatus="23";
+		}
+		
+		var url="/sx/job/updateStatus",
+		input_data={
+				fid : fid,
+				fstatus : fstatus
+		 };
+	
+	fn_ajax(url,input_data,"post","update_cb");
+  }
+  
+  function dels_callback(data)
+  {
+	  alert("成功删除");
+	  
+	  for(var i=0;i<data.FID.length;i++)
+		{
+		  $("#"+data.FID[i]).remove();   
+		} 
+	  
+	  $("#totaltag").parent().css("display","block");
+	  $("#totalsel").parent().css("display","none");
+  }
+  
+  function dels()
+  {
+	  var postids=getPostids();
+	  if(postids==null || postids=="")
+	  {
+		  alert("请选择至少一条待删除的记录");
+		  return;
+	  } 
+	  var param={};
+	  param.fids=postids;
+	  var url="/sx/$name}/dels";
+	  fn_ajax(url,param,"post","dels_callback");
+  }
+  
+  function check_callback(data)
+  {
+	  alert(data.msg);
+	  var checkopt="未打印";
+	  if(data.fisprint=="1")
+	  {
+		  checkopt="已打印";
+	  }
+	  
+	  $("#"+data.fid+"> .w7 > .check").text(checkopt);
+  }
+  function checkopt(fid)
+  {
+	 var fisprint="1";
+	 var check=$("#"+fid+"> .w7 >a").text();
+	 if(check=="已打印")
+	 {
+		 fisprint="0";
+	  }
+	  var param={};
+	  param.fid=fid;
+	  param.fisprint=fisprint;
+	  var url="/shop/track/update";
+	  fn_ajax(url,param,"post","check_callback");
+  }
+  
+  function inputChange()
+  {
+	costTotalSel();
+  }
+  
+  $("th>input").change(function(){
+	// alert($("th>input").attr("checked"));
+	 if($("th>input").attr("checked")=="checked")
+	{
+		 //alert("selected");
+		 $("td>input").attr("checked","checked");
+	}else
+	{
+		 $("td>input").removeAttr("checked");
+	}
+	costTotalSel();
+  });
+  
+  // 计算选择的总数
+  function costTotalSel()
+  {
+	  var postids="";
+	  var size=0;
+	  $("td>input:checkbox:checked").each(function()
+	  {
+		  size++;
+		  postids+=$(this).parent().parent().attr("id")+",";
+		  //alert($(this).parent().parent().attr("id")); 		
+	  });
+	  //alert(postids.substring(0, postids.length-1));
+	  postids=postids.substring(0, postids.length-1);
+	  //return size;
+	  if(size!=0)
+	  {	  
+	  	$("#totalsel").html("<span style='color:666666#;font-size:12px;'>您已选择了 "+size+" 条符合条件的记录</span>");
+	  	$("#totaltag").parent().css("display","none");
+	  	$("#totalsel").parent().css("display","block");
+	  }else
+	  {
+		  $("#totalsel").html("<span style='color:666666#;font-size:12px;'>您已选择了 "+size+" 条符合条件的记录</span>");
+		  $("#totaltag").parent().css("display","block");
+		  $("#totalsel").parent().css("display","none");
+	  }
+  }
+  
+	  function getPostids()
+	  {
+		  var postids="";
+		  var size=0;
+		  $("td>input:checkbox:checked").each(function()
+		  {
+			  size++;
+			  postids+=$(this).parent().parent().attr("id")+",";
+			  //alert($(this).parent().parent().attr("id")); 		
+		  });
+		  //alert(postids.substring(0, postids.length-1));
+		  postids=postids.substring(0, postids.length-1);
+		  return postids;
+	  }
+    
+    function info(fid)
+	{
+		window.location="/sxb/oss/jobinfo.shtml?m="+fid;
+	}
+    
+    
+    function update_cb(data)
+	{
+    	$("#"+data.fid +" >td[name]").attr("name",data.fstatus);
+    	if(data.fstatus=="1")
+    	{
+    		alert("成功取消职位发布！");
+    		$("#"+data.fid +" >td[name] > a").text("未发布状态");
+    		//$("#"+data.fid +" >td[name] > a").css("color","red");
+    	}else if(data.fstatus=="2")
+    	{
+    		alert("成功发布职位！");
+    		$("#"+data.fid +" >td[name] > a").text("发布状态");
+    	}else if(data.fstatus=="23")
+    	{
+    		alert("成功下线职位！");
+    		$("#"+data.fid +" >td[name] > a").text("下线状态");
+    	}	
+    	
+	}
+		
+	function update(fid)
+	{
+		//alert("dddd");
+		//return false;
+		var fstatus="";
+		var curStatus = $("#"+fid +" >td[name]").attr("name");
+		if(curStatus=='1')
+		{
+			fstatus="2";
+		}else
+		{
+			fstatus="1";
+		}
+		
+		var url="/sx/job/updateStatus",
+		input_data={
+				fid : fid,
+				fstatus : fstatus
+		 };
+	
+	fn_ajax(url,input_data,"post","update_cb");
+	}
+  </script>
+</body>
+</html>

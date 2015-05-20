@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--meta-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="author" content="admin@17track.net"/>
+<meta name="robots" content="nofollow" />
+<meta name="Description" content="实习吧！"/>
+<meta name="Keywords" content="实习 实习吧 找工作 实习工作"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<title>个人中心-资料编辑</title>
+<link rel="stylesheet" href="jqm/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="css/t.css" />
+<script src="js/jquery.js"></script>
+<script src="jqm/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/wuliu.js"></script>
+<script src="js/comm_page.js"></script>
+<style type="text/css">
+.top_set1{
+   top:0.25em !important;}	
+.back_arrow{
+	height:20px !important;
+	width:auto;}  
+.dh_set1{
+	float:left;
+	width:62%;
+	height:176px;
+	margin-right:1em;}
+.dh_set2 ,.dh_set3{
+	width:33%;
+	float:left;
+	height:80px;}	
+.dh_set3{
+	margin-top:1em;}		
+.pi_1{
+}
+.img-set1{
+	width:100%;
+	height:100%;
+}
+img.add{
+	margin-top:2em !important;}			
+.set-a{
+	background-color:#000000 !important;
+	color:#ffffff !important;
+	border:0;
+	font-weight:normal;
+    }
+.set-a:focus{
+	box-shadow: 0 0 12px #000000 !important;}			
+.content_set{
+	text-indent:2em !important;}
+.u_li_z{
+	margin:0 1em !important;
+	border-radius:0;
+	box-shadow:none !important;}
+.u_li_z li{
+	padding:0 0 2px!important;
+	border-width: 0 0 1px!important;
+	}   
+.label_set{
+	float:left;
+	margin:2px 0 0 0 !important;
+	width:auto !important;}
+.pho_set{
+	border:none;
+	float:left;
+   }
+.submit_set{
+	float:right;
+	border:none;
+	background-color:#3CC;
+	color:#ffffff;
+	font-size:0.75em !important;
+	cursor: pointer;}
+.f_set1em{
+	font-size:1em !important;}	
+.font_s1{
+	font-size:1.2em !important;}
+.color_s1{
+	color:#999999;}
+.color_s2{
+	color:#333333;}	
+.color_s2 span{
+	background:#dddddd;
+	padding:0 0.5em;}
+.box_div,#userlabel,.box_span,.box_span span{
+	float:left;
+	display:block;}
+#userlabel,.box_span{
+	margin-bottom:0.3em;}		
+.box_span span{
+	margin-right:0.3em;}	
+#showlabel{
+	font-size:1.2em;
+    background-color:#dddddd;
+    color:#999999 !important;
+	padding:0 1.2em !important;}
+#addlabel{	
+    font-size:1.2em;
+    background-color:#dddddd;
+    color:#333333 !important;
+	padding:0 1.2em !important;}	
+#label{
+    border: 1px solid #dddddd;
+    height: 1.3em;
+    width: 4.8em;}		
+#save_1{
+	margin:1em;}	
+#save_1 a {
+    background-color: #21d0c6 !important;
+    border: medium none !important;
+    border-radius: 0;
+    color: #ffffff !important;
+    text-align: center;
+    text-shadow: none !important;
+	margin:2em 3em;
+}	   					
+.foot_nav1 a:focus{
+	box-shadow:none !important;} 	
+	
+	.d_img_set{
+	margin:0.5em 0;}				
+.img-set1{
+	width:64px;
+	height:64px;
+	margin-right:0.5em;}
+.d_min_set{
+	display:block;
+	float:left;
+	width:100%;
+	font-size:0.75em;
+	margin:1em 0 0.3em;}	
+.min_p{
+	height:0.75em;
+	width:auto;}
+
+#userpic{
+	display:block;
+	float:left;}	
+.row{
+	display:block;
+	float:left;
+	width:64px;
+	height:64px;
+	}	
+#fileToUpload{
+    opacity: 0;
+    position: absolute;
+    height:64px;
+    width: 64px;
+    z-index: 999;
+	}
+.btn_add{
+	text-align:center;
+	font-size:48px;
+	color:#dddddd;
+    width:62px;
+	background-color:#f9f9f9;
+	border:1px solid #dddddd;}
+.ui-btn-active {
+	background-color: #21d0c6 !important;
+	border-color: #21d0c6 !important;
+	color: #ffffff !important;
+	text-shadow: 0 0 0 #21d0c6 !important;
+}
+#popup_set{
+    position: fixed;
+    width:100%;
+	top:8em;
+	text-align:center;
+    z-index: 1002;
+  }	
+.close{
+    position:absolute;
+    right:6.5%;
+    top:-0.7em;
+    z-index: 1003;
+	}	
+.close img{
+	border-radius:1em;
+	width:24px;
+	height:24px;
+	background-color:#7f7f7f;
+}
+.max_img_set{
+	margin:0 auto;
+	width:80%;
+	height:220px;}	
+.width_set100{
+	width:100%;
+	height:100%;
+}						
+.selected_head{
+	float:left;
+	background-color:#21D0C6;
+	color:#ffffff;
+	padding:0.7em 2em;
+  }	
+.minbox_set{
+	width:80%;
+	text-align:center;
+	margin:0.5em auto;}	  
+.delete_head{
+	background-color:#FD4848;
+	color:#ffffff;
+	float:right;
+	padding:0.7em 2em;
+	}	
+.body_blind{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	background: none repeat scroll 0 0 #000000;
+	opacity:0.5;
+	position:fixed;
+	z-index:1001;}
+	.m_g_set {
+    border-radius: 0 !important;
+    padding: 0.2em;
+    top: 0em;
+}
+.i_t_set{
+	top:60% !important;}
+.first_selected{
+	background-color: #21d0c6 !important;
+	border-color: #21d0c6 !important;
+	color: #ffffff !important;
+	text-shadow: none !important;
+	background: url("images/icon_my_selected.png") no-repeat scroll 50% 21% / 24px 18px rgba(0, 0, 0, 0);}
+.no_selected{
+	background-color:rgb(237, 242, 245) !important;
+	border-color:rgb(237, 242, 245) !important;
+	color: #999999 !important;
+	text-shadow: 0 0 0 #999999 !important;}	
+	
+.d_l_t_set textarea{
+	float:left;
+	width:99%;
+	height:160px;
+	border:1px solid #21D0C6;}	
+.d_wo_set{
+    bottom: 1em;
+    position: absolute;
+    right: 2em;
+	font-size:0.75em;
+	color:#21D0C6;
+	}	
+</style>
+
+</head>
+<body>
+<script>sxbIsLogin();</script>
+<div data-role="page" id="pagehome">
+
+<div data-role="header" data-theme="f">
+<a  href="javascript:void()" class="b_c_set top_set1" data-rel="back" data-role="none"
+		 data-add-back-btn="true"><img class="back_arrow" src="images/arrow_green.png"/></a>
+<h1>资料编辑</h1>
+</div>
+
+<div data-role="content">
+    <ul id="next1" data-role="listview" class="u_li_z">
+    <li>
+    <div class="d_img_set">
+    	<span id="userpic">
+        </span>
+        <div class="row">
+	   <form id="form1" enctype="multipart/form-data" method="post" action="/" >
+			<!--div class="row">
+		     	<label for="fileToUpload">Select a File to Upload</label-->
+				<input type="file" name="fileToUpload" id="fileToUpload" onchange="uploadFile();" data-role="none" value="增加"/>
+                <div class="btn_add">+</div>
+			<!--/div>			
+			<div class="row">
+				<input type="button" onclick="uploadFile()" value="Upload" />
+			</div-->
+			<div id="progressNumber"></div>
+		</form>
+	    </div>
+    </div>
+        <div class="d_min_set color_s1">
+    <img class="min_p" src="images/icon_picture.png" alt="+" />
+    <span>已存<span id="totalpic">0</span>张，最多存3张，每张不超过1M</span>
+    </div>
+    </li>
+
+    <li>
+     <form method="post" action="#">
+       <div data-role="fieldcontain">
+        <label for="fname" class="label_set color_s1">姓名：</label>
+        <input type="text"  id="fname" value="" data-role="none" class="pho_set" placeholder="请输入您的姓名"  >
+        </div>
+    </form>
+    </li>
+	
+	<li class="li_label">
+        <form method="post" action="#">
+          <fieldset data-role="controlgroup" data-type="horizontal">
+          <legend class="label_set color_s1" style="margin: 0.68em 0 0 !important;">性别：</legend> 
+            <label class="m_g_set" for="male">男性</label>
+            <input class="i_t_set" type="radio" name="gender" id="male" value="1">
+           <label class="m_g_set" for="female">女性</label>
+            <input class="i_t_set" type="radio" name="gender" id="female" value="0">	
+          </fieldset>
+          </form>
+      </li> 
+	
+	<li>
+     <form method="post" action="#">
+       <div data-role="fieldcontain">
+        <label for="fbirthday" class="label_set color_s1">出生年月：</label>
+        <input type="text"  id="fbirthday" value="" data-role="none" class="pho_set" placeholder="请输入您的出生年月"  >
+        </div>
+    </form>
+    </li>
+	
+	<li>
+     <form method="post" action="#">
+       <div data-role="fieldcontain">
+        <label for="fschool" class="label_set color_s1">学校：</label>
+        <input type="text"  id="fschool" value="" data-role="none" class="pho_set" placeholder="请输入您的学校"  >
+        </div>
+    </form>
+    </li>
+	
+	<li>
+     <form method="post" action="#">
+       <div data-role="fieldcontain">
+        <label for="fmajor" class="label_set color_s1">专业：</label>
+        <input type="text"  id="fmajor" value="" data-role="none" class="pho_set" placeholder="请输入您的专业"  >
+        </div>
+    </form>
+    </li>
+	
+	<li>
+     <form method="post" action="#">
+       <div data-role="fieldcontain">
+        <label for="fgraduate" class="label_set color_s1">毕业时间：</label>
+        <input type="text"  id="fgraduate" value="" data-role="none" class="pho_set" placeholder="请输入您的毕业时间"  >
+        </div>
+    </form>
+    </li>
+	
+	<div style="display:none">
+    <li>
+       <form method="post" action="#">
+      <div data-role="fieldcontain">
+        <label for="fnick" class="label_set color_s1">昵称：</label>
+        <input class="pho_set" type="text" name="fnick" id="fnick" placeholder="请输入您的昵称" data-role="none">
+      </div>
+    </form>
+     </li> 
+     
+    <li>
+       <form method="post" action="#">
+      <div data-role="fieldcontain">
+        <label for="faddress" class="label_set color_s1">地区：</label>
+        <input class="pho_set" type="text" name="faddress" id="faddress" placeholder="请输入您所在城市" data-role="none">
+      </div>
+    </form>
+     </li>    
+</div>
+	 
+    <li>
+      <div data-role="fieldcontain">
+        <label for="femail" class="label_set color_s1">邮箱：</label>
+        <input class="pho_set" type="text" name="femail" id="femail" placeholder="请输入您的邮箱" data-role="none">
+       	<input  id="validate" class="submit_set" type="submit" data-inline="true" value="验证邮箱" data-role="none" >
+      </div>
+     </li>  
+      <li id="mailcode">
+       <div data-role="fieldcontain">
+        <label for="code" class="label_set">验证码：</label>
+        <input type="text"  id="code" value="" data-role="none" class="pho_set" >
+        <input id="next" class="submit_set" type="submit" data-inline="true" value="确认" data-role="none">
+        </div>
+    </li>                      
+      <li>
+       <form method="post" action="#">
+      <div data-role="fieldcontain">
+        <label for="ftel" class="label_set color_s1">手机：</label>
+        <input class="pho_set" type="text" name="ftel" id="ftel" placeholder="请输入您的手机号码" data-role="none">
+      </div>
+    </form>
+     </li>
+     <li class="li_span_set">
+         <p class="color_s1 f_set1em">个人标签：</p>
+         <div class="box_div">
+         <div id="userlabel" class="font_s1 color_s2">
+            <!--span>文艺</span>
+		    <span>旅行</span>
+		    <span>饮食</span-->
+            </div>
+          <div class="box_span">  
+         <span id="showlabel">+</span>
+         <span id="span_input" style="display: none;">
+         <input id="label" type="text" data-role="none"></span>
+         <span id="addlabel" style="display: none;">确定</span>
+          </div>
+          </div>
+        </li>
+		
+		
+	 <li>
+
+      <form method="post" action="#" class="d_l_t_set">
+	    <label for="fexp" class="color_s1">实习经历：</label>
+	    <textarea name="fexp" id="fexp" data-role="none"></textarea>
+      </form>
+      <div class="d_wo_set"><span id="wordexp">0</span>/<span>140</span></div>
+       </li>	
+		
+	 <li>
+
+      <form method="post" action="#" class="d_l_t_set">
+	    <label for="fdominate" class="color_s1">3句话说明你的优势：</label>
+	    <textarea name="fdominate" id="fdominate" data-role="none"></textarea>
+      </form>
+      <div class="d_wo_set"><span id="worddominate">0</span>/<span>140</span></div>
+       </li>		
+		
+       <!--li>
+         <p class="color_s1 f_set1em">个人标签：</p>
+         <p id="userlabel" class="font_s1 color_s2">
+            <!--span>文艺</span>
+		    <span>旅行</span>
+		    <span>饮食</span>
+         </p>
+         	<a id="showlabel" href="#"  data-role="none">+</a>
+         	<input id="label" type="text" style="display: none;">
+         	<a id="addlabel" href="#" data-role="none">+</a>
+        </li-->
+    </ul>
+    <div id="save_1">
+    <a id="update" data-role="button">保 存</a>
+    </div>
+    </div>
+    
+    	<div id="popdiv" data-role="popup"></div><!--弹出层,默认不显示-->
+
+<div data-role="footer" data-position="fixed" class="footer_set1" >
+		    <div data-role="navbar">
+				<ul class="foot_nav1">
+				    <li><a href="index.html#home"  data-icon="my-home" data-transition="slide" data-ajax="false" class="no_selected a_a1">首页</a></li>
+					<li><a href="find.html#home"  data-icon="my-find" data-iconpos="right"  data-transition="slide" data-ajax="false" class="no_selected a_a2">分类导航</a></li>
+					<li><a href="article.html#home"  data-icon="my-signup" data-iconpos="right"  data-transition="slide" data-ajax="false" class="no_selected a_a3">热门文章</a></li>
+					<li><a href="person.html#home"  data-icon="my-my" data-iconpos="right"  data-transition="slide" data-ajax="false" class="first_selected a_a4">个人中心</a></li>
+			    </ul>
+			</div>
+	</div>
+</div>
+<div id="popup_set" data-theme="a" style="display:none;">
+        <a href="" class="close"><img class="shutdown" src="images/icon_shutdown.png" /></a>
+        <div id="userpoppic" class="max_img_set">
+        <img class="width_set100" src="/sxb/images/JOB_2oQLNte7enk.jpg"/>
+        </div>
+        <div class="minbox_set">
+        <div id="setuserlogo" class="fload_set selected_head">设置为头像</div>
+        <div id="deluserpic" class="fload_set delete_head">删除</div>
+        </div>
+</div>
+<div class="body_blind" style="display:none"></div>
+<script>
+var redirect_url="/sxb/person.html";
+function update_cb(data)
+{
+	  pop("更新成功！");
+      window.location.href=redirect_url;
+}
+
+$("#update").click(function(e){
+	var ffileids="";
+	var fgender=$("input[name=gender]:checked").val();
+	$("#userpic").find("img").each(function()
+	{
+		ffileids+=$(this).attr("id")+":";
+	});
+	if(ffileids!="")
+	{
+		ffileids = ffileids.substring(0, ffileids.length-1);
+	}
+	
+	var url="/sx/ossuser/update",
+			fid = sessionStorage.fuserid;
+			fname = $("#fname").val(),
+			fnick = $("#fnick").val(),
+			faddress = $("#faddress").val(),
+			femail = $("#femail").val(),
+			ftel=$("#ftel").val(),
+			fbirthday=$("#fbirthday").val(),
+			fschool=$("#fschool").val(),
+			fmajor=$("#fmajor").val(),
+			fgraduate=$("#fgraduate").val(),
+			fexp=$("#fexp").val(),
+			fdominate=$("#fdominate").val(),
+			ffileids=ffileids,
+input_data={
+			fid : fid,
+			fname : fname,
+			fnick:fnick,
+			faddress:faddress,
+			femail:femail,
+			ftel:ftel,
+			ffileids:ffileids,
+			fbirthday:fbirthday,
+			fschool:fschool,
+			fmajor:fmajor,
+			fgraduate:fgraduate,
+			fexp:fexp,
+			fdominate:fdominate,
+			fgender:fgender
+ };
+ 
+if( fid == "")
+{
+  pop("用户ID不能为空"); 
+  return false;
+}
+
+if((fname==null || fname=="")&& (fnick==null || fnick=="") && (faddress==null || faddress=="") 
+		&& (femail==null || femail=="") && (ftel==null || ftel=="") && (ffileids==null || ffileids=="")  && (fgender==null || fgender==""))
+{
+	pop("更新成功！");
+    window.location.href=redirect_url;
+    return false;
+}
+
+fn_ajax(url,input_data,"post","update_cb");
+	/*var ffileids="";
+	var fgender=$("input[name=gender]:checked").val();
+	$("#userpic").find("img").each(function()
+	{
+		ffileids+=$(this).attr("id")+":";
+	});
+	if(ffileids!="")
+	{
+		ffileids = ffileids.substring(0, ffileids.length-1);
+	}
+	console.log("1");
+	var url="/sx/ossuser/update",
+			fid = sessionStorage.fuserid,
+			fname = $("#fname").val(),
+			fnick = $("#fnick").val(),
+			faddress = $("#faddress").val(),
+			femail = $("#femail").val(),
+			fbirthday=$("#fbirthday").val(),
+			fschool=$("#fschool").val(),
+			fmajor=$("#fmajor").val(),
+			fgraduate=$("#fgraduate").val(),
+			fexp=$("#fexp").val(),
+			fdominate=$("#fdominate").val(),
+			ffileids=ffileids,
+input_data={
+			fid : fid,
+			fname : fname,
+			fnick:fnick,
+			faddress:faddress,
+			femail:femail,
+			ftel:ftel,
+			ffileids:ffileids,
+			fgender:fgender
+			fbirthday:fbirthday,
+			fschool:fschool,
+			fmajor:fmajor,
+			fgraduate:fgraduate,
+			fexp:fexp,
+			fdominate:fdominate
+			
+ };
+ console.log("2");
+if( fid == "")
+{
+  pop("用户ID不能为空"); 
+  return false;
+}
+console.log("3");
+if((fname==null || fname=="")&& (fnick==null || fnick=="") && (faddress==null || faddress=="") 
+		&& (femail==null || femail=="") && (ftel==null || ftel=="") && (ffileids==null || ffileids=="")  && (fgender==null || fgender==""))
+{
+	pop("更新成功！");
+    window.location.href=redirect_url;
+    return false;
+}
+console.log("4");
+fn_ajax(url,input_data,"post","update_cb");*/
+});
+
+
+$(function(){
+  $("#fdominate").keyup(function(){
+   var len = $(this).val().length;
+   if(len > 139){
+    $(this).val($(this).val().substring(0,140));
+   }
+   var num =0 + len;
+   if(num < 141){
+   $("#worddominate").text(num);}
+  });
+ });
+ 
+ $(function(){
+  $("#fexp").keyup(function(){
+   var len = $(this).val().length;
+   if(len > 139){
+    $(this).val($(this).val().substring(0,140));
+   }
+   var num =0 + len;
+   if(num < 141){
+   $("#wordexp").text(num);}
+  });
+ });
+
+function ok_sxb(data)
+{
+	user=data;
+	//var html_str="";
+	//html_str+='<a href="#" onclick="javascript:showUser();" data-transition="slide" class="ui-btn ui-btn-icon-right ui-icon-carat-r">'
+	//			+'<img src="images/customers.png" alt="我的账号"/>'
+	//			+'<h2>我的账号</h2>'
+	//			+'</a>'
+	//$("#userlogin").html(html_str);
+	if(data.fgender==null || data.fgender=="undefined")
+	{
+		data.fgender="";
+	}
+	if(data.faddress==null || data.faddress=="undefined")
+	{
+		data.faddress="";
+	}
+	if(data.femail==null || data.femail=="undefined")
+	{
+		data.femail="";
+	}
+	if(data.ftel==null || data.ftel=="undefined")
+	{
+		data.ftel="";
+	}
+	
+	if(data.factive == '1')
+	{
+		 $("#validate").val("已验证");
+		 $("#validate").attr("disabled","disabled");
+		 $("#validate").css("cursor","default");
+		$("#mailcode").css("display","none");
+	}
+	
+	$("#logo").attr("src",data.flogo);
+	$("#fnick").val(data.fnick);
+	$("#fname").val(data.fname);
+	$("#fbirthday").val(data.fbirthday);
+	$("#fschool").val(data.fschool);
+	$("#fmajor").val(data.fmajor);
+	$("#fgraduate").val(data.fgraduate);
+	$("#fexp").val(data.fexp);
+	$("#fdominate").val(data.fdominate);
+	
+	if(data.fgender=="1")
+	{
+		$("#male").attr("checked","checked");
+	}else if(data.fgender=="0")
+	{
+		$("#female").attr("checked",'checked');
+	}
+	//alert($("input[name=gender]:checked").val());
+	$("#faddress").val(data.faddress);
+	
+	$("#femail").val(data.femail);
+	$("#ftel").val(data.ftel);
+	
+	$("#fid").text(data.fid);
+	
+	//window.location.href="person.html#home";
+	
+	//getLabels();
+	listuserpic();
+}
+function error_sxb(data)
+{
+	var html_str="";
+	html_str+='<a class="ui-btn ui-btn-icon-right ui-icon-carat-r"'
+				+' href="login.html?url=person.html" data-transition="slide" rel="external">'
+				+'<img src="images/customers.png" alt="我要登陆"/>'
+				+'<h2>我要登陆</h2>'
+				+'</a>';
+	$("#userlogin").html(html_str);
+	$("#userlogout").css("display","none");
+	$("#mdpwd").css("display","none");
+	$("#logout").css("display","none");
+}
+function showUser()
+{
+	  var param={};
+	  param.usertype="1";
+	  var url="/sx/islogin?url="+window.location.href;	  
+	  var errorCallback="error_sxb";
+	  fn_ajax_error_async(url,param,"post","ok_sxb",errorCallback,"1");
+	  return false;
+}
+showUser();
+
+
+function fn_validate_callback(data)
+{
+	  //parent.user_info=data;
+	  //SetCookie("account",data.faccount);
+	  //SetCookie("typename",data.ftypename);
+	  //$("#code").val(data.random);
+	  pop('已发送验证码到您的邮箱');
+}
+
+$("#validate").click(function(e){
+	e.preventDefault();
+	var url="/sx/mail",
+		account=$.trim($("#femail").val()),
+		input_data={
+			account:account
+		};
+	if(account=="")
+	{
+	  pop("邮箱不能为空！"); 
+	  return false;
+	}
+	
+	fn_ajax_error(url,input_data,"post","fn_validate_callback","fn_callback_error");
+});
+
+
+function fn_callback_error(data)
+{
+pop(data.msg);
+}
+function fn_callback(data)
+{
+	  //parent.user_info=data;
+	  //SetCookie("account",data.faccount);
+	  //SetCookie("typename",data.ftypename);
+	  //window.location=redirect_url+"?m="+data.FMOBILE;
+	  pop("邮箱验证成功！");
+	  $("#validate").val("已验证");
+	  $("#validate").attr("disabled","disabled");
+	  $("#validate").css("cursor","default");
+}
+	
+$("#next").click(function(e){
+	e.preventDefault();
+	var url="/sx/mailval",
+		account=$.trim($("#femail").val()),
+		code=$.trim($("#code").val()),
+		input_data={
+					 account:account,
+					 code:code
+		};
+	if(account=="")
+	{
+	  pop("用户名不能为空！"); 
+	  return false;
+	}
+	if(code=="")
+	{
+	  pop("验证码不能为空！"); 
+	  return false;
+	}
+	fn_ajax_error(url,input_data,"post","fn_callback","fn_callback_error");
+});
+
+
+function ok_label(data)
+{
+	var html_str="";
+	for(var i=0;i<data.items.length;i++)
+	{
+		html_str+='<span  id="'+data.items[i].fid+'" onclick="delUserLabel(this)">'+data.items[i].fname+'</span>&nbsp;';
+	}
+	$("#userlabel").html(html_str);
+}
+
+function error_label(data)
+{
+	//$("#userlabel").text("");
+}
+
+function getLabels()
+{
+	  var param={};
+	  var url="/sx/label/queryuser";
+	  var errorCallback="error_label";
+	  fn_ajax_error_async(url,param,"post","ok_label",errorCallback,"1");
+	  return false;
+}
+getLabels();
+
+function ok_addlabel(data)
+{
+	$("#span_input").css("display","none");
+	$("#addlabel").css("display","none");
+	var html_str="";
+	html_str='<span id="'+data.fid+'" onclick="delUserLabel(this)">'+data.fname+'</span>&nbsp;';
+	$("#userlabel").append(html_str);
+}
+function error_addlabel(data)
+{
+	pop(data.msg);
+}
+$("#addlabel").click(function()
+{
+	  var param={};
+	  param.fname=$("#label").val();
+	  //alert(param.fname);
+	  var url="/sx/label/adduserlabel";
+	  var errorCallback="error_addlabel";
+	  fn_ajax_error(url,param,"post","ok_addlabel",errorCallback,"1");
+	  return false;
+});
+$("#showlabel").click(function()
+{
+	$("#span_input").css("display","block");
+	$("#addlabel").css("display","block");
+});
+
+function ok_dellabel(data)
+{
+	$("#"+data.fid).remove();
+}
+function error_dellabel(data)
+{
+}
+function delUserLabel(obj)
+{
+	  var param={};
+	  param.fid=$(obj).attr("id");
+	  var url="/sx/label/deluserlabel";
+	  var errorCallback="error_dellabel";
+	  fn_ajax_error(url,param,"post","ok_dellabel",errorCallback,"1");
+	  return false;
+}
+
+function listuserpic_cb(data)
+{
+	var html_str="";
+	if(data.itemsize==null || data.itemsize=="undefined")
+	{
+		data.itemsize=0;
+	}	
+	for(var i=0;i<data.itemsize;i++)
+	{
+		if(data.items[i].FNAME!=null && data.items[i].FNAME!="undefined")
+		{
+			html_str+='<a href="#" onclick="tappic(\''+data.items[i].FID+'\',\''+data.items[i].FNAME+'\',\''+data.items[i].FFILEID+'\');">'
+			+'<img  id="'+data.items[i].FFILEID+'" class="img-set1 pi-1" src="/sxb/images/'+data.items[i].FNAME+'" alt="" /></a>';
+		}
+	}
+	$("#userpic").html(html_str);
+	
+	$("#totalpic").text(data.itemsize);
+}
+
+function listuserpic_error_cb(data )
+{
+	  //pop(data.msg);
+}
+
+function listuserpic()
+{
+	  var param={};
+	  var url="/sx/userpic/listallby";
+	  fn_ajax_error(url,param,"post","listuserpic_cb","listuserpic_error_cb");
+}
+
+function uploadFile() {
+	if($("#userpic>a>img").length>=3)
+	{
+		pop("最多只能上传3张图片");
+		return false;
+	}
+	
+    var fd = new FormData();
+    fd.append("fileToUpload", document.getElementById('fileToUpload').files[0]);
+    var xhr = new XMLHttpRequest();
+    xhr.upload.addEventListener("progress", uploadProgress, false);
+    xhr.addEventListener("load", uploadComplete, false);
+    xhr.addEventListener("error", uploadFailed, false);
+    xhr.addEventListener("abort", uploadCanceled, false);
+    xhr.open("POST", "/sx/uploadnew");
+    xhr.send(fd);
+  }
+
+  function uploadProgress(evt) {
+   /* if (evt.lengthComputable) {
+      var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+      document.getElementById('progressNumber').innerHTML = percentComplete.toString() + '%';
+    }
+    else {
+      document.getElementById('progressNumber').innerHTML = 'unable to compute';
+    }*/
+  }
+
+  function uploadComplete(evt) {
+    /* This event is raised when the server send back a response */
+   //alert("Ddddddddddddddd");
+   var res  =jQuery.parseJSON(evt.target.responseText);
+   //alert(res);
+   var data = res.data;
+   var html_str=$("#userpic").html();
+   
+   //html_str+='<a href="#" onclick="tappic(\''+data.items[i].FID+'\',\''+data.items[i].FNAME+'\',\''+data.items[i].FFILEID+'\');">'
+	//+'<img  id="'+data.items[i].FFILEID+'" class="img-set1 pi-1" src="/sxb/images/'+data.items[i].FNAME+'" alt="" /></a>';
+   
+   html_str+='<img id="'+data.items[0].fid+'" class="img-set1 pi-1" src="/sxb/images/'+data.items[0].fname+'" alt="" />';
+   $("#userpic").html(html_str);
+   
+   $("#totalpic").text($("#userpic>img").length);
+   
+   // alert(evt.target.responseText);
+  }
+
+  function uploadFailed(evt) {
+    pop("There was an error attempting to upload the file.");
+  }
+
+  function uploadCanceled(evt) {
+    pop("The upload has been canceled by the user or the browser dropped the connection.");
+  }
+  
+  function tappic(fid,fname,ffileid)
+  {
+  	var html_str='<img  id="'+fid+'" tag="'+ffileid+'" class="width_set100" src="/sxb/images/'+fname+'"/>';
+  	$("#userpoppic").html(html_str);
+  	
+  	$("#popup_set").css("display","block");
+  	$(".body_blind").css("display","block");
+  }
+
+  $(".close").on("tap",function(){
+  	$('#popup_set').css('display','none');
+  	$(".body_blind").css("display","none");
+  });
+  function ok_setuserlogo()
+  {
+		$('#popup_set').css('display','none');
+		$(".body_blind").css("display","none");
+  }
+  function setuserlogo()
+  {
+	  var param={};
+	  param.furl=$("#userpoppic>img").attr("tag");
+	  var url="/sx/ossuser/userlogo";
+	  fn_ajax(url,param,"post","ok_setuserlogo");
+	  return false;
+  }
+  $("#setuserlogo").bind("tap",function()
+	{
+	  	setuserlogo();
+	});
+  
+  function ok_deluserpic(data)
+  {
+		$('#popup_set').css('display','none');
+		$(".body_blind").css("display","none");
+		$("#"+data.FFILEID).parent().remove();
+  }
+  function deluserpic()
+  {
+	  var param={};
+	  param.fid=$("#userpoppic>img").attr("id");
+	  param.ffileid=$("#userpoppic>img").attr("tag");
+	  var url="/sx/userpic/del";
+	  if(param.fid==null)
+		{
+		  	pop("ID不能为空");
+		  	return;
+		}  
+	  fn_ajax(url,param,"post","ok_deluserpic");
+	  return false;
+  }
+  
+  $("#deluserpic").bind("tap",function()
+	{
+	  deluserpic();
+	});
+  
+
+</script>
+
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?933dcad2a62081671207ea9fa0d6623b";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</body>
+</html>

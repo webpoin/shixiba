@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>弹出层效果</title>
+<link href="/track/my/css/dialog.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/track/js/dialog.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+	new Alert('but', 'box', {
+		title : '提示内容',
+		content : '<div class="size">确定不在关注新浪微博？</div><div class="but"><button class="button">确定</button><button class="button">取消</button></div>',
+		width : '',
+		height : '',
+		top : '',
+		left : '',
+		fixed : '',
+		close : 'close'
+	});
+};
+</script>
+</head>
+<body style="height:950px;">
+<div class="title">API</div>
+<div class="table">
+	<ul>
+    	<li class="td">属性</li>
+        <li class="td">默认值</li>
+        <li class="tit td">说明</li>
+        <li>ButId</li>
+        <li>but</li>
+        <li class="tit">点击按钮Id（必选）</li>
+        <li>ElementId</li>
+        <li>box</li>
+        <li class="tit">弹出层Id（必选）</li>
+        <li>title</li>
+        <li>提示信息</li>
+        <li class="tit">提示层标题（可选）</li>
+        <li>content</li>
+        <li>自行编辑</li>
+        <li class="tit">提示层内容（可选）</li>
+        <li>width</li>
+        <li>340px</li>
+        <li class="tit">提示层宽度（可选）</li>
+        <li>height</li>
+        <li>120px</li>
+        <li class="tit">提示层高度（可选）</li>
+        <li>top</li>
+        <li>绝对居中</li>
+        <li class="tit">提示层上间距（可选）</li>
+        <li>left</li>
+        <li>绝对居中</li>
+        <li class="tit">提示层上间距（可选）</li>
+        <li>fixed</li>
+        <li>相对定位</li>
+        <li class="tit">跟谁滚动条绝对定位/是否拖拽（fixed:'fixed'）（可选）</li>
+        <li>close</li>
+        <li>close</li>
+        <li class="tit">是否显示关闭按钮（close:'close'）（可选）</li>
+    </ul>
+    <div class="tr"><a href="javascript:;" id="but">Examples</a></div>
+</div>
+</body>
+</html>

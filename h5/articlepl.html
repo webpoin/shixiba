@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--meta-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta content="admin@52track.net" name="author">
+<meta content="实习吧" name="Description">
+<meta content="实习吧" name="Keywords">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<title>实习吧-职位评论</title>
+<link rel="stylesheet" href="jqm/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="css/t.css" />
+<script src="js/jquery.js"></script>
+<script src="jqm/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/wuliu.js"></script>
+<script src="js/comm_page.js"></script>
+<script src="js/ccdate.js"></script>
+<style type="text/css">
+.content{
+	padding:0 !important;}
+.top_set1{
+   top:0.25em !important;}	
+.top_set2{
+   top:0.24em !important;}
+.set-a{
+	background-color:#000000 !important;
+	color:#ffffff !important;
+	border:0;
+	font-weight:normal;
+    }
+.set-a:focus{
+	box-shadow: 0 0 12px #000000 !important;}
+.h2_set{
+	font-size:1.2em !important;
+	margin:0 !important;
+	color:#3CC !important;}				
+/*.ui-btn-up-a{
+	background: linear-gradient(#E9E9E9, #E9E9E9) repeat scroll 0 0 #E9E9E9 !important;
+	
+	color:#666666 !important;
+	text-shadow:none !important;
+	border-color:#E9E9E9 !important;
+	box-shadow: 0 0 12px #E9E9E9 !important;}			
+#color_set{
+	background-color:#009999 !important;
+	color:#FFFFFF !important;
+	text-shadow:none !important;
+	border-color:#009999 !important;
+	box-shadow: 0 0 12px #70C5C5 !important;
+	}*/
+.content_set{
+	text-indent:2em !important;}
+.ui-checkbox{
+	width:10.5%;}
+.color_s1 {
+    color: #999999;
+}	
+.min_p {
+    height:1em;
+    width: auto;
+}	
+#info{
+	width:100%;
+	border:none;
+	resize:none;}
+.u_li_set {
+    border-radius: 0;
+    box-shadow: none !important;
+    margin: 0 1em !important;
+}
+.u_li_set li {
+    border-width: 0 0 1px !important;
+}
+.u_li_set p {
+    font-size: 1em !important;
+    text-overflow: clip !important;
+    white-space: normal !important;
+}
+.f_set{
+	right:1em !important;
+	top: 0.5em !important;}
+.u_li_set1{
+	border-radius: 0;}
+#next_set a{
+    background-color:#21D0C6!important;
+    border: medium none !important;
+    color: #ffffff !important;
+	text-align:center;
+    text-shadow: none !important;
+	font-size:1.2em;
+}
+#next_set a:focus {
+    box-shadow: 0 0 0 #21D0C6 !important;
+}
+.back_arrow {
+    height: 20px !important;
+    width: auto;
+}
+</style>
+
+</head>
+<body>
+<div data-role="page" id="pagehome"  data-title="职位评论">
+
+<div data-role="header" data-position="fixed" data-theme="f">
+ <a  href="javascript:void()" class="b_c_set top_set1" data-rel="back" data-role="none"
+		 data-add-back-btn="true"><img class="back_arrow" src="images/arrow_green.png"/></a>
+<h1><span  id="totalpl"></span></h1>
+
+</div>
+
+  <div data-role="content" class="content">
+     
+    <ul data-role="listview" data-inset="true" class="u_li_set1">
+      <li>
+      <form method="post" action="#">
+    <label for="info" class="ui-hidden-accessible">我要评论：</label>
+    <textarea name="addinfo" id="info" data-role="none" placeholder="来都来了,怎么不写几句呢。。。"></textarea>
+</form>
+      </li>    
+    </ul>
+    
+  </div>
+  
+  <div id="popdiv" data-role="popup"></div><!--弹出层,默认不显示-->
+
+<div data-role="footer" data-position="fixed" >
+<div data-role="navbar">
+ <ul>
+     <li id="next_set"><a id="commit" href="#"  data-transition="none">发表评论</a></li>
+ </ul>
+ </div>
+</div>
+
+
+</div>
+
+
+
+<script >
+	var pagesize=20;
+	var pageno=1;
+	$("#totalpl").text(sessionStorage.articlename);
+	//assess(pagesize,pageno,"");
+	
+	
+
+	function assess_cb1(data)
+	{
+		result=data;
+		if(data.items.item.length==0)
+		{
+			$("#loadMore>em").css("display","block");
+			$("#loadMore>span").css("display","none");
+			return false;	
+		}
+		
+		var html_str=$("#listassess").html();
+		for(var i=0;i<data.items.item.length;i++)
+		{
+			if(data.items.item[i].FNAME==null || data.items.item[i].FNAME=="undefined")
+			{
+				data.items.item[i].FNAME="游客";
+			}	
+			html_str+='<li class="ui-li-static ui-body-inherit">' 
+			        +'<h2 class="h2_set">'+data.items.item[i].FNAME+'</h2>'
+			        +'<p>'+data.items.item[i].FMSG+'</p>'
+			        +' <p class="ui-li-aside f_set">'
+			        +'<img class="min_p" alt="" src="images/clock-small.png">'
+			        +'<span class="color_s1">'+data.items.item[i].FTIME.replace(getNowDay(),"")+'</span></p>'
+			      	+'</li>';
+			}
+			$("#listassess").html(html_str);
+	}
+	
+	function assess_cb(data)
+	{
+		result=data;
+		//$("#totalbook").text(data.pageTotalSize);
+		var html_str="";
+		
+		if(data.items.item.length==0)
+		{
+			$("#loadMore>em").css("display","block");
+			$("#loadMore>em").text("暂无评论");
+			$("#loadMore>span").css("display","none");
+		}
+		
+		//var css="ui-li-static ui-body-inherit";
+		for(var i=0;i<data.items.item.length;i++)
+		{
+			if(data.items.item[i].FNAME==null || data.items.item[i].FNAME=="undefined")
+			{
+				data.items.item[i].FNAME="游客";
+			}	
+		  
+			html_str+='<li class="ui-li-static ui-body-inherit">' 
+		        +'<h2 class="h2_set">'+data.items.item[i].FNAME+'</h2>'
+		        +'<p>'+data.items.item[i].FMSG+'</p>'
+		        +' <p class="ui-li-aside f_set">'
+		        +'<img class="min_p" alt="" src="images/clock-small.png">'
+		        +'<span class="color_s1">'+data.items.item[i].FTIME.replace(getNowDay(),"")+'</span></p>'
+		      	+'</li>';
+		}
+		$("#totalpl").text(sessionStorage.articlename);
+		$("#listassess").html(html_str);
+	}
+
+	function assess(pagesize,pageno,more)
+	{
+		  var param={};
+		  param.pageno=pageno;
+		  param.pagesize=pagesize;
+		  param.fjobid=sessionStorage.articleid;
+		  var url="/sx/assess/list";
+		  var cb="assess_cb"+more;
+		  fn_ajax(url,param,"post",cb);
+	}
+
+	var redirect_url="/sxb/articleinfo.html";
+	function add_cb(data)
+	{
+		  	//pop("发表成功！");
+			$("#loadMore>span").text("加载更多");
+			$("#loadMore>em").css("display","none");
+			$("#loadMore>span").css("display","block");
+			
+			if(data.FNAME==null || data.FNAME=="undefined")
+			{
+				data.FNAME="游客";
+			}	
+		  
+		  var a=$("#listassess").html();
+			var 	html_str='<li id="'+data.fid+'" class="ui-li-static ui-body-inherit">' 
+				        +'<h2 class="h2_set">'+data.FNAME+'</h2>'
+				        +'<p>'+data.FMSG+'</p>'
+				        +' <p class="ui-li-aside f_set">'
+				        +'<img class="min_p" alt="" src="images/clock-small.png">'
+				        +'<span class="color_s1">'+data.FTIME.replace(getNowDay(),"")+'</span></p>'
+				      	+'</li>';
+				html_str+=a;   
+			$("#listassess").html(html_str);
+	  	window.location=redirect_url;
+	}
+	
+	$("#commit").click(function(e){
+		var url="/sx/assess/add",
+				fjobid = sessionStorage.articleid;
+				fmsg = $("#info").val(),
+		input_data={
+				fjobid : fjobid,
+				fmsg : fmsg,
+				ftype:"2"
+		 };
+		 
+		if( fjobid == "")
+		{
+		  pop("职位ID不能为空"); 
+		  return false;
+		}
+		if( fmsg == "")
+		{
+		  pop("评论的内容不能为空"); 
+		  return false;
+		}
+	
+		fn_ajax(url,input_data,"post","add_cb");
+	});
+
+</script>
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?933dcad2a62081671207ea9fa0d6623b";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</body>
+</html>

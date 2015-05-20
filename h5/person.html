@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--meta-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="author" content="admin@17track.net"/>
+<meta name="robots" content="nofollow" />
+<meta name="Description" content="实习吧！"/>
+<meta name="Keywords" content="实习 实习吧 找工作 实习工作"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<title>实习吧-个人中心</title>
+<link rel="stylesheet" href="jqm/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="css/t.css" />
+<script src="js/jquery.js"></script>
+<script src="jqm/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/wuliu.js"></script>
+<script src="js/comm_page.js"></script>
+<style type="text/css">
+.top_set1{
+   top:0.25em !important;}	
+.back_arrow{
+	height:20px !important;
+	width:auto;}
+.u_li_set{
+	border-radius: 0;
+    box-shadow: none !important;
+    margin: 0.5em 1em !important;} 
+#logo{
+	left:1em;}	
+#nick{
+	font-size:1.5em;
+	font-weight:bold;}	
+.s_f_r{
+	position: absolute;
+    right: 1em;}	
+.submit_set	{
+    border: 1px solid #88E2D1;
+    color: #88E2D1;
+	font-size:1.2em !important;
+	font-weight:bold;
+	background-color:#E0FFF9;
+	padding:0.2em 0.5em;
+	cursor: pointer;
+	} 
+.submit_set1{
+	border: 1px solid #999999;
+    color: #666666;
+	background-color:#dddddd;
+	font-size:0.75em !important;
+	padding:0 0.5em;}	 
+.p_s_s{
+	font-size:1em !important;}
+.span_s2{
+	color:#333333;
+	background:#dddddd;
+	padding:0 0.5em;}	
+.li_b_set1{
+	border-width: 0 !important;
+	padding:0em 1em !important;
+	}		
+.li_b_set{
+	 border-width: 1px 0 !important;}	
+.c_c_set{
+	background-color:#21D0C6 !important;
+	border-color:#21D0C6 !important;
+	color:#ffffff !important;
+	}
+#logout ul {
+	margin:0 1em;}	
+#logout ul,#logout ul li{
+	list-style-type:none !important;}	
+#logout a{
+    background-color: #FD4848!important;
+    border: medium none !important;
+    color: #ffffff !important;
+	margin:2em 3em;
+    text-shadow: none !important;
+}
+#logout a:focus {
+    box-shadow: 0 0 0 #FD4848 !important;
+}	 	 	
+.u_li_set a{
+	background-color:#ffffff !important;
+	color:#333333 !important;
+    border-width: 0 0 1px !important;
+	text-shadow: 0 0 0 #FFFFFF !important;
+	box-shadow:none !important;
+	border-color:#dddddd !important;
+    }
+.u_li_set a:hover{
+	color:#333333 !important;
+	border-color:#DDDDDD !important;
+    text-shadow: 0 0 0 #FFFFFF !important;
+	box-shadow: 0 0 0 #FFFFFF !important;
+	}
+	
+.foot_nav1 a:focus{
+	box-shadow:none !important;} 
+.ui-btn-active {
+	background-color: #21d0c6 !important;
+	border-color: #21d0c6 !important;
+	color: #ffffff !important;
+	text-shadow: 0 0 0 #21d0c6 !important;
+}	
+.first_selected{
+	background-color: #21d0c6 !important;
+	border-color: #21d0c6 !important;
+	color: #ffffff !important;
+	text-shadow: none !important;
+	background: url("images/icon_my_selected.png") no-repeat scroll 50% 21% / 24px 18px rgba(0, 0, 0, 0);}
+.no_selected{
+	background-color:rgb(237, 242, 245) !important;
+	border-color:rgb(237, 242, 245) !important;
+	color: #999999 !important;
+	text-shadow: 0 0 0 #999999 !important;}
+</style>
+</head>
+
+<body>
+<script>sxbIsLogin();</script>
+<div data-role="page" id="pagehome">
+<div data-role="header" data-position="fixed" data-theme="f">
+<a  href="javascript:void()" class="b_c_set top_set1" data-rel="back" data-role="none"
+		 data-add-back-btn="true"><img class="back_arrow" src="images/arrow_green.png"/></a>
+<h1>个人中心</h1>
+	</div>
+	
+	<div data-role="content" class="content-1">
+      <ul data-role="listview" data-inset="true" class="u_li_set" id="nologin">
+         <li>
+         <!--div id="nologin" >
+			<div-->
+				<a href="login.html?url=person.html#home"
+				data-icon="arrow-r" data-iconpos="right" data-corners="false" data-ajax="false">我要登陆</a>
+             </li>      
+			<!--/div>
+			<div-->
+            <li>
+				<a href="javascript:void()" onclick="feedback()"
+				data-corners="false"  data-icon="arrow-r" data-iconpos="right" data-ajax="false">反馈</a>
+             </li>
+       </ul>
+
+  <ul data-role="listview" id="login"  style="display:none;" class="u_li_set">
+	<li class="li_b_set1">
+	<span id="fid" style="display: none;"></span>
+      <img id="logo" src="images/avatar_male.png">
+         <p><span id="nick"></span>
+            <span class="s_f_r">
+            <button class="submit_set" data-role="none" onclick="useredit()">个人简历&nbsp;&gt;</button></span></p>
+         <p><span class="span_1" id="sex">男</span>丨
+            <span id="address"></span></p>
+         <p class="p_s_s">
+            <!--span class="span_s2"></span-->
+          </p>
+         
+      </li>
+      <li class="li_b_set">
+      	<p class="p_s_s">
+        <span style="color: #666666;">邮箱：</span>
+        <span id="email"></span>
+        <span class="s_f_r" >
+        	<button id="active" class="submit_set1" data-role="none">未验证</button>
+        </span>
+        <br/>
+        <br/>
+        <span style="color: #666666;">手机：</span>
+		<span id="tel"></span>
+        </p>
+      </li>      
+            <li>
+				<a onclick="listapprove('1')" href="javascript:void()" data-corners="false"  data-icon="arrow-r" data-iconpos="right">报名查询
+				<span id="approvesize" class="ui-li-count c_c_set">0</span></a>
+			</li>
+			<li>
+				<a onclick="mycollect()" href="javascript:void()" data-corners="false"  data-icon="arrow-r" data-iconpos="right">我的收藏
+				<span id="collectsize" class="ui-li-count c_c_set">0</span></a>
+			</li>
+			<li>
+				<a onclick="changepwd()" href="javascript:void()" data-corners="false"  data-icon="arrow-r" data-iconpos="right">密码修改</a>
+			</li>
+			<li>
+				<a style="border-width: 0px 0px 1px 0px;" onclick="feedback()" href="javascript:void()" data-corners="false"  data-icon="arrow-r" data-iconpos="right">建议反馈</a>
+			</li>
+
+   	</ul> 
+   	
+   	 <div id="logout" style="display: none;">
+				<!--a href="login.html?url=person.html#home" data-icon="arrow-r" data-iconpos="right" data-corners="false">我要注销</a--> 
+           <ul>
+              <li>
+                <a data-role="button" data-corners="false" href="login.html?url=person.html#home" data-transition="slide">我要注销</a>
+              </li>
+           </ul>  
+		</div>  
+        </div>  
+		
+	
+	<div data-role="footer" data-position="fixed" class="footer_set1" >
+		    <div data-role="navbar">
+				<ul class="foot_nav1">
+				    <li><a href="index.html#home"  data-icon="my-home" data-transition="slide" data-ajax="false" class="no_selected a_a1">首页</a></li>
+					<li><a href="find.html#home"  data-icon="my-find" data-iconpos="right"  data-transition="slide" data-ajax="false" class="no_selected a_a2">分类导航</a></li>
+					<li><a href="article.html#home"  data-icon="my-signup" data-iconpos="right"  data-transition="slide" data-ajax="false" class="no_selected a_a3">热门文章</a></li>
+					<li><a href="person.html#home"  data-icon="my-my" data-iconpos="right"  data-transition="slide" data-ajax="false" class="first_selected a_a4">个人中心</a></li>
+			    </ul>
+			</div>
+	</div>
+</div>
+<script>
+var result={};
+var pagesize=5;
+var pageno=0;
+var user={};
+var booklist=[];
+var addr="";
+if(getRequest().a!=null && getRequest().a!="undefined")
+{
+	addr=getRequest().a;
+}
+
+$(document).ready(function(){  
+	pagesize=5;
+	pageno=1;
+	//search(20,1,"");
+	isLoginSxb();
+});
+
+
+$("#loadMore").click(function()
+{
+	pageno++;
+	search(pagesize,pageno,"1");
+});
+
+function ok_sxb(data)
+{
+	user=data;
+	//var html_str="";
+	//html_str+='<a href="#" onclick="javascript:showUser();" data-transition="slide" class="ui-btn ui-btn-icon-right ui-icon-carat-r">'
+	//			+'<img src="images/customers.png" alt="我的账号"/>'
+	//			+'<h2>我的账号</h2>'
+	//			+'</a>'
+	//$("#userlogin").html(html_str);
+	if(data.fgender==null || data.fgender=="undefined")
+	{
+		data.fgender="";
+	}
+	if(data.faddress==null || data.faddress=="undefined")
+	{
+		data.faddress="";
+	}
+	if(data.femail==null || data.femail=="undefined")
+	{
+		data.femail="";
+	}
+	
+	if(data.factive == '1')
+	{
+		$("#active").text("已验证");
+	}
+	/*if(data.flogo==null || data.flogo=="undefined")
+	{
+		if(data.fgender=="1")
+		{
+			data.flogo="images/avatar_male.png";
+		}else if(data.fgender=="0")
+		{
+			data.flogo="images/avatar_female.png";
+		}
+	}
+	$("#logo").attr("src",data.flogo);*/
+	$("#nick").text(data.fnick);
+	$("#name").text(data.faccount);
+	if(data.fgender=="1")
+	{
+		$("#sex").text("男");
+	}else if(data.fgender=="0")
+	{
+		$("#sex").text("女");
+	}else
+	{
+		$("#sex").text("男");
+	}	
+	$("#address").text(data.faddress);
+	$("#email").text(data.femail);
+	$("#tel").text(data.ftel);
+	$("#login").css("display","block");
+	$("#nologin").css("display","none");
+	$("#fid").text(data.fid);
+	
+	getLabels();
+	collectsize();
+	approvesize();
+	
+	queryuserlogo();
+	
+	$("#logout").css("display","block");
+}
+function error_sxb(data)
+{
+	var html_str="";
+	html_str+='<a class="ui-btn ui-btn-icon-right ui-icon-carat-r"'
+				+' href="login.html?url=person.html#home" data-transition="slide" rel="external">'
+				+'<img src="images/customers.png" alt="我要登陆"/>'
+				+'<h2>我要登陆</h2>'
+				+'</a>';
+	$("#userlogin").html(html_str);
+	$("#mdpwd").css("display","none");
+}
+function isLoginSxb()
+{
+	  var param={};
+	  param.usertype="1";
+	  var url="/sx/islogin?url="+window.location.href;	  
+	  var errorCallback="error_sxb";
+	  fn_ajax_error_async(url,param,"post","ok_sxb",errorCallback,"1");
+	  return false;
+}
+
+function ok_label(data)
+{
+	var html_str="";
+	for(var i=0;i<data.items.length;i++)
+	{
+		html_str+=data.items[i].fname+" ";
+	}
+	$("#tag").text(html_str);
+}
+
+function error_label(data)
+{
+	$("#tag").text("");
+}
+
+function getLabels()
+{
+	  var param={};
+	  var url="/sx/label/queryuser";
+	  var errorCallback="error_label";
+	  fn_ajax_error_async(url,param,"post","ok_label",errorCallback,"1");
+	  return false;
+}
+
+function logout_cb(data)
+{
+	window.location.href='index.html';
+}
+function logout()
+{
+	  var param={};
+	  var url="/sx/logout";	  
+	  localStorage.accesscode = "";
+	  localStorage.accesstoken = "";
+	  fn_ajax(url,param,"post","logout_cb");
+	  return false;		
+}
+$("#cancelPwd").click(function()
+{
+	window.location.href='#home';
+});
+
+$("#logout a").click(function()
+{
+	logout();
+	return false;
+});
+
+function modifyPwd_cb(data)
+{
+	$("#popdiv").html("修改密码成功！");
+	$("#popdiv").popup();//id为弹出层的id
+	$("#popdiv").popup("open");
+	 $.mobile.changePage("#home","");
+	//setTimeout(function(){
+	//	   $("#popdiv").popup("close");
+	//	   $.mobile.changePage("#home","");
+	//}, 2000);//两秒后关闭
+	//sleep(2);
+	//$("#popdiv").popup("close");
+	
+	
+}
+function modifyPwd_cb_error(data)
+{
+	$("#popdiv").html(data.msg);
+	$("#popdiv").popup();//id为弹出层的id
+	$("#popdiv").popup("open");
+}
+
+$("#modifyPwd").click(function()
+{
+		var oldpwd=$("#oldPwd").val();
+		var newpwd1=$("#newPwd1").val();
+		var newpwd2=$("#newPwd2").val();
+		if(oldpwd==null || oldpwd=="")
+		{
+			$("#popdiv").html("旧密码不能为空");
+			$("#popdiv").popup();//id为弹出层的id
+			$("#popdiv").popup("open");
+			return false;
+		}
+		if(newpwd1==null || newpwd1=="" || newpwd2==null || newpwd2=="")
+		{
+			$("#popdiv").html("新密码不能为空");
+			$("#popdiv").popup();//id为弹出层的id
+			$("#popdiv").popup("open");
+			return false;
+		}
+		if(newpwd1!= newpwd2)
+		{
+			$("#popdiv").html("两次输入新密码不一致");
+			$("#popdiv").popup();//id为弹出层的id
+			$("#popdiv").popup("open");
+			return false;
+		}
+		var param={};
+		param.oldpwd=oldpwd;
+		param.newpwd=newpwd1;
+	    var url="/tsg/reader/modifyPwd";	  
+		fn_ajax_error(url,param,"post","modifyPwd_cb","modifyPwd_cb_error");
+		return false;
+});
+
+
+function feedback()
+{
+	window.location.href="feedback.html";
+}
+
+function changepwd()
+{
+	window.location.href="changepwd.html";
+}
+
+function mycollect()
+{
+	window.location.href="collect.html";
+}
+
+function listapprove()
+{
+	window.location.href="myjob.html";
+}
+
+function useredit()
+{
+	sessionStorage.fuserid=$("#fid").text();
+	window.location.href="useredit.html";
+}
+
+function collectsize_ok(data)
+{
+	$("#collectsize").text(data.size);
+}
+
+function collectsize_error(data)
+{
+	//$("#collectsize").text(data.size);
+}
+
+function collectsize()
+{
+	  var param={};
+	  var url="/sx/collect/listcount";
+	  var errorCallback="collectsize_error";
+	  fn_ajax_error(url,param,"post","collectsize_ok",errorCallback);
+	  return false;
+}
+
+
+function approvesize_ok(data)
+{
+	$("#approvesize").text(data.size);
+}
+
+function approvesize_error(data)
+{
+	//$("#collectsize").text(data.size);
+}
+
+function approvesize()
+{
+	  var param={};
+	  param.fstatus="1";
+	  var url="/sx/apply/listapprovecount";
+	  var errorCallback="approvesize_error";
+	  fn_ajax_error(url,param,"post","approvesize_ok",errorCallback);
+	  return false;
+}
+
+function queryuserlogo_ok(data)
+{
+	if(data.FUSERLOGO==null || data.FUSERLOGO=="undefined")
+	{
+		if(data.FGENDER=="1")
+		{
+			data.FUSERLOGO="avatar_male.png";
+		}else if(data.FGENDER=="0")
+		{
+			data.FUSERLOGO="avatar_female.png";
+		}
+	}
+	$("#logo").attr("src","images/"+data.FUSERLOGO);
+}
+
+function queryuserlogo()
+{
+	  var param={};
+	  param.fstatus="1";
+	  var url="/sx/ossuser/queryuserlogo";
+	  fn_ajax(url,param,"post","queryuserlogo_ok");
+	  return false;
+}
+
+
+
+</script>
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?933dcad2a62081671207ea9fa0d6623b";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</body>
+</html>

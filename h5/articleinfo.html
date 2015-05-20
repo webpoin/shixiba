@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--meta-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="author" content="admin@shixiba.com"/>
+<meta name="robots" content="nofollow" />
+<meta name="Description" content="实习吧！"/>
+<meta name="Keywords" content="实习 实习吧 找工作 实习工作"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<title>实习吧-文章详情</title>
+<link rel="stylesheet" href="jqm/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="css/t.css" />
+<script src="js/jquery.js"></script>
+<script src="jqm/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/wuliu.js"></script>
+<script src="js/comm_page.js"></script>
+<script src="js/ccdate.js"></script>
+<link rel="stylesheet" href="css/swipebox.css" />
+<script src="js/jquery.swipebox.js"></script>
+<style type="text/css">
+.dian_set{   
+    border: medium none;
+    color: #ffffff !important;
+    font-size: 2em !important;
+    font-weight:normal !important;
+    text-decoration: none !important;}
+.top_set1{
+   top:0.25em !important;}	
+.top_set2{
+   top:-0.3em !important;}
+.back_arrow{
+	height:20px !important;
+	width:auto;}			
+#enroll{
+    background-color: #21D0C6 !important;
+    border:none !important;
+    color: #FFFFFF !important;
+    position: absolute;
+    right: 1em;
+    text-shadow: 0 0 0 #999999 !important;
+    top:0.7em;
+	padding: 0.3em 0.5em;}
+.ul_set_x{
+	border-radius:0;}
+.ul_set_x li{
+	border-width: 0 0 1px!important;}		
+.ul_set_x p{
+	font-size:1em !important;
+	text-overflow: clip !important;
+    white-space: normal !important;
+	margin:0.2em 0 !important;}		
+.span_s2{
+	color:#666666;
+	background:#E6E6E6;
+	padding:0.2em 0.5em;
+	line-height: 25px;
+	margin-right:0.3em;
+	text-shadow:0 0 0 #666666;}	
+.span_1{
+	color:#999999 !important;
+	line-height:110%;
+	}
+.s_width_15{
+	display:block;
+	float:left;
+	width:20%;}	
+.s_width_85{
+	display:block;
+	float:left;
+	width:80%;}	
+.s_top_set{
+	position:relative;
+	top:-0.2em;}		
+.jian_set{
+	border:none;
+	background-color: #0cc;
+    color: #ffffff;
+    font-size: 0.75em !important;
+    font-weight: normal;
+    margin-left: 0.5em !important;
+    padding: 0 2px;
+    position: absolute;
+    text-shadow: 0 0 0 #ffffff;
+}	
+.jian_set_hot
+{
+	border:none;
+	background-color: red;
+    color: #ffffff;
+    font-size: 0.75em !important;
+    font-weight: normal;
+    margin-left: 0.5em !important;
+    padding: 0 2px;
+    position: absolute;
+    text-shadow: 0 0 0 #ffffff;
+}	
+.submit_set{
+	border:none;
+	background-color:#3CC;
+	color:#ffffff;}	
+.selected_set {
+	background-color: #21d0c6 !important;
+	border-color: #21d0c6 !important;
+	color: #ffffff !important;
+	text-shadow: none !important;
+}
+
+.nav_set {
+	background-color:rgb(237, 242, 245) !important;
+	border-color:rgb(237, 242, 245) !important;
+	color: #999999 !important;
+	text-shadow: 0 0 0 #999999 !important
+}
+.foot_nav1 a:focus{
+	box-shadow:none !important;}	
+	
+.foot_nav1 a:after{
+	background-color: rgba(0, 0, 0, 0);}
+.ui-icon-my-share{  
+    background: url("images/icon_share.png")50% 21% no-repeat;
+    background-size: 24px 18px;  
+    } 
+.ui-icon-my-star{
+	background: url("images/icon_star_normal.png")50% 21% no-repeat;
+    background-size: 24px 18px; }
+.ui-icon-my-comment{
+	background: url("images/icon_comment.png")50% 21% no-repeat;
+    background-size: 24px 18px; }
+.ui-icon-my-signuped{
+	background: url("images/icon_signup_normal.png")50% 21% no-repeat;
+    background-size: 24px 18px; }
+    
+ p span{
+ 	line-height: 130%;
+ }
+ #jobmsg p span,#commsg p span{
+ line-height: 150%;
+ }
+#bubble_set{
+	position:fixed;
+	background:url(/sxb/images/bubble.png) no-repeat;
+	background-size:100% 100%;
+	right:0.35em;
+	top:3em;
+	width:65%;
+	height:5.2em;
+	z-index:1002;}	 
+.box_p_set{
+	color:#ffffff;
+	text-shadow: 0 0 0 #f3f3f3;
+	padding:0 1em;}
+.body_blind{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	background: none repeat scroll 0 0 #000000;
+	opacity:0.5;
+	position:fixed;
+	z-index:1001;}
+
+.span_s2{
+	font-size: 0.75em !important;
+}
+h2{
+font-size: 1.2em !important;
+}
+
+
+
+.u_li_set {
+    border-radius: 0;
+    box-shadow: none !important;
+    margin: 0 1em !important;
+}
+.u_li_set li {
+    border-width: 0 0 1px !important;
+}
+.u_li_set p {
+    font-size: 1em !important;
+    text-overflow: clip !important;
+    white-space: normal !important;
+}
+
+#fname{
+	white-space: normal !important;
+}
+
+</style>
+
+</head>
+<body>
+
+<div data-role="page" id="pagehome">
+	<div id="head1" data-role="header" data-position="fixed" data-theme="f"  style="display: none;">
+     <a  href="javascript:void()" class="b_c_set top_set1" data-rel="back" data-role="none"
+		 data-add-back-btn="true"><img class="back_arrow" src="images/arrow_green.png"/></a>
+		<h1 id="ftitle" style="display: none;">文章详情</h1>
+		<span id="fid" style="display: none;"></span>
+		<span id="fcompanyid" style="display: none;"></span>
+		<!--button class="b_c_set top_set2" data-rel="back" data-role="none">...</button>
+		        <!--img style="width: 100%;height: 240px;" src="images/03.jpg" border="0" alt="001"-->
+	</div>
+	
+	<div data-role="content" class="content">
+			<img id="fpicname"  style="width: 100%;height: 220px;display: none;" src="images/m-seed.jpg" border="0" alt="">
+
+	
+ <ul id="jobdetail" data-role="listview" data-inset="true" class="ul_set_x" style="display: none;">   
+    <li>
+      <h2>
+         <span  id="fname"></span>
+         <button id="jian_a" class="jian_set" data-role="none"></button>
+      </h2>
+      <p><span id="ftime" class="span_1"></span>
+      </p>
+      </li>
+       <li id="jobmsg">
+        <h2 class="span_1">文章内容：</h2>
+        <p id="fmsg">
+			</p> 
+      </li>
+     </ul> 
+     
+     <div style="padding-left: 1em">
+     <h2 class="span_1">热门评论<span id="assesssize"></span>：</h2></div>
+      <ul id="listassess" data-role="listview" data-inset="true" class="u_li_set">
+       	
+      </ul>
+      <div id="loadMore" class="np-load-more" style="display: block;">
+			<span>加载更多</span>
+			<em style="display:none">没有更多了</em>
+	</div> 
+</div>
+
+
+ 	<div id="popdiv" data-role="popup" style="padding: 10px 5px;"></div><!--弹出层,默认不显示-->
+	<div data-role="footer" data-position="fixed" class="footer_set1" >
+		    <div data-role="navbar">
+				<ul class="foot_nav1">
+				    <li><a id="share" href="javascript:void()" data-icon="my-share" data-iconpos="right"  data-transition="slide"  data-ajax="false" class="no_selected">分享</a></li>
+					<li><a id="pl" href="#"  data-icon="my-comment" data-iconpos="right"  data-transition="slide" data-ajax="false" class="no_selected">评论</a></li>
+			    </ul>
+			</div>
+	</div>
+       <div id="bubble_set" style="display:none;">
+        <!--img class="locate_set" src="/sxb/images/bubble.png"/-->
+          <div class="box_p_set">
+           <p>点击右上角按钮,再选择"分享到朋友圈"或"发送给朋友"即可分享。</p>
+          </div> 
+        </div> 
+</div>
+      <div class="body_blind" style="display:none"></div> 
+<script>
+$(document).on("pageinit","#pagehome",function(){
+	$("#share").on("tap",function(){
+		$("#bubble_set").css("display","block");		
+		$(".body_blind").css("display","block");
+		})
+	$(".locate_set").on("tap",function(){
+		$('#bubble_set').css('display','none');
+		$(".body_blind").css("display","none");
+		})
+})
+	$(document).on("scrollstart",function(){
+  		$('#bubble_set').css('display','none');
+		$(".body_blind").css("display","none");
+});
+</script>
+<script>
+;( function( $ ) {
+	$( '.swipebox' ).swipebox( {
+		useCSS : true,
+		useSVG : true,
+		initialIndexOnArray : 0,
+		hideCloseButtonOnMobile : false,
+		hideBarsDelay : 3000,
+		videoMaxWidth : 1140,
+		beforeOpen: function() {},
+		afterOpen: null,
+		afterClose: function() {},
+		loopAtEnd: false } );
+
+} )( jQuery );
+
+$(document).on("pageinit","#pagehome",function(){
+	$(".first_selected").addClass("selected_set");
+	$(".no_selected").addClass("nav_set");
+});
+
+	var pagesize=5;
+	var pageno=1;
+	//jobs(pagesize,pageno,"");
+
+	$("#loadMore").click(function()
+	{
+		pageno++;
+		assess(pagesize,pageno,"1");
+	});
+	
+	function apply_del_cb()
+	{
+		pop("取消报名成功！");
+		$("#enroll").css("display","block");
+		$("#a_enroll").text("报名");
+		$("#a_enroll").attr("href","enroll.html#home");
+	}
+	
+	function job_cb(data)
+	{
+		$("#fid").text(data.FID);
+		
+		var jian="";
+		if(data.FHOT != null && parseInt(data.FHOT)>=500 && parseInt(data.FHOT)<800)
+		{
+			jian="荐";
+			$(".jian_set").text(jian);
+		}else if(data.FHOT != null && parseInt(data.FHOT)>=800)
+		{
+			jian="热";
+			$(".jian_set").text(jian);
+			$("#jian_a").removeClass("jian_set");
+			$("#jian_a").addClass("jian_set_hot");
+		}else
+		{
+			$(".jian_set").remove();
+		}
+		
+		if(data.FPICNAME!=null && data.FPICNAME!="undefined")
+		{
+			$("#fpicname").css("display","block");
+			$("#fpicname").attr("src","/sxb/images/"+data.FPICNAME);
+		}
+		
+		$("#fname").text(data.FNAME);
+		$("#ftime").text(data.FTIME);
+		$("#fmsg").html("<span>"+data.FMSG+"</span>");
+		
+		$("#jobdetail").css("display","block");
+		$("#ftitle").css("display","block");
+		$("#head1").css("display","block");
+		return;
+	}
+	
+function job_error_cb(data)
+{
+	
+}
+
+function job()
+{
+	  var param={};
+	  //var fid=getRequest().m;
+	  var fid=sessionStorage.articleid;
+	  param.fid=fid;
+	  var url="/sx/article/query";
+	  fn_ajax_error(url,param,"post","job_cb","job_error_cb","1");
+}
+
+job();
+
+function toEnroll()
+{
+	//sessionStorage.m=$("#fid").text();
+	if($("#enroll").text() == "已关闭")
+	{
+		pop("职位已经关闭，不能报名！");
+		return false;
+	}	
+	window.location.href="enroll.html";
+}
+
+$("#pl").click(function()
+{
+	sessionStorage.articlename=$("#fname").text();
+	window.location.href="articlepl.html";
+});
+
+function collect_error_cb(data)
+{
+	pop(data.msg);
+}
+
+function collect_del_cb()
+{
+	pop("取消收藏成功！");
+	$("#collect").text("收藏");
+}
+
+function collect_cb(data)
+{
+	pop("成功收藏");
+	$("#collect").text("已收藏");
+  	//window.location=redirect_url;
+}
+
+$("#collect").click(function(e){
+	 var param={};
+	 var fjobid=sessionStorage.m;
+	 param.fjobid=fjobid;
+	 if( fjobid==null || fjobid == "")
+	{
+		  pop("职位ID不能为空"); 
+		  return false;
+	}
+	 
+	if($("#collect").text()=="已收藏")
+	{
+		 var url="/sx/collect/del";
+		 fn_ajax(url,param,"post","collect_del_cb");
+		 return;
+	}else
+	{
+		var url="/sx/collect/add";
+		fn_ajax_error(url,param,"post","collect_cb","collect_error_cb");
+		return;
+	}
+});
+
+
+function listjoblabel_cb(data)
+{
+	var html_str="";
+	for(var i=0;i<data.itemsize;i++)
+	{ 
+		if(data.items[i].FLABELNAME!=null && data.items[i].FLABELNAME!="undefined")
+		{
+			html_str+='<span class="span_s2">'+data.items[i].FLABELNAME+'</span>&nbsp;';
+		}	
+	}
+	
+	$("#joblabel").html(html_str);
+}
+
+function listjoblabel_error_cb(data )
+{
+	  //pop(data.msg);
+}
+
+function listjoblabel(pagesize,pageno)
+{
+	  var param={};
+	  param.pageno=pageno;
+	  param.pagesize=pagesize;
+	  param.fjobid=sessionStorage.m;
+	  // param.fisprint=fisprint;
+	  // param.stime=$("#txtStart").val();
+	  // param.etime=$("#txtEnd").val();
+	  var url="/sx/job/findjoblabel";
+	  fn_ajax_error(url,param,"post","listjoblabel_cb","listjoblabel_error_cb");
+}
+listjoblabel(1000,1);
+
+function listcompanypic_callback(data)
+{
+	 var html_str="";
+	 if(data.itemsize==0)
+	 {
+		 $("#pic").css("display","none");
+		 return;
+	 }
+	 for(var i=0;i<data.itemsize;i++)
+	 {
+		//html_str+='<img alt="" src="/sxb/images/'+data.items[i].FNAME+'" style="width: 80px;height: 50px;">&nbsp;';
+		html_str+=' <a href="/sxb/images/'+data.items[i].FNAME+'" class="swipebox" title="">'
+          +'<img src="/sxb/images/'+data.items[i].FNAME+'" alt="image" style="width: 80px;height: 50px;"/>'
+        +'</a>';
+	 }
+	 $("#companypic").html(html_str);
+}
+
+function listcompanypic()
+{
+	var url="/sx/company/listcompanypic",
+		fid=$("#fcompanyid").text(),
+		input_data={
+			fcompanyid : fid
+		};
+	if(fid=="") 
+	{
+		pop("ID不能为空！"); 
+		return false;
+	}
+	fn_ajax(url,input_data,"post","listcompanypic_callback");
+}
+
+/*$("#share").click(function()
+{
+	//pop("请选择浏览器菜单中的分享按钮");
+});*/
+function listjob_cb(data)
+{
+	 var html_str="";
+	 if(data.itemsize==0)
+	 {
+		 return;
+	 }
+	 for(var i=0;i<data.itemsize;i++)
+	 {
+		html_str+='<p>'+data.items[i].FNAME+'</p>';
+	 }
+	 $("#oldjob").html(html_str);
+}
+function listjob()
+{
+	var url="/sx/job/listjob",
+	fcompanyid=$("#fcompanyid").text(),
+	input_data={
+		fcompanyid : fcompanyid
+	};
+	if(fcompanyid=="") 
+	{
+		pop("企业ID不能为空！"); 
+		return false;
+	}
+	fn_ajax(url,input_data,"post","listjob_cb");
+}
+
+/*function ok_login_sxb(data)
+{
+////////////////	
+}
+function error_login_sxb(data)
+{
+	$("#enroll").css("display","block");
+}
+
+function isLoginSxb()
+{
+	  var param={};
+	  param.usertype="1";
+	  var url="/sx/islogin?url="+window.location.href;	  
+	  var errorCallback="error_login_sxb";
+	  fn_ajax_error_async(url,param,"post","ok_login_sxb",errorCallback,"1");
+	  return false;
+}*/
+
+var pagesize=20;
+var pageno=1;
+assess(pagesize,pageno,"");
+
+$("#loadMore").click(function()
+{
+	pageno++;
+	assess(pagesize,pageno,"1");
+});
+
+function assess_cb1(data)
+{
+	result=data;
+	if(data.items.item.length==0)
+	{
+		$("#loadMore>em").css("display","block");
+		$("#loadMore>span").css("display","none");
+		return false;	
+	}
+	
+	var html_str=$("#listassess").html();
+	for(var i=0;i<data.items.item.length;i++)
+	{
+		if(data.items.item[i].FNAME==null || data.items.item[i].FNAME=="undefined")
+		{
+			data.items.item[i].FNAME="游客";
+		}	
+		html_str+='<li class="ui-li-static ui-body-inherit">' 
+		        +'<h2 class="h2_set">'+data.items.item[i].FNAME+'</h2>'
+		        +'<p>'+data.items.item[i].FMSG+'</p>'
+		        +' <p class="ui-li-aside f_set">'
+		        +'<img class="min_p" alt="" src="images/clock-small.png">'
+		        +'<span class="color_s1">'+data.items.item[i].FTIME.replace(getNowDay(),"")+'</span></p>'
+		      	+'</li>';
+		}
+		$("#listassess").html(html_str);
+}
+
+function assess_cb(data)
+{
+	result=data;
+	//$("#totalbook").text(data.pageTotalSize);
+	var html_str="";
+	
+	if(data.items.item.length==0)
+	{
+		$("#loadMore>em").css("display","block");
+		$("#loadMore>em").text("暂无评论");
+		$("#loadMore>span").css("display","none");
+	}
+	
+	$("#assesssize").text("("+data.items.item.length+")");
+	
+	//var css="ui-li-static ui-body-inherit";
+	for(var i=0;i<data.items.item.length;i++)
+	{
+		if(data.items.item[i].FNAME==null || data.items.item[i].FNAME=="undefined")
+		{
+			data.items.item[i].FNAME="游客";
+		}	
+	  
+		html_str+='<li class="ui-li-static ui-body-inherit">' 
+	        +'<h2 class="h2_set">'+data.items.item[i].FNAME+'</h2>'
+	        +'<p>'+data.items.item[i].FMSG+'</p>'
+	        +' <p class="ui-li-aside f_set">'
+	        +'<img class="min_p" alt="" src="images/clock-small.png">'
+	        +'<span class="color_s1">'+data.items.item[i].FTIME.replace(getNowDay(),"")+'</span></p>'
+	      	+'</li>';
+	}
+	$("#totalpl").text(data.pageTotalSize);
+	$("#listassess").html(html_str);
+}
+
+function assess(pagesize,pageno,more)
+{
+	  var param={};
+	  param.pageno=pageno;
+	  param.pagesize=pagesize;
+	  param.fjobid=sessionStorage.articleid;
+	  var url="/sx/assess/list";
+	  var cb="assess_cb"+more;
+	  fn_ajax(url,param,"post",cb);
+}
+
+</script>
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?933dcad2a62081671207ea9fa0d6623b";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>实习吧运营支撑系统-用户登录</title>
+<link href="/sxb/oss/css/my.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/wuliu/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="/wuliu/js/wuliu.js"></script>
+<style type="text/css">
+.img-login{
+	margin-bottom:100px;
+}
+.img-login:after{
+	  clear: both;
+    content: " ";
+    display: block;
+    height: 0;}			
+.img-login .img_left{
+	float:left;
+	width:500px;
+	height:300px;
+	padding-left: 30px;
+	border-right: 1px dashed #D5D5D5;
+	}
+.img_left img{
+	width:550px;
+	height:300px;
+	}	
+.login_right{
+background-color: #FAFAFA;
+    border: 1px solid #CACACA;
+	float:right;
+    width: 310px;
+   margin-right: 30px;
+    }
+.login_margintop{
+	    margin: 25px auto 0;
+		text-align:center;
+    width: 250px;}	
+.login_margintop span{
+	  color: #4CB7B7;
+    display: block;
+    font-size: 23px;
+    font-weight: bold;}
+.login_body{
+	 padding: 10px 30px 0;}		
+.login_name{
+	  border: 1px solid #C8C8C8;
+    height: 18px;
+    line-height: 18px;
+    padding: 5px;
+    vertical-align: middle;
+    width: 238px;}
+.login_pwd{
+	  border: 1px solid #C8C8C8;
+    height: 18px;
+    line-height: 18px;
+    padding: 5px;
+    vertical-align: middle;
+    width: 238px;}
+.login_form1{
+	margin-bottom:10px;}
+.checkbox {
+	vertical-align:middle;}
+.forgot{
+	display:block;
+	float:right;}		
+.login_submit{
+	overflow: hidden;
+	margin-bottom:24px;}
+.login_submit button{
+	    background:#4CB7B7;
+    border: 0 none;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    height: 32px;
+    line-height: 32px;
+    overflow: hidden;
+    vertical-align: middle;
+    width: 250px;}
+.register{
+	margin: 54px auto 17px;
+	text-align:center;
+    width: 250px}
+.register a{
+	color: #EA5E00;
+    font-size: 14px;
+    font-weight: 700;}		
+		
+.sming {
+	position:relative;
+	border-top:1px solid silver;
+	height:90px;
+	text-align:center;
+	overflow:hidden;
+	z-index:4;
+}
+.sming a:hover{
+	color:red;}
+.sm1{
+	position: absolute;
+	left:80px;
+	width:160px;}
+.sm2{
+	position:relative;
+	float:right;
+	width:860px;;
+		}
+ul li {
+	padding-bottom: 5px;
+	font-size: 12px;
+}
+</style>
+</head>
+<body>
+
+<!--#include virtual="/sxb/oss/head.html"-->
+
+<div class="img-login w1024 mt10">
+<div class="img_left mt10" style="color: #585858;">
+	<a target="_blank" href="#">
+	</a>
+	<br>
+	<h1 style="font-size: 24px;">欢迎来到实习吧-运营支撑系统</h1>
+	<br>
+	<br>
+	<ul>
+		<li></li>
+	</ul>
+</div>
+<div class="login_right mt10">
+<div class="login_margintop">
+	<h3>
+	<span>管理员登录</span>
+	</h3>
+</div>
+<div class="login_body">
+	<form class="login_form" autocomplete="off" name="myform" method="post" action="#">
+	<div class="login_form1"><label for="user_name1">登录账号：</label>
+	<input id="user_name" value="" class="login_name"  type="text" tabindex="1" placeholder="请输入手机号/会员名/邮箱"/></div>
+	<div class="login_form1"><label for="password1">登录密码：</label>
+	<input id="password" value="12345678" class="login_pwd"  type="password" tabindex="2" /></div>
+	<div class="login_form1"><input id="remember_name" class="checkbox" type="checkbox" checked="checked" tabindex="3"/>
+	<label for="remember_name">记住用户名</label>
+	<!--a class="forgot" title="忘记密码？ " onclick="gotoresetpwd()" href="javascript:void(0)">忘记密码？ </a--></div>
+	<div class="login_submit">
+	  <button id="Submit_1" class="button_1" tabindex="4" type="submit">登 录</button>
+	</div>
+	</form>
+</div>
+</div>
+</div>
+
+<!--#include virtual="/sxb/oss/foot.html"-->
+  
+<script>
+	$(".username").css("display","none");
+	$("#logout").css("display","none");
+	
+	$(".login_name").val(GetCookie("ossaccount"));
+
+  		var redirect_url="/sxb/oss/index.shtml";
+  		var param = getRequest();
+  		if(param!=null)
+  		{
+  			if(param.url!=null && param.url != "")
+  			{
+  				redirect_url=param.url;
+  			}	
+  		}	
+  		function fn_callback(data)
+		{
+			    SetCookie("ossaccount",data.faccount);
+			    SetCookie("osstypename",data.ftypename);
+		        window.location=redirect_url;
+		}
+  		
+		$(".button_1").click(function(e){
+			e.preventDefault();
+			var url="/sx/oss/login",
+				account=$.trim($(".login_name").val()),
+				pwd=$.trim($(".login_pwd").val()),
+				//usertype="3",
+				input_data={
+							 account:account,
+							 pwd:pwd
+							// usertype:usertype
+						   };
+			if(account=="") 
+			{
+			  alert("用户名不能为空！"); 
+			  return false;
+			}
+			if(pwd=="")
+			{
+			  alert("密码不能为空！"); 
+			  return false;
+			}
+			fn_ajax(url,input_data,"post","fn_callback");
+	
+		});
+	</script>
+</body>
+</html>

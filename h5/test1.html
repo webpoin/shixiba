@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--meta-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="author" content="admin@52track.com"/>
+<meta name="robots" content="nofollow" />
+<meta name="Description" content="实习吧！"/>
+<meta name="Keywords" content="实习 实习吧 找工作 实习工作"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<title>实习吧-首页</title>
+<link rel="stylesheet" href="/sxb/jqm/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="/sxb/css/t.css" />
+<script src="/sxb/js/jquery.js"></script>
+<script src="/sxb/jqm/jquery.mobile-1.4.5.min.js"></script>
+<script src="/sxb/js/wuliu.js"></script>
+<script src="/sxb/js/comm_page.js"></script>
+<script src="/wuliu/js/jquery.img_silder.js"></script>
+
+
+<link rel="stylesheet" href="css/styles.css" type="text/css">
+<script type="text/javascript" src="js/yxMobileSlider.js"></script>
+<style type="text/css">
+#joblist li{
+	height:180px;}		
+.h_m_set{
+	margin:0 !important;}	
+.j_set{
+	color:#FFFFFF;
+	background-color:#0CC;
+	font-size:0.75em !important;
+	margin-left:0.5em !important;}	 
+.p_set{
+	bottom:2px;
+    color: #999999;
+    position: absolute;}	
+.zwt_set{
+	width:100%;
+	height:180px;
+	border:none;
+	}
+.selected_set{
+	background-color:#222326 !important;
+	border-color:#222326 !important;
+	color:#21D0C6 !important;
+	text-shadow:none !important;}
+.nav_set{    
+    background-color: #303236 !important;
+    border-color: #303236 !important;
+    color: #999999 !important;
+    text-shadow: 0 0 0 #999999 !important}	
+.foot_nav1 a:hover{
+	background-color:#222326 !important;
+    border-color:#222326 !important;
+    color:#21D0C6 !important;
+    text-shadow: 0 0 0 #21D0C6 !important;
+	}	
+.foot_nav1 a:focus{
+	box-shadow:none !important;}	
+.ui-btn-active{	
+    background-color: #303236 !important;
+    border-color: #303236 !important;
+    color: #999999 !important;
+    text-shadow: 0 0 0 #999999 !important;}	
+.focus{
+	background:none !important;}
+.slider{
+	float:left;}			
+</style>
+
+</head>
+<body>
+<div data-role="page" id="pagehome">
+	<div data-role="header" id="header_color">
+		<h1 id="title">
+        <img src="images/logo_with_text.png" alt="" />
+        
+        </h1>
+        <!--div data-role="navbar">
+      	<ul>
+        <li><a href="#" id="img_width"><img src="/ns/image/ftlogo.gif"></a></li>
+      </ul>
+    </div-->
+	</div>
+
+<div data-role="content" class="content">
+	
+<div>
+<input type="button"id="reviews"value="Click me"/>
+</div>
+<div id="checkandPass" title="审核意见" style="display: none;">
+<form id="passideas_true" method="post" enctype="multipart/form-data" >
+<div>
+<textarea style="width:100%;height:90%;min-height: 100px;"></textarea>
+</div>
+<div style="margin-top: 20px;text-align: center;">
+<button style="height:30px;width:80px;" type="button" id="upfpass_true" >确定</button>
+<button style="height:30px;width:80px;" id="sb">取消</button>
+</div>
+</form>
+</div> 
+<script type="text/javascript">
+$(document).on("pageinit","#pagehome",function(){
+$( "#reviews" ).bind('click',function(event) {
+$( "#checkandPass" ).dialog({
+autoOpen: true,
+width: 765 ,
+show: "blind",
+hide: "explode",
+modal: true,//设置背景灰的
+});
+$( "#checkandPass" ).dialog( "open" );
+return true;
+});
+});
+</script> 
+</div>
+
+	<div data-role="footer" data-position="fixed" class="footer_set1" >
+		    <div data-role="navbar">
+				<ul class="foot_nav1">
+				    <li><a href="index.html#home"  data-icon="my-home" data-transition="slide" data-ajax="false" class="first_selected">首页</a></li>
+					<li><a href="find.html#home"  data-icon="my-find" data-iconpos="right"  data-transition="slide" data-ajax="false" class="no_selected">分类导航</a></li>
+					<li><a href="myjob.html#home"  data-icon="my-signup" data-iconpos="right"  data-transition="slide" data-ajax="false" class="no_selected">报名</a></li>
+					<li><a href="person.html#home"  data-icon="my-my" data-iconpos="right"  data-transition="slide" data-ajax="false" class="no_selected">个人中心</a></li>
+			    </ul>
+			</div>
+	</div>
+</div>
+<script>
+$(document).on("pageinit","#pagehome",function(){
+	$(".first_selected").addClass("selected_set");
+	$(".no_selected").addClass("nav_set");
+	$(".foot_nav1 li").on("tap",function(){
+     $(this).children().addClass("selected_set");
+     $(this).siblings().children().removeClass("selected_set").addClass("nav_set");
+	});});
+</script>
+<script>
+var pagesize=5;
+var pageno=1;
+/*$('#silder').imgSilder({
+	s_width:'100%', //容器宽度
+	//s_width : 400, // 容器的宽度,可以设置为百分比
+	s_height : 220, //容器高度
+	is_showTit : false, // 是否显示图片标题 false :不显示，true :显示
+	s_times : 3000, //设置滚动时间
+	css_link : '/wuliu/css/style.css'
+});*/
+
+jobs(pagesize,pageno,"");
+
+$("#loadMore").click(function()
+{
+	pageno++;
+	jobs(pagesize,pageno,"1");
+});
+
+function jobs_cb1(data)
+{
+	//result=data;
+	//$("#totalbook").text(data.pageTotalSize);
+	if(data.items.item.length==0)
+	{
+		$("#loadMore>em").css("display","block");
+		$("#loadMore>span").css("display","none");
+		return false;	
+	}
+	
+	var html_str=$("#joblist").html();
+	for(var i=0;i<data.items.item.length;i++)
+	{
+		if(data.items.item[i].FPICNAME==null || data.items.item[i].FPICNAME=="undefined" )
+		{
+			data.items.item[i].FPICNAME="images/text1.jpg";
+		}else
+		{
+			data.items.item[i].FPICNAME="/sxb/images/"+data.items.item[i].FPICNAME;
+		}	
+		var jian="";
+		if(data.items.item[i].FHOT != null && parseInt(data.items.item[i].FHOT)>=100)
+		{
+			jian="荐";
+		}	
+		html_str+='<li style="cursor: pointer;" class="ui-li-static ui-body-inherit ui-first-child" onclick="javascript:showDetail(\''+data.items.item[i].FID+'\');">'
+			   +'<div style="float:right;width:65%;" data-role="none" >'
+			   +'<h2 class="h_m_set">'+data.items.item[i].FNAME
+			   +'<span class="j_set">'+jian+'</span>'
+			   +'</h2>'
+			   +'<p  style="white-space: normal !important;">'+data.items.item[i].FMSG
+				+'</p>'
+				+'<p>公司：'+data.items.item[i].FCOMNAME+'</p>'
+				+'<p>'
+				+'<img src="images/clock-small.png" alt="" />'
+				+'<span>'+data.items.item[i].FTIME+'</span>'
+				+'</p></div>'
+				+'<div style="float:left;width:30%;margin-right:1em;"><img class="zwt_set" src="images/text1.jpg" alt="" /></div>'
+				+'</li>';
+	}
+	$("#joblist").html(html_str);
+}
+function jobs_cb(data)
+{
+	result=data;
+	//$("#totalbook").text(data.pageTotalSize);
+	var html_str="";
+	for(var i=0;i<data.items.item.length;i++)
+	{
+		if(data.items.item[i].FPICNAME==null || data.items.item[i].FPICNAME=="undefined" )
+		{
+			data.items.item[i].FPICNAME="images/text1.jpg";
+		}else
+		{
+			data.items.item[i].FPICNAME="/sxb/images/"+data.items.item[i].FPICNAME;
+		}	
+		var jian="";
+		if(data.items.item[i].FHOT != null && parseInt(data.items.item[i].FHOT)>=100)
+		{
+			jian="荐";
+		}	
+		
+		html_str+='<li style="cursor: pointer;" class="ui-li-static ui-body-inherit ui-first-child" onclick="javascript:showDetail(\''+data.items.item[i].FID+'\');">'
+			   +'<div style="float:right;width:65%;" data-role="none" >'
+			   +'<h2 class="h_m_set">'+data.items.item[i].FNAME
+			   +'<span class="j_set">'+jian+'</span>'
+			   +'</h2>'
+			   +'<p  style="white-space: normal !important;width:100%;">'+data.items.item[i].FMSG
+				+'</p>'
+				+'<p>公司：'+data.items.item[i].FCOMNAME+'</p>'
+				+'<p class="p_set">'
+				+'<img src="images/clock-small.png" alt="" />'
+				+'<span>'+data.items.item[i].FTIME.substring(0,10)+'</span>'
+				+'</p></div>'
+				+'<div style="float:left; width:30%;margin-right:1em;"><img class="zwt_set" src="'+data.items.item[i].FPICNAME+'" alt="" /></div>'
+				+'</li>';
+	}
+	$("#joblist").html(html_str);
+}
+
+function jobs(pagesize,pageno,more)
+{
+	  var param={};
+	  param.pageno=pageno;
+	  param.pagesize=pagesize;
+	  var url="/sx/job/list";
+	  var cb="jobs_cb"+more;
+	  fn_ajax(url,param,"post",cb);
+}
+
+
+function showDetail(fid)
+{
+//	$.mobile.changePage("job.html?fid="+fid,{  
+//	    transition: "none"});
+        sessionStorage.m=fid;
+		window.location.href="job.html";
+}
+
+
+function looppic_callback(data)
+{
+	//alert(data.items.totalsize);
+	var html_str="";
+	for(var i=0;i<data.items.totalsize;i++)
+	{
+		html_str+='<li>'
+		    +'<a href="">'
+			+'<img src="'+data.items.item[i].PICURL+'" border="0" alt="'+data.items.item[i].FTITLE+'">'
+			+'</a>'
+			+'</li>';
+	}
+	$("#silder_list").html(html_str);
+	/*$('#silder1').imgSilder({
+		s_width:'100%', //容器宽度
+		//s_width : 400, // 容器的宽度,可以设置为百分比
+		s_height : 220, //容器高度
+		is_showTit : false, // 是否显示图片标题 false :不显示，true :显示
+		s_times : 3000, //设置滚动时间
+		css_link : '/wuliu/css/style.css'
+	});*/
+	$(".slider").yxMobileSlider({
+		width:'100%',
+		height:220,
+		during:3000,
+		link:'/sxb/css/style.css'})
+}
+
+function looppic(pagesize,pageno)
+{
+	  var param={};
+	  param.pageno=pageno;
+	  param.pagesize=pagesize;
+	  var url="/sx/looppic/listlooppic";
+	  fn_ajax(url,param,"get","looppic_callback");
+}
+
+looppic(5,1);
+
+</script>
+
+</body>
+</html>

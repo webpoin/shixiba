@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="wltrack.com 提供邮政小包,邮政国际小包,国际小包,邮政小包面单打印,国际小包面单打印,邮政国际小包面单打印;以及提供国际物流,国际邮政,国际快递,专线物流查询等服务" name="Description">
+<meta content="物流专线查询 国际邮政查询 国内邮政查询 国际快递查询 邮政小包面单打印 邮政国际小包面单打印" name="Keywords">
+<title>邮政国际小包打印系统-广告合作</title>
+<link href="/track/shop/css/my.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/track/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="/track/js/wuliu.js"></script>
+<script type="text/javascript" src="/track/js/comm_page.js"></script>
+<style type="text/css">
+.box-set{
+	display:block;
+	float:left;
+	width:1024px;
+	height:38px;
+	line-height:38px;
+	margin-bottom:5px;}
+.box-set:after{
+    clear: both;
+    content: "";
+    display: block;
+    overflow: hidden;}
+.box-set span{
+	display:block;
+	float:left;}	
+.w-1{
+	padding:0 20px;
+	text-align:right;
+    }	
+.w-2 input{
+	height:28px;
+	line-height:28px;
+	border:1px solid #ddd;}
+	
+	.column_2 {
+	float:right;
+	width:840px;
+	padding-left:20px;
+}	
+</style>
+</head>
+
+<body>
+<!--#include virtual="/track/shop/head.html"-->
+<div class="container w1024">
+<!--#include virtual="/track/shop/left.html"-->	
+
+  <div class="column_2">
+    <h2>编辑列表</h2>
+    <div class="box-set">
+    <span class="w-1">物流跟踪号:</span>
+    <span class="w-2"><input type="text"/></span>
+    </div>  
+    <div class="box-set">
+    <span class="w-1">订单号:</span>
+    <span class="w-2"><input type="text"/></span>
+    </div> 
+    <div class="box-set">
+    <span class="w-1">订单生成时间:</span>
+    <span class="w-2"><input type="text"/></span>
+    </div> 
+    <div class="box-set">
+    <span class="w-1">收货人电话:</span>
+    <span class="w-2"><input type="text"/></span>
+    </div>
+    <div class="box-set">
+    <span class="w-1">收货人名称:</span>
+    <span class="w-2"><input type="text"/></span>
+    </div>
+    <div class="box-set">
+    <span class="w-1">收货地址:</span>
+    <span class="w-2"><input type="text"/></span>
+    </div>
+ </div>
+  
+  <div class="clear"></div>
+</div>
+   
+<!--#include virtual="/track/shop/foot.html"-->
+</body>
+</html>

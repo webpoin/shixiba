@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>实习吧-文章编辑</title>
+<link href="/sxb/oss/css/my.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/sxb/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/sxb/js/wuliu.js"></script>
+<script type="text/javascript" src="/sxb/js/comm_page.js"></script>
+<style type="text/css">
+.register_content{
+	width:770px;
+	float:left;
+	width:760px;
+	padding-left:20px;
+	}
+.register_head{
+	height: 38px;
+	background-color:#90BFFF;
+	color:#FFFFFF;
+    line-height: 38px;
+    border-bottom: solid 1px #EAEAEA;
+    padding-right: 10px;
+    text-align:left;
+	font-size: 18px;
+	font-weight: normal;
+	padding-left: 18px;
+	font-weight: bold;
+  }	
+.tr_set td{
+	padding:10px 0;}
+.td_1{
+	font-size: 16px;
+	width: 150px;
+	padding-right: 10px;
+	text-align: right;
+	vertical-align:middle;
+	color: #404040;
+	padding-top: 15px;
+    }
+.td_2
+{
+font-size: 16px;
+}
+.login_text{
+	 border: 1px solid #A0A0A0;
+	height: 18px;
+	float: left;
+	width: 300px;
+	margin-right: 10px;
+	padding: 7px 10px;
+	line-height: 18px;
+	outline: 0 none;
+	}
+.login_text:focus{
+	border:1px solid #6482B9;}
+.td_3{
+	font-size:12px;
+	color:#A9A9A9;;
+	text-align:left;}	
+.login_commit{
+	float:left;
+	display: inline-block;
+    border: 0;
+    width: 320px;
+    height: 36px;
+    font-size:18px;
+    cursor: pointer;
+    background-color:#4CB7B7;
+	color:#FFFFFF;
+}
+.msg
+{
+	width: 300px;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 200px;
+}
+</style>
+</head>
+<body>
+
+<script></script>
+<!--#include virtual="/sxb/oss/head.html"-->
+
+<div class="container w1024 mt5">
+
+<!--#include virtual="/sxb/oss/left.html"-->
+	 <div class="register_content mt10">
+		<div style="font-size: 16px;">
+			<span>文章编辑：</span>
+			<span id="fid" style="display: none;"></span>
+			<span id="wuliuname"></span>
+			<a style="float:right;" href="/sxb/oss/article.shtml" target="_self">返回到文章列表</a>
+		</div>
+		<div class="register_body">
+			<div class="register_form1">
+			<table>
+				<tbody>
+				<tr class="tr_set">
+								<td class="td_1"><label>文章类型：</label></td>
+								<td class="td_2" >
+									<select id="ftype" style="height:28px; line-height:28px; font-size:16px;display: inline;width: 180px;" tabindex="2">
+										<option selected="selected"  value="1" >氧职场</option>
+										<option  value="2">实习秀</option>
+										<option  value="3">涨知识</option>
+										<option  value="4">至青春</option>
+							  		</select>
+					        	</td>
+							</tr>
+					<!--
+					
+						<tr class="tr_set">
+								<td class="td_1"><label>实习企业简介：</label></td>
+								<td class="td_2">	
+								<textarea id="fcontext"  class="msg" tabindex="6" ></textarea>
+								</td>
+								<td class="td_3">实习企业简介</td>
+						</tr>							
+					-->
+							<tr class="tr_set">
+								<td class="td_1"><label>文章标题：</label></td>
+								<td class="td_2">	<input id="fname" class="login_text" type="text"  tabindex="2" placeholder="" /></td>
+								<td class="td_3"><span style="color:red;">*</span></td>
+							</tr>
+							<tr class="tr_set">
+								<td class="td_1"><label>文章内容：</label></td>
+								<td class="td_2">	
+								<textarea id="fmsg"  class="msg" tabindex="9" ></textarea>
+								</td>
+								<td class="td_3"><span style="color:red;">*</span>使用“#insert#”来表示插图的位置</td>
+							</tr>			
+							<!--tr class="tr_set">
+								<td class="td_1"><label>文章缩略图：</label></td>
+								<td class="td_2">	<input id="fpicfilesmall" class="login_text" type="text"  tabindex="5" placeholder="" /></td>
+								<td class="td_3">文章缩略图</td>
+							</tr>
+							<tr class="tr_set">
+								<td class="td_1"><label>文章宣传海报：</label></td>
+								<td class="td_2">	<input id="fpicfile" class="login_text" type="text"  tabindex="6" placeholder="" /></td>
+								<td class="td_3">文章宣传海报</td>
+							</tr-->
+							<tr class="tr_set">
+			        		<td class="td_1"><label>职位缩略图：</label></td>
+			        		<td class="td_2" >
+			        			<div id="blog-write-2Small" style="height:30px;padding-top: 10px;">
+								<form id="fileuploadSmall"  enctype="multipart/form-data" method="POST"  action="/fileupload">
+								  <!--div class="row fileupload-buttonbar"-->
+									<!--div style="float:left;height: 30px;text-align: center;"-->
+									  <span style="float:left;margin-right:4px;overflow:hidden;position:relative;">
+									    <i class="icon-plus icon-white"></i>
+									    <span style="background-color: #448EF3;padding: 5px;color:white;">上传缩略图</span>
+									    <input id="picSmall" type="file" multiple name="files[]" style="-moz-border-bottom-colors: none;
+									     	-moz-border-image: none;
+										    -moz-border-left-colors: none;
+										    -moz-border-right-colors: none;
+										    -moz-border-top-colors: none;
+										    -moz-transform: translate(-300px, 0pt) scale(4);
+										    border-color: transparent;
+										    border-style: solid;
+										    border-width: 0 0 100px 200px;
+										    cursor: pointer;
+										    direction: ltr;
+										    margin: 0;
+										    opacity: 0;
+										    position: absolute;
+										    right: 0;
+										    top: 0;
+										    float:left;" onchange="onChangeSmall();">
+								 	  </span>
+							        <!-- /div-->
+							      <!--/div-->
+							    
+				    			  <div style="float:right;">				    
+								    <a style="display: inline-block; height: 30px;  width: 87px;" href="#" onclick="return delLogoSmall();">
+								      删除
+								    </a>
+								  </div>
+								  <iframe name="check_frameSmall" style="display:none;"></iframe>
+							    </form>
+							    </div>
+					        </td>
+					        <td class="td_3">建议：图片大小为100*100像素</td>
+			        </tr>
+			        		    
+			        <tr class="tr_set">
+			        	<td class="td_1"><label></label></td>
+			        		<td class="td_2">
+					        	<div id="blog-write-3Small" style="width:100px;">
+					        		<img  id="logoSmall"  src="" style="display:none;width: 238px;height: 119px;"></img>
+						              <ul id="blog-write-3-ulSmall" style="background-color: #FCFCFC;
+						    			padding: 3px 8px;    			
+						    			border-radius: 5px 5px 5px 5px;
+							    		margin: 0;
+						   		 		padding: 0;display:none;">
+								      </ul>
+								 </div>
+							</td>
+			        </tr>
+							
+							
+							
+							<tr class="tr_set">
+			        		<td class="td_1"><label>宣传海报：</label></td>
+			        		<td class="td_2" >
+			        			<div id="blog-write-2" style="height:30px;padding-top: 10px;">
+								<form id="fileupload"  enctype="multipart/form-data" method="POST"  action="/fileupload">
+								  <!--div class="row fileupload-buttonbar"-->
+									<!--div style="float:left;height: 30px;text-align: center;"-->
+									  <span style="float:left;margin-right:4px;overflow:hidden;position:relative;">
+									    <i class="icon-plus icon-white"></i>
+									    <span style="background-color: #448EF3;padding: 5px;color:white;">上传图片</span>
+									    <input id="pic" type="file" multiple name="files[]" style="-moz-border-bottom-colors: none;
+									     	-moz-border-image: none;
+										    -moz-border-left-colors: none;
+										    -moz-border-right-colors: none;
+										    -moz-border-top-colors: none;
+										    -moz-transform: translate(-300px, 0pt) scale(4);
+										    border-color: transparent;
+										    border-style: solid;
+										    border-width: 0 0 100px 200px;
+										    cursor: pointer;
+										    direction: ltr;
+										    margin: 0;
+										    opacity: 0;
+										    position: absolute;
+										    right: 0;
+										    top: 0;
+										    float:left;" onchange="onChange();">
+								 	  </span>
+							        <!-- /div-->
+							      <!--/div-->
+							    
+				    			  <div style="float:right;">				    
+								    <a style="display: inline-block; height: 30px;  width: 87px;" href="#" onclick="return delLogo();">
+								      删除
+								    </a>
+								  </div>
+								  <iframe name="check_frame" style="display:none;"></iframe>
+							    </form>
+							    </div>
+					        </td>
+					        <td class="td_3">建议：图片大小为400*220像素</td>
+			        </tr>
+			        		    
+			        <tr class="tr_set">
+			        	<td class="td_1"><label></label></td>
+			        		<td class="td_2">
+					        	<div id="blog-write-3" style="width:100px;">
+					        		<img  id="logo"  src="" style="display:none;width: 238px;height: 119px;"></img>
+						              <ul id="blog-write-3-ul" style="background-color: #FCFCFC;
+						    			padding: 3px 8px;    			
+						    			border-radius: 5px 5px 5px 5px;
+							    		margin: 0;
+						   		 		padding: 0;display:none;">
+								      </ul>
+								 </div>
+							</td>
+			        </tr>
+					
+					<!--<span style="color:red;">*</span>-->
+					
+					<tr class="tr_set">
+			        		<td class="td_1"><label>文章插图：</label></td>
+			        		<td class="td_2" >
+			        			<div id="blog-write-2Mid" style="height:30px;padding-top: 10px;">
+								<form id="fileuploadMid"  enctype="multipart/form-data" method="POST"  action="/fileupload">
+								  <!--div class="row fileupload-buttonbar"-->
+									<!--div style="float:left;height: 30px;text-align: center;"-->
+									  <span style="float:left;margin-right:4px;overflow:hidden;position:relative;">
+									    <i class="icon-plus icon-white"></i>
+									    <span style="background-color: #448EF3;padding: 5px;color:white;">上传插图</span>
+									    <input id="picMid" type="file" multiple name="files[]" style="-moz-border-bottom-colors: none;
+									     	-moz-border-image: none;
+										    -moz-border-left-colors: none;
+										    -moz-border-right-colors: none;
+										    -moz-border-top-colors: none;
+										    -moz-transform: translate(-300px, 0pt) scale(4);
+										    border-color: transparent;
+										    border-style: solid;
+										    border-width: 0 0 100px 200px;
+										    cursor: pointer;
+										    direction: ltr;
+										    margin: 0;
+										    opacity: 0;
+										    position: absolute;
+										    right: 0;
+										    top: 0;
+										    float:left;" onchange="onChangeMid();">
+								 	  </span>
+							        <!-- /div-->
+							      <!--/div-->
+							    
+				    			  <div style="float:right;">				    
+								    <a style="display: inline-block; height: 30px;  width: 87px;" href="#" onclick="return delLogoMid();">
+								      删除
+								    </a>
+								  </div>
+								  <iframe name="check_frameMid" style="display:none;"></iframe>
+							    </form>
+							    </div>
+					        </td>
+					        <td class="td_3">建议：图片大小为400*220像素</td>
+			        </tr>
+			        		    
+			        <tr class="tr_set">
+			        	<td class="td_1"><label></label></td>
+			        		<td class="td_2">
+					        	<div id="blog-write-3Mid" style="width:100px;">
+					        		<img  id="logoMid"  src="" style="display:none;width: 238px;height: 119px;"></img>
+						              <ul id="blog-write-3-ulMid" style="background-color: #FCFCFC;
+						    			padding: 3px 8px;    			
+						    			border-radius: 5px 5px 5px 5px;
+							    		margin: 0;
+						   		 		padding: 0;display:none;">
+								      </ul>
+								 </div>
+							</td>
+			        </tr>
+					
+	        
+					<tr class="tr_set" >
+						<td class="td_1">
+						</td>
+						<td class="td_2">
+						<button id="commit" class="login_commit" 
+						name="保存"  type="submit" tabindex="100" >保  存</button>
+						</td>
+					</tr>
+				 </tbody>
+			 </table>
+		</div>
+	<!--  </form>-->
+	
+</div>
+</div>
+</div>
+
+ <!--#include virtual="/sxb/oss/foot.html"-->
+  
+<script>
+function onChange()
+{
+	var pic  = $("#pic");
+	$("#blog-write-3").css('display','block');
+	$("#blog-write-3-ul").css('display','block');
+	submitform();
+}
+
+function submitform()
+{  
+    var form=document.getElementById('fileupload');
+	form.action="/sx/upload?cb=callback";
+    form.target="check_frame";
+    form.submit();
+} 
+
+function callback(result)
+{
+	var resJson = eval("("+result+")");
+	//var liID=randomUUID();
+	//var pic  = $("input");
+	$("#blog-write-3").css('display','block');
+	$("#blog-write-3-ul").css('display','block');
+	$("#logo").css('display','block');
+	$("#logo").attr("name",resJson.data.items[0].fid);
+	$("#logo").attr("src",resJson.data.items[0].urlroot+"/"+resJson.data.items[0].fname);
+	//$("#blog-write-3-ul").html("<img name='"+resJson.data.items[0].fid+"' style='float:left;' src='/wuliu/image/"
+	//					+resJson.data.items[0].fname+"'></img>");
+	}
+
+	function delLogo()
+	{
+		$("#logo").css("display","none");
+		$("#logo").attr("src","");
+		$("#logo").attr("name","");
+		return false;
+	}
+	
+	
+	function onChangeSmall()
+	{
+		var pic  = $("#picSmall");
+		$("#blog-write-3Small").css('display','block');
+		$("#blog-write-3-ulSmall").css('display','block');
+		submitformSmall();
+	}
+
+	function submitformSmall()
+	{  
+	    var form=document.getElementById('fileuploadSmall');
+		form.action="/sx/upload?cb=callbackSmall";
+	    form.target="check_frameSmall";
+	    form.submit();
+	} 
+
+	function callbackSmall(result)
+	{
+		var resJson = eval("("+result+")");
+		//var liID=randomUUID();
+		//var pic  = $("input");
+		$("#blog-write-3Small").css('display','block');
+		$("#blog-write-3-ulSmall").css('display','block');
+		$("#logoSmall").css('display','block');
+		$("#logoSmall").attr("name",resJson.data.items[0].fid);
+		$("#logoSmall").attr("src",resJson.data.items[0].urlroot+"/"+resJson.data.items[0].fname);
+		//$("#blog-write-3-ul").html("<img name='"+resJson.data.items[0].fid+"' style='float:left;' src='/wuliu/image/"
+		//					+resJson.data.items[0].fname+"'></img>");
+		}
+
+		function delLogoSmall()
+		{
+			$("#logoSmall").css("display","none");
+			$("#logoSmall").attr("src","");
+			$("#logoSmall").attr("name","");
+			return false;
+		}
+		
+		function onChangeMid()
+		{
+			var pic  = $("#picSmall");
+			$("#blog-write-3Small").css('display','block');
+			$("#blog-write-3-ulSmall").css('display','block');
+			submitformMid();
+		}
+
+		function submitformMid()
+		{  
+		    var form=document.getElementById('fileuploadMid');
+			form.action="/sx/upload?cb=callbackMid";
+		    form.target="check_frameMid";
+		    form.submit();
+		} 
+
+		function callbackMid(result)
+		{
+			var resJson = eval("("+result+")");
+			//var liID=randomUUID();
+			//var pic  = $("input");
+			$("#blog-write-3Mid").css('display','block');
+			$("#blog-write-3-ulMid").css('display','block');
+			$("#logoMid").css('display','block');
+			$("#logoMid").attr("name",resJson.data.items[0].fid);
+			$("#logoMid").attr("src",resJson.data.items[0].urlroot+"/"+resJson.data.items[0].fname);
+			//$("#blog-write-3-ul").html("<img name='"+resJson.data.items[0].fid+"' style='float:left;' src='/wuliu/image/"
+			//					+resJson.data.items[0].fname+"'></img>");
+			}
+
+			function delLogoMid()
+			{
+				$("#logoMid").css("display","none");
+				$("#logoMid").attr("src","");
+				$("#logoMid").attr("name","");
+				return false;
+			}
+	</script>
+	<script>
+  		var redirect_url="/sxb/oss/article.shtml";
+  		function update_cb(data)
+		{
+  		  alert("成功更新！");
+		  window.location=redirect_url;
+		}
+  		
+		$("#commit").click(function(e){
+			var url="/sx/article/update",
+						fid = $("#fid").text(),
+						fname = $("#fname").val(),
+						fmsg = $("#fmsg").val(),
+						fpicfilesmall = $("#logoSmall").attr("name"),
+						fpicfile = $("#logo").attr("name"),
+						ftype = $("#ftype").val(),
+						fpicfileMid = $("#logoMid").attr("name"),
+			input_data={
+					fid : fid,
+					fname : fname,
+					fmsg : fmsg,
+					fpicfilesmall : fpicfilesmall,
+					fpicfile : fpicfile,
+					ftype:ftype,
+					fpicfileMid:fpicfileMid
+			 };
+			 
+			if( fname == "")
+			{
+			  alert("文章标题不能为空"); 
+			  return false;
+			}
+			if( fmsg == "")
+			{
+			  alert("职位详细介绍不能为空"); 
+			  return false;
+			}
+		
+		fn_ajax(url,input_data,"post","update_cb");
+		});
+	</script>
+	
+	<script>
+  	 function show_callback(data)
+	 {
+				$("#fid").text(data.FID);
+				$("#fuserid").val(data.FUSERNAME);
+				$("#fname").val(data.FNAME);
+				$("#ftime").val(data.FTIME);
+				$("#fmsg").val(data.FMSG);
+				$("#ftype").val(data.FTYPE);
+				
+				$("#logo").css("display","block");
+				$("#logo").attr("src","/sxb/images/"+data.FPICNAME);
+				$("#logo").attr("name",data.FPICFILE);
+				
+				$("#logoSmall").css("display","block");
+				$("#logoSmall").attr("src","/sxb/images/"+data.FPICNAMESMALL);
+				$("#logoSmall").attr("name",data.FPICFILESMALL);
+				
+				$("#logoMid").css("display","block");
+				$("#logoMid").attr("src","/sxb/images/"+data.FPICNAMEMID);
+				$("#logoMid").attr("name",data.FDES);
+	 }
+	 
+	 function	show()
+	 {
+		var url="/sx/article/query",
+			fid=getRequest().m,
+			input_data={
+				fid : fid
+			};
+		if(fid=="") 
+		{
+			alert("ID不能为空！"); 
+			return false;
+		}
+		fn_ajax(url,input_data,"post","show_callback");
+	 }
+	 
+	 show();
+	</script>
+
+</body>
+</html>

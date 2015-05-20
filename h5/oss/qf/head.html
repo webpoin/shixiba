@@ -1,0 +1,135 @@
+<link rel="shortcut icon" type="image/x-icon" href="/track/image/you.ico" />
+<link href="/track/image/you.png" type="image/png" rel="icon">
+  <div id="head" class="w1024 wfull" >
+	<div class="logo"  style="width:200px;">
+		<a href="/track/shop/index.shtml">
+			<!-- img src="/track/image/52.png" alt="logo" /-->
+            <span style="color: #009999;font-size: 18px;">俄境通小包打印系统</span>
+		</a>
+	</div>
+	<div  style="float:right;margin-top: 55px;">
+		<a href="/track/shop/login.shtml">
+            <span style="color: #009999;font-size: 15px;">返回到邮政小包打印首页</span>
+		</a>
+	</div>
+	<div class="f1"  style="height: 60px;">
+	  <div style="padding-top: 10px;">
+	  	<!--div style="float:right;margin-right: 20px;width: 300px;">
+			&nbsp;
+		</div-->
+		
+		<!-- div class="user" style="float:right;margin-right: 0px;">
+			<span class="login" style="padding-right: 10px;" >
+				<a class="username" style="color:#FF8000;" href="/track/shop/login.shtml">登录</a>
+			</span>
+		</div-->
+	 </div>
+	  	  
+	  <!--div style="clear: both;">
+		  <div style="float:right;padding-top: 40px;">
+		   		<span style="color: gray;">全国服务热线：</span>
+		   		<span style="font-size: 15px;color:#BB3D00;">400-6451-989</span>
+		  </div>
+		   <div style="float:right;padding-top: 42px;">
+		   <span  style="color: #808080;">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+		   </div>
+		  <div style="float:right;padding-top: 42px;">
+		   		<a href="javascript:alert('功能即将实现');"  style="color: #808080;font-size: 12px;">在线咨询</a>
+		  </div>
+		  <div style="float:left;padding-top: 42px;padding-left: 10px;">
+		   		<a  href="javascript:window.location.href='/wuliu/wlindex.shtml';" style="color: #CE7448;font-size: 12px;">到物流商管理平台&raquo;</a>
+		  </div>
+	  </div-->
+	</div>
+  </div>
+  
+  <div id="top" class="nav wfull">
+	 <div id="myNav" class="w1024" style="height: 30px;padding-top: 7px;">
+	  	<a id="index_nav" class="ccnav" href="/track/shop/index.shtml" target="_selt"></a>
+	  	<span>
+	  		<!--span class="ccnav">&gt;</span>
+	  		<a class="ccnav">运单列表</a-->
+	  	</span>
+		</div>
+  </div>
+
+  <script>
+	var url = window.location.href;
+  	var aa = url.split("/");
+  	var html_name = aa[aa.length-1];
+  	var name=html_name.split(".")[0];
+	
+	function showNav(name)
+	{
+		var index='<span class="ccnav">首页&gt;</span>';
+		var gt='<span class="ccnav">&gt;</span>';
+		var html_str = "";
+		if(name=="index")
+		{
+			$("#index_nav").removeClass("ccnav");
+			$("#index_nav").addClass("ccnav_select");
+	  		$("#myNav > span").html('<span class="ccnav">首页</span>');
+		}
+		if(name=="trackadd")
+		{
+			html_str=index +'<a class="ccnav">面单打印</a>'
+			+gt +'<a class="ccnav_select">新增运单</a>';
+	  		$("#myNav > span").html(html_str);
+		}
+		if(name=="track")
+		{
+			html_str=index +'<a class="ccnav">面单打印</a>'
+			+gt +'<a class="ccnav_select">运单列表</a>';
+	  		$("#myNav > span").html(html_str);
+		}
+		if(name=="tpadd")
+		{
+			html_str=index +'<a class="ccnav">模板管理</a>'
+			+gt +'<a class="ccnav_select">新增模板</a>';
+	  		$("#myNav > span").html(html_str);
+		}
+		if(name=="tp")
+		{
+			html_str=index +'<a class="ccnav">模板管理</a>'
+			+gt +'<a class="ccnav_select">模板列表</a>';
+	  		$("#myNav > span").html(html_str);
+		}
+	if(name=="pwdchange")
+		{
+			html_str=index +'<a class="ccnav">系统设置</a>'
+			+gt +'<a class="ccnav_select">修改密码</a>';
+	  		$("#myNav > span").html(html_str);
+		}
+			
+	}
+	
+	showNav(name);
+  	
+	function fn_logout_callback(data)
+	{
+		//DelCookie("ossaccount");
+		DelCookie("osstypename");
+ 		window.location.href="/track/shop/login.shtml";
+	}
+  	var username = GetCookie("ossaccount");
+	var typename = GetCookie("osstypename");
+	if(typename!='undefined' && typename!=null && username!=null && username!="")
+	{// 已登录
+		if(typename!="")
+		{
+			typename = '('+typename+')';
+		}	
+		var loginHtml = '<span class="login" >'
+				+'<a class="username" style="color:black;" href="#">[ '+username+typename+' ]</a>'
+				+' <a id="logout"  style="color:black;" href="#">[ 退出 ]</a>'
+				+'</span>';
+	 	$(".user").html(loginHtml);
+	 	
+	 	$("#logout").click(function(e){
+			e.preventDefault();
+			var url="/track/shop/logout",
+			input_data={};
+			fn_ajax(url,input_data,"get","fn_logout_callback");
+	  	});
+	}
+	</script>

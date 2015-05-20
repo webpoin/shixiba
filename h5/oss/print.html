@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>国际小包打印系统-A4打印预览页面</title>
+<link rel="shortcut icon" type="image/x-icon" href="/track/image/you.ico" />
+<link href="/track/image/you.png" type="image/png" rel="icon">
+<link href="/track/shop/css/my.css" rel="stylesheet" type="text/css" />
+<link href="/track/shop/css/p-print.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/track/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="/track/js/wuliu.js"></script>
+<script type="text/javascript" src="/track/js/comm_page.js"></script>
+<script type="text/javascript" src="/track/js/jquery.jqprint-0.3.js"></script>
+<style media="print">
+.NOPRINT2
+ {
+ 	display: none;
+ }
+</style>
+</head>
+<body>
+<script>islogin("66");</script>
+<div id="fids" style="display: none;"></div>
+<div class="NOPRINT2" style="background-color: #F2F2F2;margin-bottom: 20px;">
+		<div id="pages"  style="margin: 0 auto;width: 485pt;display: block;font-size: 10pt;">
+		</div>
+		<div style="margin: 0 auto;width: 485pt;margin-top: -15pt;clear: both;display: block;">
+			<div style="float:right;"><a id="print">立即打印&gt;</a></div>
+			<div style="float:right;"><a href="/track/shop/track.shtml"  target="_self">关闭&gt;</a>&nbsp;&nbsp;&nbsp;</div>
+			<div style="float:right;">
+				<label>邮寄方式：</label>
+				<select id="sel" style="width: 50pt;">
+					<option selected="selected" value="0">挂号</option>
+					<option  value="1">平邮</option>
+				</select>
+				&nbsp;&nbsp;&nbsp;
+			</div>
+			<div>&nbsp;</div>
+		</div>
+</div>
+
+   <div id="wait" style="display:block;text-align:center;	width:485pt;margin: 0 auto;">
+		   		<img src="/track/image/waiting.jpg" width="35" height="35"/><p class="wait_set">努力查询中</p>
+   </div>
+		
+<div class="container2" style="display: none;">
+	<!--div class="box">
+		<div class="main_title">
+			<span class="font_set">BY AIR 航空</span>
+		    <span class="font_set">GB 英国</span>
+		    <span class="font_set">5</span>
+		</div>
+		<div class="content">
+		    <table class="content_tab" id="sender">
+				  <tbody>
+				    <tr>
+					   <td  class="td_1">	协议客户:</td>
+					   <td colspan="3"></td>
+					</tr>
+					<tr>
+					     <td  class="td_1" style="border-bottom:none">FROM:</td>
+					     <td colspan="3" style="border-bottom:none">tsxt 208 room The 5 unit Station, beijing.China</td>
+					</tr>
+			        <tr>
+			             <td>Zip:</td>
+			             <td>12600</td>
+			             <td>Tel:</td>
+			             <td>13588888888</td>
+			         </tr>
+					 <tr>
+					     <td   class="td_1" style="border-bottom:none">TO:</td>
+					     <td colspan="3" style="border-bottom:none">talantseva irina 1255 Dumenko streetKrasnodar Elektrostal Moskovskaya oblast Russian Federation</td>
+					 </tr>
+			         <tr>
+			              <td>Zip:</td>
+			              <td>12600</td>
+			              <td>Tel:</td>
+			              <td>13588888888</td>
+			         </tr>
+			         <tr>
+					   <td   class="td_1">退件单位:</td>
+					   <td colspan="3">深圳邮政大宗邮件处理中心</td>
+					 </tr>
+			        <tr>
+					   <td colspan="4" style="text-align:center" class="barcode">
+					<img class="img_set" src="" alt=""/>
+			        <p>R0200000085CN</p></td>
+			        </tr>
+					</tbody>
+				</table>
+		</div>
+	</div-->
+        
+   </div>
+        
+<script type="text/javascript">
+var DATA=null;
+$('#sel').change(function()
+{
+	if(DATA==null)
+	{
+		list(4,1);
+	}	
+	var callback="list_callback_"+$("#sel").val();
+	//alert(JSON.stringify(DATA));
+	eval(callback+"("+JSON.stringify(DATA)+")");
+			//if(val=='1')
+			//{
+			//	$("#con").removeClass("wrapper2").addClass("wrapper");
+			//}else if(val=='2')
+			//{
+			//	$("#con").removeClass("wrapper").addClass("wrapper2");
+			//}
+		//list(pagesize,$(".this-page").text().trim());
+});
+
+function check_callback(data)
+{
+	  //alert("正在连接打印机打印，请耐心等待");
+}
+	$("#print").click(function(){
+		//$(".container").jqprint({debug: true,importCSS: true});
+		// 更改状态
+		$(".container2").jqprint();
+		  var param={};
+		  param.fids=$("#fids").text();
+		  param.fisprint="1";
+		  var url="/shop/track/print";
+		  fn_ajax(url,param,"post","check_callback");
+	});
+
+        function list_callback_0(data)
+        {
+        	DATA=data;
+        	var boxClass = "box";
+        	
+      		if(data.FNAME==null || data.FNAME=="undefined")
+      		{
+      			data.FNAME="";
+      		}
+      		if(data.FADDR==null || data.FADDR=="undefined")
+      		{
+      			data.FADDR="";
+      		}
+      		if(data.FPOST==null || data.FPOST=="undefined")
+      		{
+      			data.FPOST="";
+      		}	
+      		if(data.FCONTACTTEL==null || data.FCONTACTTEL=="undefined")
+      		{
+      			data.FCONTACTTEL="";
+      		}
+     		if(data.FRETURNADDR==null || data.FRETURNADDR=="undefined")
+      		{
+      			data.FRETURNADDR="";
+      		}
+      	
+	      	//alert(data.items.totalsize);
+	      	var html_str="";
+	      	var fids="";
+	      	for(var i=0;i<data.items.totalsize;i++)
+	      	{
+	      		var fcode="",fname="";
+	      		fids+=data.items.item[i].FID+":";
+	      		
+	      		if(data.items.item[i].FNAME!=null && data.items.item[i].FNAME!="undefined")
+				{
+					fname=data.items.item[i].FNAME;
+				}
+	      		if(data.items.item[i].FCODE!=null && data.items.item[i].FCODE!="undefined")
+				{
+					fcode=data.items.item[i].FCODE;
+				}
+	      		if(data.items.item[i].FGUA==null || data.items.item[i].FGUA=="undefined")
+	      		{
+	      			data.items.item[i].FGUA="";
+	      		}
+	      		if(data.items.item[i].FPRODUCTMSG==null || data.items.item[i].FPRODUCTMSG=="undefined")
+	      		{
+	      			data.items.item[i].FPRODUCTMSG="";
+	      		}
+	      		
+	      		boxClass = "box_"+(i+1);
+	      		var tel = data.items.item[i].FCONSIGNEETEL;
+	      		if(data.items.item[i].FCONSIGNEETEL==null || data.items.item[i].FCONSIGNEETEL=='undefined')
+	      		{
+	      			tel=data.items.item[i].FCONSIGNEEPHONE;
+	      		}
+	      		html_str+='<div id="'+data.items.item[i].FID+'" class="'+boxClass+'">'
+				+'<div class="main_title">'
+				+'<span><img src="/track/image/postlogo6.jpg" alt=""/></span>'
+				//+'<span class="font_set_small">航空(BY AIR)</span>'
+				+'<div class="font_set_small" style="float:left;height:22pt;">'
+				+'<div style="height:11pt;line-height:10pt;">&nbsp;&nbsp;航空</div>'
+				+'<div style="height:11pt;line-height:10pt;">BY AIR</div></div>'
+				+'<div style="float:right;">'
+				+'<span style="font-size:8pt;padding:0;">挂&nbsp;</span>'
+				+'<span class="font_set" style="padding:0;">'+fcode+'</span>'
+				+'<span style="font-size:8pt;padding:0 5pt 0 0;">&nbsp;'+fname+'</span>'
+				+'<span class="font_set_small">'+data.items.item[i].FGUA+'</span>'
+				+'</div>'
+				+'</div>'
+				+'<div class="content">'
+				+'<table class="content_tab" id="sender">'
+				+'<tbody>'
+				+'<tr>'
+				+'<td colspan="4"  style="height:17pt;">协议客户:&nbsp;&nbsp;'+data.FNAME+'</td>'
+				//+'<td colspan="3">'+data.FNAME+'</td>'
+				+'</tr>'
+				+'<tr>'
+				+'<td  class="td_1" style="border-bottom:none">FROM:</td>'
+				+'<td colspan="3" style="border-bottom:none">'+data.FADDR+'('+data.items.item[i].FORDERID+')'
+				+data.items.item[i].FPRODUCTMSG+'</td>'
+				+'</tr>'
+				+'<tr>'
+				+'<td>ZIP:</td>'
+				+'<td>'+data.FPOST+'</td>'
+				+'<td>TEL:</td>'
+				+'<td>'+data.FCONTACTTEL+'</td>'
+				+'</tr>'
+				+'<tr>'
+				+'<td   class="td_1" style="border-bottom:none">TO:</td>'
+				+'<td colspan="3" style="border-bottom:none">'+data.items.item[i].FCONSIGNEENAME
+				+'<br>'+data.items.item[i].FCONSIGNEEADDR
+				+'</td>'
+				+'</tr>'
+				+'<tr>'
+				+'<td>ZIP:</td>'
+				+'<td>'+data.items.item[i].FCONSIGNEEPOST+'</td>'
+				+'<td>TEL:</td>'
+				+'<td>'+tel+'</td>'
+				+'</tr>'
+				+'<tr>'
+				+'<td colspan="4" style="height:17pt;">退件单位:&nbsp;&nbsp;'+data.FRETURNADDR+'</td>'
+				//+'<td colspan="3">'+data.FRETURNADDR+'</td>'
+				+'</tr>'
+				+'<tr>'
+				+'<td colspan="4" style="text-align:center; height:80pt;" class="barcode" >'
+				+'<img  class="img_set" src="/code/'+data.items.item[i].FPOSTID+'.png" alt=""/>'
+				+'<p style="font-size:14pt;padding-top:2pt;">'+data.items.item[i].FPOSTID+'</p></td>'
+				+'</tr>'
+				+'</tbody>'
+				+'</table>'
+				+'</div>'
+				+'</div>';
+	      	}
+	      	$("#wait").css("display","none");
+	      	$(".container2").html(html_str);
+	      	if(fids!="")
+	      	{
+	      		$("#fids").text(fids.substring(0, fids.length-1));	
+	      	}
+	      	$(".container2").css("display","block");
+	      	
+	      	// 加上分页
+	      	showPages_left("pages", "list", data.pageSize, data.pageNo, data.pageTotalSize,data.items.totalsize);
+        }
+        
+        function list_callback_1(data)
+        {
+        	DATA=data;
+        	var boxClass = "box";
+        	
+      		if(data.FNAME==null || data.FNAME=="undefined")
+      		{
+      			data.FNAME="";
+      		}
+      		if(data.FADDR==null || data.FADDR=="undefined")
+      		{
+      			data.FADDR="";
+      		}
+      		if(data.FPOST==null || data.FPOST=="undefined")
+      		{
+      			data.FPOST="";
+      		}	
+      		if(data.FCONTACTTEL==null || data.FCONTACTTEL=="undefined")
+      		{
+      			data.FCONTACTTEL="";
+      		}
+     		if(data.FRETURNADDR==null || data.FRETURNADDR=="undefined")
+      		{
+      			data.FRETURNADDR="";
+      		}
+      	
+	      	//alert(data.items.totalsize);
+	      	var html_str="";
+	      	var fids="";
+	      	for(var i=0;i<data.items.totalsize;i++)
+	      	{
+	      		var fcode="",fname="";
+	      		fids+=data.items.item[i].FID+":";
+	      		
+	      		if(data.items.item[i].FNAME!=null && data.items.item[i].FNAME!="undefined")
+				{
+					fname=data.items.item[i].FNAME;
+				}
+	      		if(data.items.item[i].FCODE!=null && data.items.item[i].FCODE!="undefined")
+				{
+					fcode=data.items.item[i].FCODE;
+				}
+	      		if(data.items.item[i].FGUA==null || data.items.item[i].FGUA=="undefined")
+	      		{
+	      			data.items.item[i].FGUA="";
+	      		}
+	      		if(data.items.item[i].FPRODUCTMSG==null || data.items.item[i].FPRODUCTMSG=="undefined")
+	      		{
+	      			data.items.item[i].FPRODUCTMSG="";
+	      		}
+	      		
+	      		boxClass = "box_"+(i+1);
+	      		var tel = data.items.item[i].FCONSIGNEETEL;
+	      		if(data.items.item[i].FCONSIGNEETEL==null || data.items.item[i].FCONSIGNEETEL=='undefined')
+	      		{
+	      			tel=data.items.item[i].FCONSIGNEEPHONE;
+	      		}
+	      		html_str+='<div id="'+data.items.item[i].FID+'" class="'+boxClass+'">'
+				+'<div class="main_title">'
+				+'<span><img src="/track/image/postlogo6.jpg" alt=""/></span>'
+				//+'<span class="font_set_small">航空(BY AIR)</span>'
+				+'<div class="font_set_small" style="float:left;height:22pt;">'
+				+'<div style="height:11pt;line-height:10pt;">&nbsp;&nbsp;航空</div>'
+				+'<div style="height:11pt;line-height:10pt;">BY AIR</div></div>'
+				+'<div style="float:right;">'
+				+'<span style="font-size:8pt;padding:0;">平&nbsp;</span>'
+				+'<span class="font_set" style="padding:0;">'+fcode+'</span>'
+				+'<span style="font-size:8pt;padding:0 5pt 0 0;">&nbsp;'+fname+'</span>'
+				+'<span class="font_set_small">'+data.items.item[i].FPING+'</span>'
+				+'</div>'
+				+'</div>'
+				+'<div class="content">'
+				+'<table class="content_tab" id="sender">'
+				+'<tbody>'
+				+'<tr>'
+				+'<td colspan="4"  style="height:17pt;">协议客户:&nbsp;&nbsp;'+data.FNAME+'</td>'
+				//+'<td colspan="3">'+data.FNAME+'</td>'
+				+'</tr>'
+				+'<tr>'
+				+'<td  class="td_1" style="border-bottom:none">FROM:</td>'
+				+'<td colspan="3" style="border-bottom:none">'+data.FADDR
+				+data.items.item[i].FPRODUCTMSG+'</td>'
+				+'</tr>'
+				+'<tr>'
+				+'<td>ZIP:</td>'
+				+'<td>'+data.FPOST+'</td>'
+				+'<td>TEL:</td>'
+				+'<td>'+data.FCONTACTTEL+'</td>'
+				+'</tr>'
+				+'<tr>'
+				+'<td   class="td_1" style="border-bottom:none">TO:</td>'
+				+'<td colspan="3" style="border-bottom:none">'+data.items.item[i].FCONSIGNEENAME
+				+'<br>'+data.items.item[i].FCONSIGNEEADDR
+				+'</td>'
+				+'</tr>'
+				+'<tr>'
+				+'<td>ZIP:</td>'
+				+'<td>'+data.items.item[i].FCONSIGNEEPOST+'</td>'
+				+'<td>TEL:</td>'
+				+'<td>'+tel+'</td>'
+				+'</tr>'
+				+'<tr>'
+				+'<td colspan="4" style="height:17pt;">退件单位:&nbsp;&nbsp;'+data.FRETURNADDR+'</td>'
+				//+'<td colspan="3">'+data.FRETURNADDR+'</td>'
+				+'</tr>'
+				+'<tr>'
+				+'<td colspan="4" style="text-align:center; height:80pt;" class="barcode" >'
+				+'<img class="img_set_order" src="/code/orderid_'+data.items.item[i].FORDERID+'.png" alt=""/>'
+				+'<p style="font-size:14pt;padding-top:2pt;">'
+				+'<span class="order_tag">订单号</span>'
+				+data.items.item[i].FORDERID+'</p></td>'
+				+'</tr>'
+				+'</tbody>'
+				+'</table>'
+				+'</div>'
+				+'</div>';
+	      	}
+	      	$("#wait").css("display","none");
+	      	$(".container2").html(html_str);
+	      	if(fids!="")
+	      	{
+	      		$("#fids").text(fids.substring(0, fids.length-1));	
+	      	}
+	      	$(".container2").css("display","block");
+	      	
+	      	// 加上分页
+	      	showPages_left("pages", "list", data.pageSize, data.pageNo, data.pageTotalSize,data.items.totalsize);
+        }
+        
+        function list_callback_error(data)
+        {
+        	$("#wait").html("<span>没有查询到任何记录</span>");
+        }
+        
+        function list(pagesize,pageno)
+        {
+      	  //var fisprint=$("#fisprint").val();
+      	  var fisprint = getRequest().m;
+      	  var param={};
+      	  param.pageno=pageno;
+      	  param.pagesize=pagesize;
+      	  param.fisprint=fisprint;
+      	  param.stime=getRequest().s;
+  	      param.etime=getRequest().e;
+  	      param.postids=getRequest().p;
+      	  var url="/shop/track/list";
+      	fn_ajax_error(url,param,"post","list_callback_"+$("#sel").val(),"list_callback_error");
+        }
+        
+        list(4,1);
+        </script>
+        
+	<script type="text/javascript">
+	var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+	document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F808cc08bbc611b2848b4a6d3faabf424' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+        
+</body>
+</html>

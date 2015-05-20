@@ -1,0 +1,142 @@
+body 
+{
+	margin:0; padding:0; font-family:"微软雅黑",Verdana,arial,sans-serif; 
+}
+.header{
+	height:100px;
+	overflow:hidden;
+    z-index: 1;
+    background-image: url("/wuliu/image/ditu03.png");
+}
+.wfull{
+	clear:both;
+	margin:auto;
+	width:100%;}
+.w960{
+	clear:both;
+	margin:auto;
+	width:960px;}
+.logo{
+	float:left;
+	width: 180px;
+	padding:10px 0;
+	background-color: white;
+	}
+.logo img{
+	float:left;
+	width:180px;
+	height:38px;
+	}
+.library_name{
+	display:block;
+	float:left;
+	margin:28px 0 0 20px;
+	}
+.f1 {
+	float:right;
+	text-align:left;
+	margin-top:5px;}
+.nav{
+	background:#25AC38;
+height:36px;
+overflow:hidden;
+}
+.nav-box{
+	height:36px;
+	line-height:36px;
+	padding:0;
+}
+
+.nav a:hover, .nav a:link, .nav a:visited, .nav a:active{
+		text-decoration:none;}
+.ff{
+	float:left;
+}
+a.fr{
+	float:right;}
+
+body, input, textarea, select, button {
+    font: 12px/22px "Microsoft YaHei",Verdana,arial,sans-serif;
+}
+body, ul, ol, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset, table {
+    margin: 0;
+    padding: 0;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1em;
+}
+ul, dl {
+    list-style: none outside none;
+}
+a {
+    color: #448FF4;
+    cursor: pointer;
+    outline: medium none;
+    text-decoration: none;
+}
+a:hover {
+    outline: medium none;
+    text-decoration: underline;
+}
+.mt10{margin-top:10px;}
+.mt20{margin-top:20px;}
+.mt5{margin-top:5px;}
+
+.yqing {
+	border-top:1px solid silver;
+	z-index:4;
+	}
+.link_head{
+	font-size:14px;
+	font-weight:bold;}	
+.yqing a{
+	display:inline;
+	color:#333333;
+	margin-right:14px;
+	}
+.sming {
+	position:relative;
+	border-top:1px solid silver;
+	padding:10px 0 0 0;
+	height:90px;
+	text-align:center;
+	overflow:hidden;
+	z-index:5;
+}
+.sming a:hover{
+	color:red;}
+.sm1{
+	position: absolute;
+	left:80px;
+	width:160px;}
+.sm2{
+	position:relative;
+	float:right;
+	width:860px;
+}
+.sm2 a{
+	display:inline;
+	margin-right:14px;}
+.sm2_b span{
+	display:inline;
+	margin-right:10px;
+	color: gray;
+	}	
+img {
+  border-width: 0;
+}
+.container {
+	margin-bottom:205px;
+	z-index: 3;
+}
+.container:after{
+	clear:both;
+	content:"";
+	display:block;
+	overflow:hidden;}
+	
+	

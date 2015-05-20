@@ -1,0 +1,8 @@
+ 		.NOPRINT,.NOPRINT2
+        {
+            display: none;
+        }
+        .PageNext
+        {
+            page-break-after: always;
+        }

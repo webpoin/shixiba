@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--meta-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="author" content="admin@17track.net"/>
+<meta name="robots" content="nofollow" />
+<meta name="Description" content="实习吧！"/>
+<meta name="Keywords" content="实习 实习吧 找工作 实习工作"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<title>实习吧-邀请</title>
+<link rel="stylesheet" href="/sxb/jqm/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="/sxb/css/t.css" />
+<script src="/sxb/js/jquery.js"></script>
+<script src="/sxb/jqm/jquery.mobile-1.4.5.min.js"></script>
+<script src="/sxb/js/wuliu.js"></script>
+<script src="/sxb/js/comm_page.js"></script>
+<style type="text/css">
+.bg
+  {
+    background-image: url("images/logo_bg.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 23em auto;
+    height: 100%;
+    opacity: 0.15;
+    position: absolute;
+    top: 0;
+    width:100%;
+	}
+#logo-set{
+	height:128px !important;
+	width:auto !important;
+	margin:1em;
+}
+.back_arrow{
+	height:20px !important;
+	width:auto;}
+.top_g_set{
+	top:1em !important;
+	z-index:999 !important;}		
+.u_li_set{
+	margin:0 1em !important;
+	border-radius:0;
+	box-shadow:none !important;}
+.u_li_set li{
+	padding:0 1em 2px!important;
+	border-width: 0 0 1px!important;
+	}
+
+.label_set{
+	float:left;
+	margin:2px 0 0 0 !important;
+	width:auto !important;
+	color:#999999;}
+.pho_set{
+	border:none;
+	float:left;
+   }
+.button_a{
+	background-color:#21D0C6 !important;
+	font-size:1em !important;
+	color:#FFFFFF !important;
+	border:none !important;
+	text-shadow:none !important;}
+.button_a:focus{
+	box-shadow: 0 0 0 #21D0C6 !important;}	   
+.d_l_set{
+	margin:1em !important;}   	
+.d-a-set{
+	font-size:14px;
+	display:block;
+	margin:0 1em;
+	}
+.d-a-set a{
+	text-decoration:none;
+	color:#666666;
+	font-weight:normal;
+	}	
+.a_set1{
+	float:left;}	
+.a_set2{
+	float:right;}	
+.footer_set{
+	text-align:center;
+	font-size:14px;
+	background-color:#ffffff !important;
+	border:none !important;
+	}	
+.footer_set ul{
+	list-style-type:none;
+	margin:1em 0 !important;}
+</style>
+</head>
+
+<body>
+<div data-role="page" id="home">
+  <div data-role="header" id="header_color">
+        <h1><span id="font-set">实习吧-邀请页面</span></h1>
+        <img  id="logo-set" src="/sxb/images/m-logo_slogan.png"/>
+            <div class="bg"></div>
+	</div>
+	
+  <div data-role="content" >
+    <ul data-role="listview" data-inset="true" class="u_li_set">
+     <li>
+	 <form method="post" action="#">
+       <div data-role="fieldcontain">
+        <label for="fcode" class="label_set">邀请码：</label>
+        <!-- 0440081057555   561276-->
+        <input type="text"  id="fcode" placeholder="请输入邀请码" value="" data-role="none" class="pho_set" >
+        </div>
+        </form>
+        </li>
+    </ul>
+     <ul>
+     <li>
+      <a data-role="button" data-corners="false" href="#" class="button_a" id="login" data-transition="slide">确 定</a>
+      </li>
+      </ul>
+      </div>
+  </div>
+    
+  <div id="popdiv" data-role="popup"></div><!--弹出层,默认不显示-->
+    
+<div data-role="footer" data-position="fixed" class="footer_set" >
+</div>
+<script>
+var redirect_url="/sxb/index.html";
+if(redirect_url==null || redirect_url=="")
+{
+	redirect_url="index.html#home";
+}
+
+function fn_callback_error(data)
+{
+	pop(data.msg);
+}
+function fn_callback(data)
+{
+	  //parent.user_info=data;
+	  //SetCookie("account",data.faccount);
+	  //SetCookie("typename",data.ftypename);
+	  pop("成功接收邀请");
+	  window.location=redirect_url;
+}
+	
+$("#login").click(function(e){
+	e.preventDefault();
+	var url="/sx/invite/val",
+		fcode=$.trim($("#fcode").val()),
+		input_data={
+			fcode:fcode
+		};
+	if(fcode=="")
+	{
+	  pop("邀请码不能为空！"); 
+	  return false;
+	}
+	fn_ajax_error(url,input_data,"post","fn_callback","fn_callback_error");
+});
+
+function islogin_cb(data)
+{
+	$("#userinfo").css("display","block");
+	$("#userlist").css("display","none");
+	$("#uname").text(data.fuser);
+}
+function  islogin_cb_error(data)
+{
+	$("#userinfo").css("display","none");
+	$("#userlist").css("display","block");
+}
+function webIslogin(usertype)
+{
+	  var param={};
+	  param.usertype=usertype;
+	  var url="/tsg/islogin?url="+window.location.href;
+	  
+	  var errorCallback="tsg_callback_error";
+	  if(usertype=="13")
+	  {
+		  errorCallback="tsg_callback_error";
+	  }
+	  fn_ajax_error_async(url,param,"get","islogin_cb","islogin_cb_error","1");
+	  return false;
+}
+
+function pcenter()
+{
+	var url="#pCenter";
+	webIslogin("11");
+	location.href=url;
+}
+function logout_cb(data)
+{
+	alert("成功退出");
+	location.href="#home";
+}
+function logout()
+{
+	  var url = "/tsg/web/logout";
+	  var param={};
+	  fn_ajax_error_async(url,param,"get","logout_cb","logout_cb_error","1");
+	  return false;
+}
+
+$("#header_color").click(function()
+{
+	location.href="#home";
+	return false;
+});
+
+function feedback()
+{
+	window.location.href="feedback.html";
+}
+
+function findpwd()
+{
+	window.location.href="findpwd.html";
+}
+
+function reg()
+{
+	window.location.href="reg.html";
+}
+</script>
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?933dcad2a62081671207ea9fa0d6623b";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</body>
+</html>
+

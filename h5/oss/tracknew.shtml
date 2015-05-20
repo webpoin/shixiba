@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>专线物流后台管理平台-运单详情</title>
+<link href="/track/shop/css/my.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/track/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="/track/js/wuliu.js"></script>
+<script type="text/javascript" src="/track/js/comm_page.js"></script>
+<style type="text/css">
+.register_content {
+	/*border: 1px solid #90BFFF;*/
+	/*text-align:center;*/
+	width: 770px;
+	float: left;
+	width: 760px;
+	padding-left: 20px;
+}
+
+
+.w1 {
+	float: left;
+	width: 120px;
+}
+
+.w2 {
+	float: left;
+	width: 280px;
+	padding-right: 10px;
+}
+.w2 input {
+	width: 260px;
+}
+.w3{
+	font-size: 12px;
+}
+.box-set{
+clear:both;
+padding: 10px 0px;
+}
+.msg
+{
+	width: 260px;
+	height: 80px;
+}
+
+
+.w2 a
+{
+    background-color: #4cb7b7;
+    color: #ffffff;
+    display: block;
+    float: left;
+    font-size: 16px;
+    font-weight:bold;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    width: 90px;
+    }
+ .fen
+ {
+ width:400px;
+ height:10px;
+ border-bottom: 1px solid #E0E0E0;
+ }
+</style>
+</head>
+<body>
+
+	<script>
+		islogin("66");
+	</script>
+	<!--#include virtual="/track/shop/head.html"-->
+
+	<div class="container w960 mt5">
+
+		<!--#include virtual="/track/shop/left.html"-->
+		<div class="register_content mt10">
+			<div style="font-size: 16px;">
+				<span>编辑运单：</span> 
+				<span id="fid" style="display: none;"></span>
+				<a style="float: right;" href="/track/shop/track.shtml" target="_self">返回到运单列表</a>
+				<div style="float: right; width: 20px;">&nbsp;</div>
+				<div class="register_body">
+					<div class="register_form1">
+						<div class="box-set">
+							<div class="w1">
+								<span>物流跟踪号:</span>
+							</div>
+							<div class="w2">
+								<input id="postid" type="text"  disabled="disabled"/>
+							</div>
+						</div>
+
+						<div class="box-set">
+							<div class="w1">
+								<span>订单号:</span>
+							</div>
+							<div class="w2">
+								<input id="orderid" type="text"  disabled="disabled"/>
+							</div>
+						</div>
+
+						<div class="box-set">
+							<div class="w1">
+								<span>运单生成时间:</span>
+							</div>
+							<div class="w2">
+								<input id="time" type="text"  disabled="disabled"/>
+							</div>
+						</div>
+						
+						<div class="box-set" >
+							<div class="w1">
+								<span>打印状态:</span>
+							</div>
+							<div class="w2">
+								<select id="isprint" style="height:28px; line-height:28px; font-size:16px;display: inline;width: 266px;" disabled="disabled" >
+									<option selected="selected"  value="1" >已打印</option>
+									<option  value="0">未打印</option>
+					  			</select>
+							</div>
+							<div class="w3">
+								<a href="javascript:$('#isprint').removeAttr('disabled');void(0);">修改打印状态</a></div>
+						</div>
+						
+						<div class="box-set" >
+							<div class="fen">&nbsp;</div>
+						</div>
+
+						<div class="box-set">
+							<div class="w1">
+								<span>收货人:</span>
+							</div>
+							<div class="w2">
+								<input id="name" type="text" />
+							</div>
+						</div>
+						
+						<div class="box-set">
+							<div class="w1">
+								<span>联系电话:</span>
+							</div>
+							<div class="w2">
+								<input id="phone" type="text" />
+							</div>
+						</div>
+
+						<div class="box-set">
+							<div class="w1">
+								<span>收货人手机:</span>
+							</div>
+							<div class="w2">
+								<input id="tel" type="text" />
+							</div>
+						</div>
+						
+						<div class="box-set">
+							<div class="w1">
+								<span>收货地址:</span>
+							</div>
+							<div class="w2">
+								<textarea id="addr"  class="msg" tabindex="6" ></textarea>
+							</div>
+						</div>
+						
+						<div class="box-set">
+							<div class="w1">
+								<span>收货国家:</span>
+							</div>
+							<div class="w2">
+								<input id="country" type="text" />
+							</div>
+						</div>
+
+						<div class="box-set">
+							<div class="w1">
+								<span>收货省/州:</span>
+							</div>
+							<div class="w2">
+								<input id="province" type="text" />
+							</div>
+						</div>
+
+						<div class="box-set">
+							<div class="w1">
+								<span>收货城市:</span>
+							</div>
+							<div class="w2">
+								<input id="city" type="text" />
+							</div>
+						</div>
+
+						<div class="box-set">
+							<div class="w1">
+								<span>收货详细地址:</span>
+							</div>
+							<div class="w2">
+								<input id="details" type="text" />
+							</div>
+						</div>
+
+						<div class="box-set">
+							<div class="w1">
+								<span>&nbsp;</span>
+							</div>
+							<div class="w2">
+								<a id="add" href="javascript:;">保  存</a>
+								&nbsp;&nbsp;
+								<a style="margin-left: 50px;background-color: #CCCCCC;" id="cancle" href="/track/shop/track.shtml">取  消</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	<!--#include virtual="/track/shop/foot.html"-->
+
+<script>
+		function show_callback(data) {
+			$("#fid").text(data.FID);
+			$("#postid").val(data.FPOSTID);
+			$("#orderid").val(data.FORDERID);
+			$("#time").val(data.FTIME);
+			$("#isprint").val(data.FISPRINT);
+			$("#country").val(data.FCONSIGNEECOUNTRY);
+			$("#name").val(data.FCONSIGNEENAME);
+			$("#tel").val(data.FCONSIGNEETEL);
+			$("#addr").val(data.FCONSIGNEEADDR);
+			$("#province").val(data.FCONSIGNEEPROVINCE);
+			$("#city").val(data.FCONSIGNEECITY);
+			$("#details").val(data.FCONSIGNEEDETAILS);
+			$("#phone").val(data.FCONSIGNEEPHONE);
+		}
+
+		function show() {
+			var url = "/shop/track/query", 
+			fid = getRequest().m,
+			input_data = {
+				fid : fid
+			};
+			if (fid==null || fid == "") {
+				alert("ID不能为空！");
+				return false;
+			}
+			fn_ajax(url, input_data, "post", "show_callback");
+		}
+		//show();
+		
+		function isprint_cb(data)
+		{
+			alert("成功更改打印状态");
+		}
+		
+		function isprint_error_cb(data)
+		{
+			alert("更改打印状态失败");
+			if($("#isprint").val()=="1")
+			{
+				$("#isprint").val("0");
+			}else
+			{
+				$("#isprint").val("1");
+			}	
+		}
+		
+		$("#isprint").change(function(){
+			var param={};
+			param.fid=$("#fid").text();
+			param.fisprint=$(this).val();
+			var url="/shop/track/update";
+			fn_ajax_error(url,param,"post","isprint_cb","isprint_error_cb");
+		});
+	</script>
+
+	<script>
+		var redirect_url = "/track/shop/track.shtml";
+		function update_callback(data) {
+			alert("修改成功！");
+			window.location = redirect_url;
+		}
+
+		$("#add").click(
+			function(e) {
+				e.preventDefault();
+				var url = "/shop/track/updateShopTrack",
+				fid = $("#fid").text(), 				
+				fconsigneeaddr 		= $("#addr").val(),
+				fconsigneename 		= $("#name").val(),
+				fconsigneetel 			= 		$("#tel").val(),
+				fconsigneecountry 	= 	$("#country").val(),
+				fconsigneeprovince 	= 	$("#province").val(),
+				fconsigneecity 			= 		$("#city").val(),
+				fconsigneedetails 		= 	$("#details").val(),
+				fconsigneephone 		= 		$("#phone").val(),
+				input_data = {
+						fid : fid,
+						fconsigneeaddr:fconsigneeaddr,
+						fconsigneename:fconsigneename,
+						fconsigneetel:fconsigneetel,
+						fconsigneecountry:fconsigneecountry,
+						fconsigneeprovince:fconsigneeprovince,
+						fconsigneecity:fconsigneecity,
+						fconsigneedetails:fconsigneedetails,
+						fconsigneephone:fconsigneephone
+				};
+
+				if (fid == null || fid == "") {
+						alert("ID不能为空");
+						return false;
+				}
+				
+				if (fconsigneeaddr == null || fconsigneeaddr == "") {
+					alert("收货地址不能为空");
+					return false;
+				}
+				
+				if (fconsigneename == null || fconsigneename == "") {
+					alert("收货人不能为空");
+					return false;
+				}
+				
+				if ((fconsigneetel == null || fconsigneetel == "") &&  (fconsigneephone == null || fconsigneephone=="")) 
+				{
+					alert("收货人手机和联系电话不能同时为空");
+					return false;
+				}
+				
+				if (fconsigneecountry == null || fconsigneecountry == "") {
+					alert("收货国家不能为空");
+					return false;
+				}
+				
+				fn_ajax(url, input_data, "post", "update_callback");
+			});
+	</script>
+</body>
+</html>

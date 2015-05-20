@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--meta-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="author" content="admin@shixiba.com"/>
+<meta name="robots" content="nofollow" />
+<meta name="Description" content="实习吧！"/>
+<meta name="Keywords" content="实习 实习吧 找工作 实习工作"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<title>Page Title</title> 
+<link rel="stylesheet" href="jqm/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="css/t.css" />
+<script src="js/jquery.js"></script>
+<script src="jqm/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/wuliu.js"></script>
+<script src="js/comm_page.js"></script>
+<style type="text/css">
+#popup_set{
+	margin:0 2em;
+	position:absolute;
+	z-index:1000;
+  }		
+.close{
+    position:relative;
+    right: -96%;
+    top: 1.2em;
+    z-index: 1001;
+	}	
+.close img{
+	border-radius:1em;
+	width:24px;
+	height:24px;
+	background-color:#7f7f7f;
+}	
+.width_set100{
+	width:100%;
+	height:100%;
+}				
+.fload_set{
+	float:left;}		
+.selected_head{
+	float:left;
+	background-color:#21D0C6;
+	color:#ffffff;
+	padding:0.5em 1.5em;
+  }	
+.minbox_set{
+		float:left;
+		width:100%;
+		text-align:center;}	  
+.delete_head{
+	background-color:#FD4848;
+	color:#ffffff;
+	float:right;
+	padding:0.5em 2em;
+	}
+.body_blind{
+	width:100%;
+	height:100%;
+	background-color:#000000;
+	opacity:0.5;
+	position:absolute;
+	z-index:999;}				 
+</style>
+
+</head>
+<body>
+        <div data-role="page" id="pagehome"> 
+                <div data-role="header"> 
+                    <h1>Search</h1> 
+                </div> 
+                
+
+   <a href="#"  data-position-to="window" data-role="none" class="popup_button">      
+     <img class="img_click" width="30" height="30" src="/sxb/images/JOB_2oMHykpuXdI.jpg" /></a> 
+    
+       <div id="popup_set" data-theme="a" style="display:none;">
+        <a href="" class="close"><img class="shutdown" src="images/icon_shutdown.png" /></a>
+        <img class="width_set100" src="/sxb/images/JOB_2oMHykpuXdI.jpg"/> 
+        <div class="minbox_set">
+        <div class="fload_set selected_head">设置为头像</div>
+        <div class="fload_set delete_head">删除</div>
+        </div>
+
+        </div>
+    
+    </div> 
+        </div> 
+       <div class="body_blind" style="display:none"></div> 
+    </body> 
+</html>
+<script>
+$(document).on("pageinit","#pagehome",function(){
+	$(".popup_button").on("tap",function(){
+		$("#popup_set").css("display","block");		
+		$(".body_blind").css("display","block");})
+	$(".close").on("tap",function(){
+		$('#popup_set').css('display','none');
+		$(".body_blind").css("display","none");})
+})
+	
+</script>
+
+</body>
+</html>

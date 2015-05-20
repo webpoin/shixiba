@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>专线物流后台管理平台-模板跟踪管理</title>
+<link href="/track/my/css/my.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/wuliu/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="/wuliu/js/wuliu.js"></script>
+<script type="text/javascript" src="/wuliu/js/comm_page.js"></script>
+<style type="text/css">			
+.register_content{
+    /*border: 1px solid #90BFFF;*/
+	/*text-align:center;*/
+	width:770px;
+	float:left;
+	width:760px;
+	padding-left:20px;
+}
+.register_head{
+	height: 38px;
+	background-color:#90BFFF;
+	color:#FFFFFF;
+    line-height: 38px;
+    border-bottom: solid 1px #EAEAEA;
+    padding-right: 10px;
+    text-align:left;
+	font-size: 18px;
+	font-weight: normal;
+	padding-left: 18px;
+	font-weight: bold;
+  }	
+.tr_set td{
+	padding:10px 0;}
+.td_1{
+	font-size: 16px;
+	width: 90px;
+	padding-right: 10px;
+	text-align: right;
+	vertical-align:middle;
+	color: #404040;
+	padding-top: 15px;
+    }
+.login_text{
+	 border: 1px solid #A0A0A0;
+	height: 18px;
+	float: left;
+	width: 350px;
+	margin-right: 10px;
+	padding: 7px 10px;
+	line-height: 18px;
+	outline: 0 none;
+	}
+.login_text:focus{
+	border:1px solid #6482B9;}
+.td_3{
+	font-size:12px;
+	color:#A9A9A9;;
+	text-align:left;}	
+.login_commit{
+	float:left;
+	display: inline-block;
+    border: 0;
+    width: 240px;
+    height: 36px;
+    font-size:18px;
+    cursor: pointer;
+    background-color:#4CB7B7;
+	color:#FFFFFF;
+}
+.td_2
+{
+	width: 350px;
+	font-size: 16px;
+}
+
+
+.table_title{
+	background-color: #F4F9FF;
+    border-top: 1px solid #B9D5FD;
+	font-size:14px;
+    float: left;
+    width: 100%;}
+.table_title span{
+	float:left;
+	  color: #999999;
+    display:block;
+    line-height: 37px;
+    text-align: left;
+    vertical-align: middle;
+}
+.table_body{
+	float:left;}
+.table_body table{
+	width:100%;}
+.tr_pad{
+	border-bottom:1px dashed #B9D5FD;
+	height:37px;
+	line-height:37px;
+	}	
+.tr_pad_first{
+	border-bottom:1px dashed #B9D5FD;
+	height:37px;
+	line-height:37px;
+	background-color: #F0F0F0;	
+	}			
+.w1{
+	width:80px;
+	padding-left:10px;
+   }
+.w2{
+	width:560px;
+	padding-right:5px;
+	}
+.w3{
+	width:100px;
+	padding-right:5px;
+	}
+.w4{
+	width:130px;
+	padding-left:10px;}
+.w5{
+	width:80px;
+	padding-left:5px;}
+.w6{
+	width:70px;
+	padding-left:5px;}
+.w7{
+	width:120px;
+	padding-left:5px;}
+.pages{
+	float:right;
+	width:100%;
+	}
+	
+.msg
+{
+	width: 350px;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 100px;
+}
+</style>
+</head>
+<body>
+
+<script>islogin("55");</script>
+<!--#include virtual="/track/my/head.html"-->
+
+<div class="container w960 mt5">
+
+<!--#include virtual="/track/my/left.html"-->	
+	  <div class="register_content mt10">
+		<div style="font-size: 16px;">
+			<span>模板跟踪信息管理：</span>
+			<a id="no" href="#"><span style="color:#EA0000;font-weight: bold;"></span></a>
+			<span id="ftemplateid" style="display: none;"></span>
+			<a style="float:right;" href="/track/my/tp.shtml" target="_self">返回到模板列表</a>
+			<div style="float:right;width: 20px;">&nbsp;</div>
+			<a id="toUpdate" style="float:right;" href="javascript:;" target="_self"></a>
+		</div>
+		
+		<div class="register_body">
+			<div class="register_form1">
+			<table>
+				<tbody>
+					<tr class="tr_set">
+						<td class="td_1">
+							<label for="fseq">显示顺序：</label>
+						</td>
+						<td class="td_2">
+						<input id="fseq" class="login_text" type="text" 
+								tabindex="1" placeholder=""  value=""/>
+						<td class="td_3"><span style="color:red;">*</span>系统会跟踪顺序来生成跟踪信息
+						</td>
+					</tr>
+					<tr class="tr_set">
+						<td class="td_1"><label for="fmsg">跟踪信息：</label></td>
+						<td class="td_2"  >
+							<textarea  id="fmsg"  class="msg" tabindex="6" ></textarea>
+						</td>
+						<td class="td_3"><span style="color:red;">*</span></td>
+					</tr>
+			        
+					<tr class="tr_set" >
+						<td class="td_1">
+						</td>
+						<td class="td_2">
+						<button id="commit" class="login_commit" 
+						name=""  type="submit" tabindex="5" >新增跟踪信息</button>
+						</td>
+					</tr>
+				 </tbody>
+			 </table>
+		</div>
+		</div>
+		
+		<div>
+			   <div class="table_title mt10">
+				 	<span class="w1">显示顺序</span>
+				  	<span class="w2">跟踪内容</span>
+				   	<span class="w3">操作</span>
+			   </div>
+			   <div class="table_body">
+				   <table id="list" >
+					   <tbody>
+					   <tr class="tr_pad">
+					     <td class="w1"></td>
+					     <td class="w2"></td>
+					     <td class="w3">
+					     <a href="#" target="_blank" class="ck">删除</a>
+					     </td>
+					   </tr>
+					</tbody>
+				 </table>
+			 </div>
+			 <div id="pages" class="pages mt10" align="right"></div>
+			 
+		</div>
+		
+		
+		<div id="aaa"></div>
+		
+	</div>
+			
+</div>
+
+  <!--#include virtual="/track/my/foot.html"-->
+  
+<script>
+
+//$("#ftime").val(CurentTime());
+
+var fid = getRequest().m;
+var ftemplateid=fid;
+
+//$("#curtime").click(function(){
+//	$("#ftime").val(CurentTime());
+//});
+
+$("#toUpdate").click(function(e)
+{
+		var fid = $("#fid").text();
+		window.location="/track/my/tpedit.shtml?m="+fid;
+});
+
+function onChange()
+{
+	var pic  = $("input");
+	$("#blog-write-3").css('display','block');
+	$("#blog-write-3-ul").css('display','block');
+	submitform();
+}
+
+function submitform()
+{  
+    var form=document.getElementById('fileupload');
+	form.action="/track/my/upload?cb=callback";
+    form.target="check_frame";
+    form.submit();
+} 
+
+function callback(result)
+{
+	var resJson = eval("("+result+")");
+	//var liID=randomUUID();
+	//var pic  = $("input");
+	$("#blog-write-3").css('display','block');
+	$("#blog-write-3-ul").css('display','block');
+	$("#logo").css('display','block');
+	$("#logo").attr("name",resJson.data.items[0].fid);
+	$("#logo").attr("src",resJson.data.items[0].urlroot+resJson.data.items[0].fname);
+	//$("#blog-write-3-ul").html("<img name='"+resJson.data.items[0].fid+"' style='float:left;' src='/wuliu/image/"
+	//					+resJson.data.items[0].fname+"'></img>");
+}
+
+function delLogo()
+{
+	$("#logo").css("display","none");
+	$("#logo").attr("src","");
+	$("#logo").attr("name","");
+	return false;
+}
+</script>
+<script>
+  	 function show_callback(data)
+	 {
+	  		$("#ftemplateid").text(data.FID);
+	  		$("#no").attr("href","/track/my/tpinfo.shtml?m="+data.FID);
+	  		$("#no >span").text(data.FNAME);
+	 }
+  		
+	 function	show()
+	 {
+			var url="/track/my/template/query",
+				fid=getRequest().m,
+				input_data={
+						fid : fid
+				};
+			if(fid=="") 
+			{
+			  alert("ID不能为空！"); 
+			  return false;
+			}
+			fn_ajax(url,input_data,"post","show_callback");
+	 }
+	 
+	 show();
+	</script>
+	<script>
+	  function del_callback(data)
+	  {
+		  alert("成功删除");
+		  $("#"+data.FID).remove();
+	  }
+	  
+	  function del(fid)
+	  {
+		  if(fid==null || fid == "")
+		  {
+			  alert("ID不能为空");
+			  return false;
+		  } 
+		  
+		  var param={};
+		  param.fid=fid;
+		  var url="/track/my/templateinfo/del";
+		  fn_ajax(url,param,"post","del_callback");
+	  }
+	</script>
+	
+	<script>
+		function add_callback(data)
+		{
+			 alert("成功新增");
+		 	 // 修改列表
+			 var str = "";
+			 str ='<tr id="'+data.fid+'" class="tr_pad_first">'
+		     +'<td class="w1">'+data.fseq+'</td>'
+		     +'<td class="w2">'+data.fmsg+'</td>'
+		    +'<td class="w3">'
+		   	 +'<a href="javascript:del(\''+data.FID
+		     +'\');" target="_self" class="ck">删除</a>'
+		     +'</td>'
+		   +'</tr>';
+			 $("#list>tbody").html(str+ $("#list>tbody").html());
+		}
+			
+		$("#commit").click(function(e){
+			var url="/track/my/templateinfo/add",
+			fseq =  $("#fseq").val(),
+			fmsg = $("#fmsg").val(),
+			input_data={
+				ftemplateid : ftemplateid,
+				fseq : fseq,
+				fmsg: fmsg
+			 };
+			if(ftemplateid===null || ftemplateid=="")
+			{
+			  alert("模板ID不能为空"); 
+			  return false;
+			}
+			if(fmsg===null || fmsg == "")
+			{
+			  alert("跟踪内容不能为空"); 
+			  return false;
+			}
+			fn_ajax(url,input_data,"post","add_callback");
+		});
+	</script>
+	
+	<script>
+	  function list_callback(data)
+	  {
+		//alert(data.items.totalsize);
+		var html_str="";
+		for(var i=0;i<data.items.totalsize;i++)
+		{
+			html_str+='<tr id="'+data.items.item[i].FID+'" class="tr_pad">'
+			     +'<td class="w1">'+data.items.item[i].FSEQ+'</td>'
+			     +'<td class="w2">'+data.items.item[i].FMSG+'</td>'
+			    +'<td class="w3">'
+//			     +'<a href="/track/my/jkinfo.shtml?m='+data.items.item[i].FID
+//			     +'" target="_self" class="ck">查看</a>'
+//			     +'&nbsp;&nbsp;<a href="/track/my/jkedit.shtml?m='+data.items.item[i].FID
+//			     +'" target="_self" class="ck">编辑</a>'
+//			   	 +'&nbsp;&nbsp;'
+			   	 +'<a href="javascript:del(\''+data.items.item[i].FID
+			     +'\');" target="_self" class="ck">删除</a>'
+			     +'</td>'
+			   +'</tr>';
+		}
+		$("#list>tbody").html(html_str);
+		
+		// 加上分页
+		showPages("pages", "list", data.pageSize, data.pageNo, data.pageTotalSize,data.items.totalsize);
+	  }
+	  
+	  function list(pagesize,pageno)
+	  {
+		  var param={};
+		  param.pageno=pageno;
+		  param.pagesize=pagesize;
+		  param.ftemplateid=ftemplateid;
+		  var url="/track/my/templateinfo/list";
+		  fn_ajax(url,param,"get","list_callback");
+	  }
+	  
+	  list(20,1);
+	</script>
+	
+
+</body>
+</html>

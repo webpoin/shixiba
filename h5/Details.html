@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--meta-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="author" content="admin@17track.net"/>
+<meta name="robots" content="nofollow" /><meta name="Description" content="南山图书馆藏书丰富,是你选书,借书,理想选择！"/>
+<meta name="Keywords" content="南山图书馆-选书,借书,还书方便便捷"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<title>南山图书馆</title>
+<!--link rel="stylesheet" href="/ns/css/jquery.mobile-1.4.2.min.css" />
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/jquery.mobile-1.4.2.min.js"></script>
+<script src="js/mobile.js"></script>
+<script src="js/com.js"></script>
+<link rel="stylesheet" href="css/t.css" /-->
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
+</head>
+
+<body>
+
+
+<div data-role="page" id="Details">
+	<div data-role="header" data-position="fixed" id="header_color" >
+		<h1>详细信息</h1>
+	</div>
+	<div data-role="content" class="content-1">
+		<div id="userinfo" style="display:none;">
+			<div style="padding: 20px 20px;">
+				<span>用户名：</span>
+				<span id="uname"></span>
+			</div>
+			<div style="padding: 10px 20px;">
+				<a href="#" onclick="logout();">退出</a>
+			</div>
+			<div>
+				<a href="/tsg/app/index.html#my" data-transition="slide">我的推荐</a>
+			</div>
+		</div>
+		<ul id="userlist" data-role="listview">
+			<li>
+				
+				<h2>南山区图书馆第322期大家讲坛</h2>
+                <p>2014-04-22</p>
+                <p>南山区图书馆第322期大家讲坛,深圳自然笔记系列第三讲,特别邀请动物学硕士,科普作者三蝶纪,邀你一起认知"昆虫的生命历程",与大家一起走进昆虫的世界。时间为4月26日(周六)下午15:00,地点为南山区图书馆负一楼报告厅。欢迎您的到来！</p>
+				
+			</li>
+           
+          </ul>
+	</div>
+	
+<div data-role="footer" data-position="fixed" >
+         <div data-role="navbar">
+	<ul>
+        <!--li>享受温馨丶精致的阅读生活</li-->
+	    <li><a href="/tsg/ns/index.html#home" data-icon="home" data-iconpos="top" data-transition="slide" rel="external">首页</a></li>
+		<li><a href="/tsg/ns/person.html#home"  data-icon="info" data-iconpos="top" data-transition="slide" rel="external">个人中心</a></li>
+    </ul>
+	</div>
+	</div>  
+</div>
+<div data-role="page" id="nearby">
+	<div data-role="header" id="header_color">
+		<h1 id="title">附近图书馆</h1>
+	</div>
+	
+    <div data-role="content" id="dituContent" style="height:600px">	
+		内容		
+	</div>
+
+<div data-role="footer" data-position="fixed" >
+  <div data-role="navbar">
+    <ul>
+       <li>享受温馨丶精致的阅读生活</li>
+    </ul>
+   </div>
+  </div>    
+</div>
+
+</body>
+</html>
+
